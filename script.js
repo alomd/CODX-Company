@@ -24,55 +24,52 @@ const PROJECTS = [
 ];
 
 let currentProjectIndex = 0;
+// Check system preference or saved preference
 let isDark = true;
 
 // Initialization
 document.addEventListener('DOMContentLoaded', () => {
+    // Check for saved theme or system preference could be added here, currently defaulting to dark as per original
     renderProjects();
     initTheme();
     initScrollListener();
-    initCanvas();
     lucide.createIcons();
+
+    // Preloader Logic
+    setTimeout(() => {
+        const preloader = document.getElementById('preloader');
+        if (preloader) {
+            preloader.style.opacity = '0';
+            setTimeout(() => {
+                preloader.style.display = 'none';
+            }, 700);
+        }
+    }, 1500); // Minimum 1.5s display time for premium feel
 });
 
 // Theme Management
 function initTheme() {
     const themeBtn = document.getElementById('theme-toggle');
+    const html = document.documentElement;
+
+    // Initial State Check
+    if (isDark) {
+        html.classList.add('dark');
+    } else {
+        html.classList.remove('dark');
+    }
+
     themeBtn.addEventListener('click', () => {
         isDark = !isDark;
-        document.documentElement.classList.toggle('dark');
-
-        // Update helper classes for advanced background matching
-        const nav = document.getElementById('navbar');
         if (isDark) {
-            nav.setAttribute('data-theme', 'dark');
+            html.classList.add('dark');
         } else {
-            nav.setAttribute('data-theme', 'light');
+            html.classList.remove('dark');
         }
 
-        // Updates specific UI elements that depended on js logic
-        updateUITheme();
+        // Ensure Lucide icons update (sun icon toggles via CSS display classes, but good to trigger refresh if needed)
+        // actually the sun icon switching is handled by CSS classes (block/hidden) in the HTML
     });
-    updateUITheme();
-}
-
-function updateUITheme() {
-    // This function handles the complex class switching that was in React
-    // Since we are using Tailwind's 'dark:' variant for most things, we mainly handle specific overrides here
-    const blob1 = document.getElementById('blob-1');
-    const blob2 = document.getElementById('blob-2');
-
-    if (isDark) {
-        blob1.classList.remove('bg-blue-200/40');
-        blob1.classList.add('bg-blue-900/30');
-        blob2.classList.remove('bg-indigo-100/40');
-        blob2.classList.add('bg-indigo-900/30');
-    } else {
-        blob1.classList.remove('bg-blue-900/30');
-        blob1.classList.add('bg-blue-200/40');
-        blob2.classList.remove('bg-indigo-900/30');
-        blob2.classList.add('bg-indigo-100/40');
-    }
 }
 
 // Scroll Handling
@@ -83,13 +80,13 @@ function initScrollListener() {
             nav.classList.add('backdrop-blur-luxury', 'py-3', 'md:py-4', 'border-b', 'shadow-2xl');
             nav.classList.remove('bg-transparent', 'py-6', 'md:py-10');
 
-            if (isDark) {
-                nav.classList.add('bg-black/80', 'border-white/5');
-            } else {
-                nav.classList.add('bg-white/80', 'border-slate-200');
-            }
+            // Dynamic bg based on usage of .dark class in parent
+            // We use standard tailwind classes that react to parent .dark
+            nav.classList.add('dark:bg-black/80', 'dark:border-white/5', 'bg-white/80', 'border-slate-200');
         } else {
-            nav.classList.remove('backdrop-blur-luxury', 'py-3', 'md:py-4', 'border-b', 'shadow-2xl', 'bg-black/80', 'border-white/5', 'bg-white/80', 'border-slate-200');
+            nav.classList.remove('backdrop-blur-luxury', 'py-3', 'md:py-4', 'border-b', 'shadow-2xl',
+                'dark:bg-black/80', 'dark:border-white/5', 'bg-white/80', 'border-slate-200');
+
             nav.classList.add('bg-transparent', 'py-6', 'md:py-10');
         }
     });
@@ -140,8 +137,8 @@ function renderProjects() {
     container.innerHTML = PROJECTS.map((project, idx) => `
         <div class="project-card ${idx === currentProjectIndex ? 'active' : ''}">
              <div class="grid lg:grid-cols-2 gap-8 md:gap-20 h-full items-center">
-                <div class="relative aspect-video lg:aspect-[16/10] rounded-3xl md:rounded-[5rem] overflow-hidden border-2 transition-all duration-1000 group dark:border-white/5 dark:bg-slate-900/50 border-black/5 bg-white shadow-2xl">
-                    <img src="${project.image}" alt="${project.title}" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
+                <div class="relative aspect-video lg:aspect-[16/10] rounded-3xl md:rounded-[5rem] overflow-hidden border-2 transition-all duration-1000 group dark:border-white/5 dark:bg-slate-900/50 border-black/5 bg-white shadow-2xl" style="will-change: transform">
+                    <img src="${project.image}" alt="${project.title}" loading="lazy" decoding="async" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
                     <div class="absolute inset-0 bg-gradient-to-t from-black/95 via-black/30 to-transparent opacity-90"></div>
                     
                     <div class="absolute bottom-6 md:bottom-16 right-6 md:right-16 left-6 md:left-16 space-y-2 md:space-y-6">
@@ -201,81 +198,4 @@ function updateProjectVisibility() {
             card.classList.remove('active');
         }
     });
-}
-
-// Canvas Animation
-function initCanvas() {
-    const canvas = document.getElementById('particle-canvas');
-    if (!canvas) return;
-    const ctx = canvas.getContext('2d');
-    if (!ctx) return;
-
-    let animationFrameId;
-
-    const resize = () => {
-        canvas.width = window.innerWidth;
-        canvas.height = window.innerHeight;
-    };
-
-    window.addEventListener('resize', resize);
-    resize();
-
-    const particles = [];
-    const particleCount = Math.min(window.innerWidth / 15, 100);
-
-    for (let i = 0; i < particleCount; i++) {
-        particles.push({
-            x: Math.random() * canvas.width,
-            y: Math.random() * canvas.height,
-            size: Math.random() * 2 + 0.5,
-            speedX: (Math.random() - 0.5) * 0.4,
-            speedY: (Math.random() - 0.5) * 0.4,
-            opacity: Math.random() * 0.4 + 0.1
-        });
-    }
-
-    const draw = () => {
-        ctx.clearRect(0, 0, canvas.width, canvas.height);
-
-        const particleColor = document.documentElement.classList.contains('dark') ? '96, 165, 250' : '37, 99, 235';
-
-        particles.forEach(p => {
-            ctx.beginPath();
-            ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
-            ctx.fillStyle = `rgba(${particleColor}, ${p.opacity})`;
-            ctx.fill();
-
-            p.x += p.speedX;
-            p.y += p.speedY;
-
-            if (p.x < 0) p.x = canvas.width;
-            if (p.x > canvas.width) p.x = 0;
-            if (p.y < 0) p.y = canvas.height;
-            if (p.y > canvas.height) p.y = 0;
-        });
-
-        // Drawing connections
-        ctx.lineWidth = 0.5;
-        for (let i = 0; i < particles.length; i++) {
-            for (let j = i + 1; j < particles.length; j++) {
-                const dx = particles[i].x - particles[j].x;
-                const dy = particles[i].y - particles[j].y;
-                const dist = Math.sqrt(dx * dx + dy * dy);
-                if (dist < 150) {
-                    ctx.beginPath();
-                    ctx.strokeStyle = `rgba(${particleColor}, ${0.1 * (1 - dist / 150)})`;
-                    ctx.moveTo(particles[i].x, particles[i].y);
-                    ctx.lineTo(particles[j].x, particles[j].y);
-                    ctx.stroke();
-                }
-            }
-        }
-
-        animationFrameId = requestAnimationFrame(draw);
-    };
-
-    draw();
-
-    // Re-check color when theme changes
-    // (Already handled by helper class check in draw loop)
 }

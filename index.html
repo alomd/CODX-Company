@@ -5,485 +5,484 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>CODX | صناعة المستقبل الرقمي</title>
-  <!-- Tailwind CSS -->
+  <meta name="description"
+    content="مختبر التميز الرقمي. نحول الأفكار المعقدة إلى منتجات برمجية عالمية المستوى تجمع بين الدقة الهندسية والجمال التصميمي.">
+
+  <!-- Tailwind & Cairo Font -->
   <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@200;400;600;900&display=swap" rel="stylesheet">
+  <script src="https://unpkg.com/lucide@latest"></script>
+
   <script>
     tailwind.config = {
       darkMode: 'class',
       theme: {
         extend: {
-          fontFamily: {
-            sans: ['Cairo', 'sans-serif'],
+          fontFamily: { sans: ['Cairo', 'sans-serif'] },
+          animation: {
+            'pulse-slow': 'pulse 6s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+            'spin-slow': 'spin 12s linear infinite',
+            'float': 'float 3s ease-in-out infinite',
+          },
+          keyframes: {
+            float: {
+              '0%, 100%': { transform: 'translateY(0)' },
+              '50%': { transform: 'translateY(-20px)' },
+            }
           }
         }
       }
     }
   </script>
-  <!-- Cairo Font -->
-  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@200;300;400;500;600;700;800;900&display=swap"
-    rel="stylesheet">
-  <!-- Lucide Icons -->
-  <script src="https://unpkg.com/lucide@latest"></script>
-  <link rel="stylesheet" href="index.css">
 
   <style>
-    /* Custom Styles extracted from App.tsx */
-    .backdrop-blur-luxury {
-      backdrop-filter: blur(40px) saturate(180%);
-      -webkit-backdrop-filter: blur(40px) saturate(180%);
+    :root {
+      --bg-light: #f8fafc;
+      --bg-dark: #020617;
     }
 
-    @keyframes blob {
+    body {
+      font-family: 'Cairo', sans-serif;
+      overflow-x: hidden;
+      scroll-behavior: smooth;
+    }
 
-      0%,
-      100% {
+    .mesh-bg {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+      overflow: hidden;
+      background: var(--bg-light);
+      transition: background 0.5s ease;
+    }
+
+    .dark .mesh-bg {
+      background: var(--bg-dark);
+    }
+
+    .mesh-ball {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(80px);
+      opacity: 0.4;
+      mix-blend-mode: multiply;
+      animation: move 25s infinite alternate ease-in-out;
+    }
+
+    .dark .mesh-ball {
+      mix-blend-mode: screen;
+      opacity: 0.15;
+    }
+
+    @keyframes move {
+      0% {
         transform: translate(0, 0) scale(1);
       }
 
       33% {
-        transform: translate(50px, -80px) scale(1.1);
+        transform: translate(30vw, 20vh) scale(1.2);
       }
 
       66% {
-        transform: translate(-40px, 40px) scale(0.9);
-      }
-    }
-
-    .animate-blob {
-      animation: blob 15s infinite alternate cubic-bezier(0.45, 0, 0.55, 1);
-    }
-
-    .animation-delay-2000 {
-      animation-delay: 2s;
-    }
-
-    .animation-delay-4000 {
-      animation-delay: 4s;
-    }
-
-    @keyframes hero-reveal {
-      from {
-        opacity: 0;
-        transform: translateY(100px) scale(0.95);
-        filter: blur(20px);
+        transform: translate(-10vw, 40vh) scale(0.8);
       }
 
-      to {
-        opacity: 1;
-        transform: translateY(0) scale(1);
-        filter: blur(0);
-      }
-    }
-
-    .animate-hero-reveal {
-      animation: hero-reveal 1.5s cubic-bezier(0.19, 1, 0.22, 1) forwards;
-    }
-
-    @keyframes float {
-
-      0%,
       100% {
-        transform: translateY(0) rotate(0);
-      }
-
-      50% {
-        transform: translateY(-30px) rotate(5deg);
+        transform: translate(10vw, -10vh) scale(1.1);
       }
     }
 
-    .animate-float {
-      animation: float 8s ease-in-out infinite;
+    .glass {
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      background: rgba(255, 255, 255, 0.7);
+      border: 1px solid rgba(255, 255, 255, 0.2);
     }
 
-    .project-card {
-      transition: all 1s ease-in-out;
-      position: absolute;
-      inset: 0;
-      opacity: 0;
-      transform: translateX(100%);
-      pointer-events: none;
+    .dark .glass {
+      background: rgba(15, 23, 42, 0.6);
+      border: 1px solid rgba(255, 255, 255, 0.05);
     }
 
-    .project-card.active {
-      opacity: 1;
-      transform: translateX(0);
-      pointer-events: auto;
+    .developer-gradient {
+      background: linear-gradient(135deg, #3b82f6 0%, #a855f7 100%);
+    }
+
+    ::selection {
+      background: #3b82f6;
+      color: white;
+    }
+
+    ::-webkit-scrollbar {
+      width: 6px;
+    }
+
+    ::-webkit-scrollbar-track {
+      background: transparent;
+    }
+
+    ::-webkit-scrollbar-thumb {
+      background: #cbd5e1;
+      border-radius: 10px;
+    }
+
+    .dark ::-webkit-scrollbar-thumb {
+      background: #1e293b;
     }
   </style>
 </head>
 
-<body
-  class="min-h-screen transition-colors duration-1000 selection:bg-blue-500/30 overflow-x-hidden bg-[#02040a] text-slate-50">
+<body class="bg-slate-50 text-slate-900 dark:bg-slate-950 dark:text-slate-100 transition-colors duration-500">
 
-  <!-- Advanced Background Container -->
-  <div id="advanced-background"
-    class="fixed inset-0 z-0 overflow-hidden pointer-events-none transition-colors duration-1000">
-    <!-- Mesh Gradients -->
-    <div id="blob-1"
-      class="absolute top-[-20%] left-[-10%] w-[80%] h-[80%] rounded-full blur-[160px] animate-blob mix-blend-screen transition-colors duration-1000 bg-blue-900/30">
+  <!-- Mesh Background -->
+  <div class="mesh-bg">
+    <div class="mesh-ball bg-blue-400 w-[600px] h-[600px] top-[-10%] left-[-10%]" style="animation-delay: 0s;"></div>
+    <div class="mesh-ball bg-purple-400 w-[500px] h-[500px] bottom-[-10%] right-[-10%]" style="animation-delay: -5s;">
     </div>
-    <div id="blob-2"
-      class="absolute bottom-[-20%] right-[-10%] w-[80%] h-[80%] rounded-full blur-[160px] animate-blob animation-delay-4000 mix-blend-screen transition-colors duration-1000 bg-indigo-900/30">
-    </div>
-
-    <!-- Particle Canvas -->
-    <canvas id="particle-canvas" class="absolute inset-0 w-full h-full opacity-60"></canvas>
-
-    <!-- Grain Overlay -->
-    <div class="absolute inset-0 opacity-[0.03]"
+    <div class="mesh-ball bg-indigo-400 w-[400px] h-[400px] top-[30%] right-[10%]" style="animation-delay: -10s;"></div>
+    <div class="absolute inset-0 opacity-[0.03] dark:opacity-[0.05]"
       style="background-image: url('https://grainy-gradients.vercel.app/noise.svg');"></div>
   </div>
 
   <!-- Navigation -->
-  <nav id="navbar" class="fixed w-full z-[100] transition-all duration-700 bg-transparent py-6 md:py-10">
-    <div class="container mx-auto px-4 md:px-6 flex justify-between items-center">
-      <!-- Logo -->
-      <div class="flex items-center gap-3 md:gap-5 group cursor-pointer"
-        onclick="window.scrollTo({ top: 0, behavior: 'smooth' })">
-        <div class="relative">
-          <div id="logo-blur"
-            class="absolute inset-0 blur-2xl opacity-20 group-hover:opacity-70 transition-opacity bg-white"></div>
-          <div id="logo-box"
-            class="relative w-10 h-10 md:w-14 md:h-14 rounded-xl md:rounded-2xl flex items-center justify-center shadow-2xl group-hover:rotate-[15deg] transition-all duration-500 bg-white text-black">
-            <i data-lucide="zap" class="w-5 h-5 md:hidden"></i>
-            <i data-lucide="zap" class="w-7 h-7 hidden md:block"></i>
-          </div>
+  <nav id="navbar" class="fixed w-full z-[100] transition-all duration-500 py-4 px-6">
+    <div class="container mx-auto flex justify-between items-center glass rounded-2xl px-6 py-3 shadow-sm">
+      <div class="flex items-center gap-3 cursor-pointer group" onclick="window.scrollTo({top:0, behavior:'smooth'})">
+        <div
+          class="w-10 h-10 bg-slate-900 dark:bg-white text-white dark:text-black flex items-center justify-center rounded-lg shadow-lg group-hover:rotate-12 transition-transform">
+          <i data-lucide="zap" class="w-6 h-6"></i>
         </div>
-        <span
-          class="text-2xl md:text-5xl font-black tracking-[-0.05em] uppercase italic leading-none transition-colors duration-500">CODX</span>
+        <span class="text-2xl font-black italic tracking-tighter">CODX</span>
       </div>
 
-      <!-- Desktop Menu -->
-      <div class="hidden lg:flex items-center gap-12 text-[14px] font-extrabold uppercase tracking-[0.2em]">
-        <button onclick="scrollToSection('الرئيسية')"
-          class="nav-link text-slate-400 hover:text-white transition-all relative group">
-          الرئيسية
-          <span
-            class="absolute -bottom-2 right-0 w-0 h-[3px] group-hover:w-full transition-all duration-500 rounded-full bg-white"></span>
-        </button>
-        <button onclick="scrollToSection('المشاريع')"
-          class="nav-link text-slate-400 hover:text-white transition-all relative group">
-          المشاريع
-          <span
-            class="absolute -bottom-2 right-0 w-0 h-[3px] group-hover:w-full transition-all duration-500 rounded-full bg-white"></span>
-        </button>
-        <button onclick="scrollToSection('الخدمات')"
-          class="nav-link text-slate-400 hover:text-white transition-all relative group">
-          الخدمات
-          <span
-            class="absolute -bottom-2 right-0 w-0 h-[3px] group-hover:w-full transition-all duration-500 rounded-full bg-white"></span>
-        </button>
-        <button onclick="scrollToSection('فلسفة-الشركة')"
-          class="nav-link text-slate-400 hover:text-white transition-all relative group">
-          الفلسفة
-          <span
-            class="absolute -bottom-2 right-0 w-0 h-[3px] group-hover:w-full transition-all duration-500 rounded-full bg-white"></span>
-        </button>
+      <div class="hidden md:flex gap-8 text-sm font-bold uppercase tracking-widest text-slate-600 dark:text-slate-400">
+        <a href="#home" class="hover:text-blue-600 dark:hover:text-white transition-colors">الرئيسية</a>
+        <a href="#philosophy" class="hover:text-blue-600 dark:hover:text-white transition-colors">رؤيتنا</a>
+        <a href="#developer" class="hover:text-blue-600 dark:hover:text-white transition-colors">المطور</a>
+        <a href="#services" class="hover:text-blue-600 dark:hover:text-white transition-colors">الخدمات</a>
       </div>
 
-      <!-- Right Controls -->
-      <div class="flex items-center gap-3 md:gap-6">
+      <div class="flex items-center gap-4">
         <button id="theme-toggle"
-          class="p-2 md:p-4 rounded-xl md:rounded-2xl border transition-all duration-500 bg-white/5 border-white/10 text-yellow-400 hover:bg-white/10"
-          aria-label="تبديل المظهر">
-          <i data-lucide="sun" class="w-5 h-5 block dark:hidden"></i>
-          <i data-lucide="sun" class="w-5 h-5 hidden dark:block"></i>
+          class="p-2.5 rounded-xl border border-slate-200 dark:border-slate-800 hover:bg-slate-100 dark:hover:bg-slate-800 transition-all">
+          <i data-lucide="sun" class="w-5 h-5 block dark:hidden text-orange-500"></i>
+          <i data-lucide="moon" class="w-5 h-5 hidden dark:block text-blue-400"></i>
         </button>
-        <button onclick="toggleContactModal(true)"
-          class="hidden sm:block px-6 md:px-12 py-3 md:py-5 rounded-xl md:rounded-2xl font-black transition-all transform hover:scale-105 active:scale-95 shadow-2xl text-[12px] md:text-[15px] uppercase tracking-widest bg-white text-black dark:bg-white dark:text-black">
-          ابدأ مع CODX
-        </button>
-        <button onclick="toggleMobileMenu(true)"
-          class="lg:hidden p-2 rounded-xl border border-white/10 bg-white/5 text-white">
-          <i data-lucide="menu" class="w-6 h-6"></i>
+        <button onclick="document.getElementById('contact-modal').classList.remove('hidden')"
+          class="bg-slate-900 dark:bg-white text-white dark:text-black px-6 py-2.5 rounded-xl font-bold text-sm hover:scale-105 transition-transform">
+          تواصل معنا
         </button>
       </div>
     </div>
   </nav>
 
-  <!-- Mobile Menu -->
-  <div id="mobile-menu"
-    class="fixed inset-0 z-[150] bg-black/95 backdrop-blur-2xl hidden flex-col items-center justify-center p-8 space-y-12 animate-fade-in">
-    <button onclick="toggleMobileMenu(false)" class="absolute top-8 left-8 text-white p-2">
-      <i data-lucide="x" class="w-8 h-8"></i>
-    </button>
-    <button onclick="scrollToSection('الرئيسية')"
-      class="text-4xl font-black italic tracking-tighter text-white hover:opacity-70 transition-all">الرئيسية</button>
-    <button onclick="scrollToSection('المشاريع')"
-      class="text-4xl font-black italic tracking-tighter text-white hover:opacity-70 transition-all">المشاريع</button>
-    <button onclick="scrollToSection('الخدمات')"
-      class="text-4xl font-black italic tracking-tighter text-white hover:opacity-70 transition-all">الخدمات</button>
-    <button onclick="scrollToSection('فلسفة-الشركة')"
-      class="text-4xl font-black italic tracking-tighter text-white hover:opacity-70 transition-all">الفلسفة</button>
-
-    <button onclick="toggleContactModal(true); toggleMobileMenu(false);"
-      class="w-full py-6 rounded-3xl bg-white text-black font-black text-2xl shadow-2xl">
-      ابدأ رحلتك الآن
-    </button>
-  </div>
-
   <!-- Hero Section -->
-  <section id="الرئيسية"
-    class="relative min-h-screen flex items-center justify-center pt-24 md:pt-32 overflow-hidden px-4">
-    <div class="container mx-auto relative z-10 text-center">
-      <div class="max-w-7xl mx-auto space-y-8 md:space-y-12">
-        <!-- Badge -->
-        <div
-          class="inline-flex items-center gap-2 md:gap-4 px-6 md:px-10 py-3 md:py-4 rounded-full border text-[10px] md:text-[14px] font-black tracking-[0.2em] md:tracking-[0.4em] uppercase animate-hero-reveal shadow-xl bg-white/5 border-white/10 text-white">
-          <div class="w-2 h-2 md:w-3 md:h-3 rounded-full animate-pulse shadow-xl bg-white shadow-white/50"></div>
-          CODX Lab | مختبر التميز الرقمي
-        </div>
-
-        <h1
-          class="text-4xl sm:text-6xl md:text-8xl lg:text-9xl font-black leading-[1.2] md:leading-[1.1] tracking-tight animate-hero-reveal">
-          نَصنعُ <span class="inline-block mx-1 md:mx-2 italic text-white underline decoration-slate-700">الأَثرَ</span>
-          الرقمي.
-        </h1>
-
-        <p
-          class="text-lg sm:text-2xl md:text-3xl max-w-4xl mx-auto leading-relaxed animate-hero-reveal delay-500 font-medium tracking-tight text-slate-400">
-          نحول الأفكار المعقدة إلى منتجات برمجية عالمية المستوى، تجمع بين الدقة الهندسية والجمال التصميمي الفائق.
-        </p>
-
-        <div
-          class="flex flex-col sm:flex-row justify-center gap-4 md:gap-8 pt-8 md:pt-10 animate-hero-reveal delay-700">
-          <button onclick="toggleContactModal(true)"
-            class="group px-8 py-4 md:px-14 md:py-7 rounded-xl md:rounded-[2.5rem] font-black text-lg md:text-2xl flex items-center justify-center gap-3 md:gap-6 transition-all shadow-xl hover:-translate-y-1 active:scale-95 bg-white text-black hover:bg-slate-200">
-            تواصل معنا
-            <i data-lucide="arrow-right"
-              class="w-5 h-5 md:w-6 md:h-6 rotate-180 group-hover:-translate-x-2 transition-transform duration-500 md:block hidden"></i>
-          </button>
-          <button onclick="scrollToSection('المشاريع')"
-            class="px-8 py-4 md:px-14 md:py-7 border rounded-xl md:rounded-[2.5rem] font-black text-lg md:text-2xl transition-all hover:-translate-y-1 active:scale-95 backdrop-blur-md bg-white/5 border-white/10 hover:bg-white/10 text-white">
-            تصفح المشاريع
-          </button>
-        </div>
-      </div>
-    </div>
-
-    <!-- Floating Icons -->
-    <div class="absolute inset-0 pointer-events-none overflow-hidden select-none opacity-10 md:opacity-20 text-white">
-      <i data-lucide="code-2" class="absolute top-[15%] left-[5%] w-20 h-20 animate-float"></i>
-      <i data-lucide="layers"
-        class="absolute bottom-[20%] right-[5%] w-[70px] h-[70px] animate-float animation-delay-2000"></i>
-      <i data-lucide="bar-chart-3"
-        class="absolute top-[40%] right-[10%] w-[60px] h-[60px] animate-float animation-delay-4000"></i>
-      <i data-lucide="terminal"
-        class="absolute bottom-[10%] left-[10%] w-[65px] h-[65px] animate-float animation-delay-2000"></i>
-    </div>
-  </section>
-
-  <!-- Projects Section -->
-  <section id="المشاريع" class="py-24 md:py-72 relative">
-    <div class="container mx-auto px-4 md:px-6">
-      <div class="flex flex-col lg:flex-row justify-between items-start lg:items-end mb-16 md:mb-32 gap-8 md:gap-12">
-        <div class="space-y-4 md:space-y-8 max-w-4xl">
-          <h2 class="text-5xl md:text-[11rem] font-black tracking-tighter leading-none italic uppercase">
-            معرض <br /><span>الإنجازات</span>
-          </h2>
-          <div class="w-32 md:w-64 h-2 md:h-4 rounded-full bg-white"></div>
-          <p class="text-xl md:text-5xl font-semibold leading-snug tracking-tight text-slate-400">
-            تحف فنية رقمية تتحدث لغة الغد بكل فخر وتميز.
-          </p>
-        </div>
-        <div class="flex gap-4 md:gap-6 self-end">
-          <button onclick="prevProject()"
-            class="w-14 h-14 md:w-24 md:h-24 rounded-full flex items-center justify-center border-2 transition-all duration-500 border-white/10 hover:bg-white/10"
-            aria-label="المشروع السابق">
-            <i data-lucide="chevron-right" class="w-7 h-7 md:w-12 md:h-12"></i>
-          </button>
-          <button onclick="nextProject()"
-            class="w-14 h-14 md:w-24 md:h-24 rounded-full flex items-center justify-center transition-all duration-500 shadow-2xl bg-white text-black hover:bg-slate-200"
-            aria-label="المشروع التالي">
-            <i data-lucide="chevron-left" class="w-7 h-7 md:w-12 md:h-12"></i>
-          </button>
-        </div>
-      </div>
-
-      <!-- Projects Rendered by JS -->
-      <div id="projects-container" class="relative min-h-[650px] md:min-h-[850px] overflow-hidden">
-        <!-- Content Injected via JS -->
-      </div>
-    </div>
-  </section>
-
-  <!-- Services Section -->
-  <section id="الخدمات" class="py-24 md:py-48 bg-transparent">
-    <div class="container mx-auto px-4 md:px-6">
-      <div class="text-center mb-20 md:mb-40 space-y-6 md:space-y-12">
-        <h2 class="text-5xl md:text-[10rem] font-black tracking-tighter leading-none italic uppercase">
-          فلسفة <span>CODX</span>
-        </h2>
-        <div class="w-32 md:w-64 h-2 md:h-4 mx-auto rounded-full bg-white"></div>
-        <p class="max-w-6xl mx-auto text-xl md:text-5xl font-bold leading-relaxed tracking-tight text-slate-500">
-          نصيغ تجارب رقمية سيادية تعيد تعريف معايير السوق العالمية.
-        </p>
-      </div>
-
-      <div class="grid md:grid-cols-3 gap-8 md:gap-20">
-        <!-- Service 1 -->
-        <div
-          class="group p-10 md:p-24 border-2 rounded-[3rem] md:rounded-[6rem] transition-all duration-700 relative overflow-hidden flex flex-col items-center text-center hover:-translate-y-4 md:hover:-translate-y-10 bg-slate-900/30 border-white/5 hover:bg-slate-800/40 hover:border-white/30">
-          <div
-            class="mb-8 md:mb-16 p-6 md:p-14 rounded-2xl md:rounded-[4rem] transition-all duration-700 group-hover:scale-110 md:group-hover:rotate-12 bg-white/5 text-white">
-            <i data-lucide="smartphone" class="w-12 h-12 md:w-20 md:h-20" stroke-width="1"></i>
-          </div>
-          <h3 class="text-3xl md:text-5xl font-black mb-6 md:mb-10 text-white">تطوير النخبة</h3>
-          <p class="leading-relaxed text-lg md:text-3xl font-medium text-slate-500">تطبيقات بأداء فائق وتصميم يعتمد على
-            سيكولوجية المستخدم لضمان الولاء الكامل.</p>
-          <div
-            class="absolute bottom-0 left-0 w-full h-2 md:h-3 opacity-0 group-hover:opacity-100 transition-opacity duration-700 bg-white">
-          </div>
-        </div>
-
-        <!-- Service 2 -->
-        <div
-          class="group p-10 md:p-24 border-2 rounded-[3rem] md:rounded-[6rem] transition-all duration-700 relative overflow-hidden flex flex-col items-center text-center hover:-translate-y-4 md:hover:-translate-y-10 bg-slate-900/30 border-white/5 hover:bg-slate-800/40 hover:border-white/30">
-          <div
-            class="mb-8 md:mb-16 p-6 md:p-14 rounded-2xl md:rounded-[4rem] transition-all duration-700 group-hover:scale-110 md:group-hover:rotate-12 bg-white/5 text-white">
-            <i data-lucide="layout" class="w-12 h-12 md:w-20 md:h-20" stroke-width="1"></i>
-          </div>
-          <h3 class="text-3xl md:text-5xl font-black mb-6 md:mb-10 text-white">التصميم الفلسفي</h3>
-          <p class="leading-relaxed text-lg md:text-3xl font-medium text-slate-500">واجهات مستخدم تدمج الفن
-            بالتكنولوجيا، لخلق رحلة رقمية لا تُنسى ومثيرة للمشاعر.</p>
-          <div
-            class="absolute bottom-0 left-0 w-full h-2 md:h-3 opacity-0 group-hover:opacity-100 transition-opacity duration-700 bg-white">
-          </div>
-        </div>
-
-        <!-- Service 3 -->
-        <div
-          class="group p-10 md:p-24 border-2 rounded-[3rem] md:rounded-[6rem] transition-all duration-700 relative overflow-hidden flex flex-col items-center text-center hover:-translate-y-4 md:hover:-translate-y-10 bg-slate-900/30 border-white/5 hover:bg-slate-800/40 hover:border-white/30">
-          <div
-            class="mb-8 md:mb-16 p-6 md:p-14 rounded-2xl md:rounded-[4rem] transition-all duration-700 group-hover:scale-110 md:group-hover:rotate-12 bg-white/5 text-white">
-            <i data-lucide="cpu" class="w-12 h-12 md:w-20 md:h-20" stroke-width="1"></i>
-          </div>
-          <h3 class="text-3xl md:text-5xl font-black mb-6 md:mb-10 text-white">الذكاء السيادي</h3>
-          <p class="leading-relaxed text-lg md:text-3xl font-medium text-slate-500">بناء نماذج ذكاء اصطناعي وأتمتة تمنح
-            شركتكم التفوق الرقمي المطلق في أعقد الأسواق.</p>
-          <div
-            class="absolute bottom-0 left-0 w-full h-2 md:h-3 opacity-0 group-hover:opacity-100 transition-opacity duration-700 bg-white">
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Philosophy -->
-  <section id="فلسفة-الشركة" class="py-24 md:py-48 relative">
-    <div class="container mx-auto px-4 md:px-6 text-center">
+  <section id="home" class="relative min-h-screen flex items-center justify-center pt-20 px-6">
+    <div class="container mx-auto text-center space-y-10">
       <div
-        class="max-w-6xl mx-auto p-10 md:p-24 rounded-[3rem] md:rounded-[6rem] border-2 transition-all duration-1000 bg-white/5 border-white/10 backdrop-blur-3xl">
-        <i data-lucide="quote" class="mx-auto mb-10 md:mb-16 opacity-30 w-16 h-16 md:w-24 md:h-24 text-white"></i>
-        <p
-          class="text-xl md:text-7xl font-bold leading-[1.6] md:leading-[1.5] mb-12 md:mb-20 italic tracking-tight text-slate-200">
-          "نحن في CODX نؤمن بأن البرمجيات ليست مجرد أسطر برمجية جافة، بل هي الفن الوحيد الذي يمكننا العيش بداخله."
-        </p>
-        <div class="font-black text-xl md:text-4xl tracking-[0.2em] md:tracking-[0.5em] uppercase text-white">
-          رؤيتنا <br class="md:hidden" />
-          <span class="text-sm md:text-2xl opacity-60 tracking-widest">- CODX MISSION -</span>
+        class="inline-flex items-center gap-3 px-6 py-2 rounded-full border border-slate-200 dark:border-white/10 glass text-xs font-bold tracking-[0.3em] uppercase text-slate-500 dark:text-slate-300">
+        <span class="w-2 h-2 rounded-full bg-blue-500 animate-pulse"></span>
+        CODX Innovation Lab
+      </div>
+
+      <h1
+        class="text-5xl md:text-8xl lg:text-9xl font-black leading-tight tracking-tighter text-slate-900 dark:text-white">
+        نصنعُ <span
+          class="italic text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-purple-600">الأثر</span> الرقمي.
+      </h1>
+
+      <p class="max-w-3xl mx-auto text-lg md:text-2xl font-medium leading-relaxed text-slate-600 dark:text-slate-400">
+        نحول الأفكار المعقدة إلى منتجات برمجية عالمية المستوى، تجمع بين الدقة الهندسية والجمال التصميمي الفائق بلمسة
+        عربية طموحة.
+      </p>
+
+      <div class="flex flex-wrap justify-center gap-6">
+        <button onclick="document.getElementById('contact-modal').classList.remove('hidden')"
+          class="px-10 py-5 bg-slate-900 dark:bg-white text-white dark:text-black rounded-2xl font-black text-xl shadow-2xl hover:-translate-y-1 transition-all">
+          ابدأ مشروعك
+        </button>
+        <button onclick="document.getElementById('philosophy').scrollIntoView()"
+          class="px-10 py-5 glass rounded-2xl font-black text-xl hover:bg-slate-100 dark:hover:bg-white/5 transition-all">
+          اكتشف فلسفتنا
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Philosophy Section -->
+  <section id="philosophy" class="py-32 px-6 relative">
+    <div class="container mx-auto">
+      <div class="grid lg:grid-cols-2 gap-16 items-center">
+        <div class="space-y-8">
+          <div class="inline-block p-4 bg-blue-600/10 text-blue-600 rounded-2xl">
+            <i data-lucide="globe" class="w-10 h-10"></i>
+          </div>
+          <h2 class="text-4xl md:text-6xl font-black leading-tight">فلسفة عربية في <br><span
+              class="text-blue-600 underline decoration-blue-500/30 italic">عالم تقني</span></h2>
+          <p class="text-xl text-slate-600 dark:text-slate-400 leading-relaxed font-medium">
+            في CODX، نؤمن أن التكنولوجيا ليست مجرد أداة، بل هي لغة العصر التي يجب أن نتحدثها بطلاقة وبصمة عربية. فلسفتنا
+            تقوم على دمج القيم الهندسية الصارمة مع الإبداع الفني.
+          </p>
+          <div class="grid grid-cols-2 gap-8 pt-6">
+            <div class="space-y-3">
+              <h4 class="text-3xl font-black text-blue-600">رؤيتنا</h4>
+              <p class="text-slate-500 dark:text-slate-400">أن نقود الحراك الرقمي في المنطقة العربية ونصدر حلولاً برمجية
+                تنافس عالمياً.</p>
+            </div>
+            <div class="space-y-3">
+              <h4 class="text-3xl font-black text-purple-600">رسالتنا</h4>
+              <p class="text-slate-500 dark:text-slate-400">تمكين الشركات والمبدعين العرب من امتلاك التكنولوجيا السيادية
+                بأعلى المعايير.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Vision Graphic -->
+        <div class="relative flex justify-center items-center">
+          <div
+            class="absolute inset-0 bg-gradient-to-tr from-blue-500/20 to-purple-500/20 blur-[100px] animate-pulse-slow">
+          </div>
+          <div
+            class="relative glass p-10 md:p-16 rounded-[4rem] border-2 border-blue-500/20 shadow-2xl space-y-10 group overflow-hidden">
+            <div
+              class="absolute -top-20 -right-20 w-64 h-64 bg-blue-500/10 rounded-full blur-3xl group-hover:bg-blue-500/20 transition-all">
+            </div>
+            <div class="relative z-10 space-y-6 text-center lg:text-right">
+              <div class="flex justify-center lg:justify-end gap-2 mb-4">
+                <span
+                  class="px-3 py-1 bg-blue-500 text-white text-[10px] font-bold rounded-full uppercase">Innovation</span>
+                <span
+                  class="px-3 py-1 bg-slate-800 text-white text-[10px] font-bold rounded-full uppercase">Leadership</span>
+              </div>
+              <h3 class="text-3xl font-black text-slate-800 dark:text-white">السيادة الرقمية</h3>
+              <p class="text-lg text-slate-600 dark:text-slate-300 font-bold leading-relaxed">
+                "نحن لا نبني برمجيات فقط؛ نحن نبني جسراً يربط طموحنا العربي بمستقبل تكنولوجي نتحكم في مفاصله."
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Developer Profile Section (New) -->
+  <section id="developer" class="py-32 px-6 relative overflow-hidden">
+    <div class="container mx-auto">
+      <div class="glass rounded-[4rem] p-8 md:p-20 relative overflow-hidden border border-white/20 shadow-2xl">
+        <!-- Abstract Decorations -->
+        <div
+          class="absolute top-0 right-0 w-96 h-96 bg-blue-600/10 rounded-full blur-[120px] -translate-y-1/2 translate-x-1/2">
+        </div>
+        <div
+          class="absolute bottom-0 left-0 w-80 h-80 bg-purple-600/10 rounded-full blur-[100px] translate-y-1/2 -translate-x-1/2">
+        </div>
+
+        <div class="relative z-10 grid lg:grid-cols-12 gap-16 items-center">
+          <!-- Textual Content -->
+          <div class="lg:col-span-7 space-y-8">
+            <div class="space-y-4">
+              <h6 class="text-blue-600 font-black tracking-widest uppercase text-sm">العقل المدبر</h6>
+              <h2 class="text-5xl md:text-7xl font-black tracking-tighter">شغف <span
+                  class="italic text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-indigo-600">الكود</span>
+                <br>& فن التصميم
+              </h2>
+            </div>
+            <p class="text-xl text-slate-600 dark:text-slate-400 leading-relaxed font-medium">
+              بصفتي مطوراً يسعى للكمال، أؤمن أن كل سطر برمجية هو قطعة من لغز أكبر يهدف لتحسين حياة الناس. لا أكتفي
+              بالحلول التقليدية، بل أبحث دائماً عن التميز في الأداء والجمال في التنفيذ.
+            </p>
+
+            <!-- Skills Tags -->
+            <div class="flex flex-wrap gap-3">
+              <span class="px-6 py-3 glass rounded-full text-sm font-bold border border-blue-500/20">Full-Stack
+                Architect</span>
+              <span class="px-6 py-3 glass rounded-full text-sm font-bold border border-purple-500/20">UI/UX
+                Strategist</span>
+              <span class="px-6 py-3 glass rounded-full text-sm font-bold border border-emerald-500/20">AI
+                Integration</span>
+              <span class="px-6 py-3 glass rounded-full text-sm font-bold border border-orange-500/20">Clean Code
+                Advocate</span>
+            </div>
+
+            <div class="pt-8 flex items-center gap-8">
+              <div class="flex -space-x-4 space-x-reverse">
+                <div
+                  class="w-14 h-14 rounded-full border-4 border-slate-50 dark:border-slate-900 bg-blue-100 flex items-center justify-center font-black">
+                  JS</div>
+                <div
+                  class="w-14 h-14 rounded-full border-4 border-slate-50 dark:border-slate-900 bg-purple-100 flex items-center justify-center font-black text-purple-600">
+                  PY</div>
+                <div
+                  class="w-14 h-14 rounded-full border-4 border-slate-50 dark:border-slate-900 bg-emerald-100 flex items-center justify-center font-black text-emerald-600">
+                  React</div>
+              </div>
+              <p class="text-sm font-bold text-slate-500">خبرة في بناء الأنظمة المعقدة والقابلة للتوسع</p>
+            </div>
+          </div>
+
+          <!-- Creative Visual (Avatar/Card) -->
+          <div class="lg:col-span-5 flex justify-center">
+            <div class="relative w-full max-w-sm group">
+              <!-- Animated Rings -->
+              <div
+                class="absolute inset-0 developer-gradient rounded-[3rem] blur-2xl opacity-20 group-hover:opacity-40 transition-opacity animate-pulse-slow">
+              </div>
+
+              <div
+                class="relative glass rounded-[3rem] p-4 border border-white/30 shadow-2xl transform rotate-3 group-hover:rotate-0 transition-transform duration-500">
+                <div
+                  class="rounded-[2.5rem] overflow-hidden developer-gradient aspect-[4/5] flex items-center justify-center relative">
+                  <!-- Real Developer Image -->
+                  <img src="developer.jpg" alt="The Developer" class="absolute inset-0 w-full h-full object-cover">
+                  <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent"></div>
+
+                  <div class="relative z-10 text-white text-center p-6 space-y-4 mt-auto">
+                    <div
+                      class="w-16 h-16 bg-white/10 backdrop-blur-md rounded-2xl mx-auto flex items-center justify-center mb-2 border border-white/20">
+                      <i data-lucide="terminal" class="w-8 h-8"></i>
+                    </div>
+                    <h4 class="text-2xl font-black tracking-widest uppercase">The Developer</h4>
+                    <p class="text-xs font-bold text-white/70 tracking-[0.2em]">CRAFTING DIGITAL REALMS</p>
+                  </div>
+
+                  <!-- Floating UI Elements -->
+                  <div class="absolute bottom-6 right-6 glass p-3 rounded-xl animate-float shadow-lg">
+                    <i data-lucide="code" class="w-6 h-6 text-blue-500"></i>
+                  </div>
+                  <div class="absolute top-6 left-6 glass p-3 rounded-xl animate-float shadow-lg"
+                    style="animation-delay: 1.5s;">
+                    <i data-lucide="sparkles" class="w-6 h-6 text-orange-400"></i>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Services Grid -->
+  <section id="services" class="py-32 px-6">
+    <div class="container mx-auto">
+      <div class="text-center mb-20">
+        <h2 class="text-4xl md:text-6xl font-black mb-6">خدماتنا <span class="text-blue-600 italic">الرائدة</span></h2>
+        <p class="text-slate-500 dark:text-slate-400 max-w-2xl mx-auto text-lg">نقدم حلولاً متكاملة تغطي كافة جوانب
+          المنتج الرقمي.</p>
+      </div>
+      <div class="grid md:grid-cols-3 gap-8">
+        <div
+          class="group p-12 rounded-[3rem] glass hover:bg-white dark:hover:bg-slate-900 transition-all duration-500 border-transparent hover:border-blue-500/30 shadow-xl">
+          <div
+            class="w-16 h-16 bg-blue-50 dark:bg-blue-500/10 text-blue-600 rounded-2xl flex items-center justify-center mb-8 group-hover:scale-110 transition-transform">
+            <i data-lucide="layout" class="w-8 h-8"></i>
+          </div>
+          <h3 class="text-3xl font-black mb-4">تصميم UX/UI</h3>
+          <p class="text-slate-500 dark:text-slate-400 leading-relaxed text-lg">واجهات بصرية تخاطب الحواس وتضمن تجربة
+            مستخدم سلسة.</p>
+        </div>
+        <div
+          class="group p-12 rounded-[3rem] glass hover:bg-white dark:hover:bg-slate-900 transition-all duration-500 border-transparent hover:border-purple-500/30 shadow-xl">
+          <div
+            class="w-16 h-16 bg-purple-50 dark:bg-purple-500/10 text-purple-600 rounded-2xl flex items-center justify-center mb-8 group-hover:scale-110 transition-transform">
+            <i data-lucide="code-2" class="w-8 h-8"></i>
+          </div>
+          <h3 class="text-3xl font-black mb-4">تطوير الويب</h3>
+          <p class="text-slate-500 dark:text-slate-400 leading-relaxed text-lg">بناء منصات ويب متطورة باستخدام أحدث
+            التقنيات لضمان السرعة.</p>
+        </div>
+        <div
+          class="group p-12 rounded-[3rem] glass hover:bg-white dark:hover:bg-slate-900 transition-all duration-500 border-transparent hover:border-emerald-500/30 shadow-xl">
+          <div
+            class="w-16 h-16 bg-emerald-50 dark:bg-emerald-500/10 text-emerald-600 rounded-2xl flex items-center justify-center mb-8 group-hover:scale-110 transition-transform">
+            <i data-lucide="cpu" class="w-8 h-8"></i>
+          </div>
+          <h3 class="text-3xl font-black mb-4">حلول AI</h3>
+          <p class="text-slate-500 dark:text-slate-400 leading-relaxed text-lg">أتمتة ذكية تمنح عملك التفوق والقدرة على
+            المنافسة.</p>
         </div>
       </div>
     </div>
   </section>
 
   <!-- Footer -->
-  <footer class="py-24 md:py-48 border-t transition-all border-white/5 bg-[#010208] text-slate-600">
-    <div class="container mx-auto px-4 md:px-6 text-center space-y-12 md:space-y-16">
-      <div class="flex items-center justify-center gap-4 md:gap-8 cursor-pointer"
-        onclick="window.scrollTo({ top: 0, behavior: 'smooth' })">
-        <div
-          class="w-16 h-16 md:w-24 md:h-24 rounded-2xl md:rounded-[2.5rem] flex items-center justify-center shadow-2xl transition-all duration-500 bg-white text-black">
-          <i data-lucide="zap" class="w-8 h-8 md:w-12 md:h-12 border-current"></i>
-        </div>
-        <span
-          class="text-5xl md:text-8xl font-black tracking-tighter uppercase italic transition-colors duration-500 text-white">CODX</span>
-      </div>
-
-      <div class="flex justify-center gap-4 md:gap-10">
+  <footer class="py-20 border-t border-slate-200 dark:border-white/5 mt-20">
+    <div class="container mx-auto px-6 text-center space-y-8">
+      <div class="text-4xl font-black italic tracking-tighter text-slate-900 dark:text-white">CODX</div>
+      <div class="flex justify-center gap-6">
+        <a href="https://github.com/alomd" target="_blank"
+          class="w-12 h-12 glass rounded-full flex items-center justify-center hover:bg-blue-500 hover:text-white transition-all"><i
+            data-lucide="github" class="w-5 h-5"></i></a>
+        <a href="https://x.com/iAHNDJVAEUSEH2E" target="_blank"
+          class="w-12 h-12 glass rounded-full flex items-center justify-center hover:bg-blue-400 hover:text-white transition-all"><i
+            data-lucide="twitter" class="w-5 h-5"></i></a>
+        <a href="https://www.instagram.com/3omda_46?igsh=NWw1ZTQ3aHNsNThz" target="_blank"
+          class="w-12 h-12 glass rounded-full flex items-center justify-center hover:bg-pink-500 hover:text-white transition-all"><i
+            data-lucide="instagram" class="w-5 h-5"></i></a>
         <a href="https://www.linkedin.com/in/al-aomda-1-0854b8261?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app"
           target="_blank"
-          class="p-4 md:p-6 rounded-2xl md:rounded-3xl border-2 transition-all duration-500 transform hover:scale-110 border-white/5 bg-white/5 text-slate-400 hover:text-white hover:border-white/30">
-          <i data-lucide="linkedin" class="w-5 h-5"></i>
-        </a>
-        <a href="https://github.com/alomd" target="_blank"
-          class="p-4 md:p-6 rounded-2xl md:rounded-3xl border-2 transition-all duration-500 transform hover:scale-110 border-white/5 bg-white/5 text-slate-400 hover:text-white hover:border-white/30">
-          <i data-lucide="github" class="w-5 h-5"></i>
-        </a>
-        <a href="https://x.com/iAHNDJVAEUSEH2E" target="_blank"
-          class="p-4 md:p-6 rounded-2xl md:rounded-3xl border-2 transition-all duration-500 transform hover:scale-110 border-white/5 bg-white/5 text-slate-400 hover:text-white hover:border-white/30">
-          <i data-lucide="twitter" class="w-5 h-5"></i>
-        </a>
-        <a href="https://www.instagram.com/3omda_46?igsh=NWw1ZTQ3aHNsNThz" target="_blank"
-          class="p-4 md:p-6 rounded-2xl md:rounded-3xl border-2 transition-all duration-500 transform hover:scale-110 border-white/5 bg-white/5 text-slate-400 hover:text-white hover:border-white/30">
-          <i data-lucide="instagram" class="w-5 h-5"></i>
-        </a>
+          class="w-12 h-12 glass rounded-full flex items-center justify-center hover:bg-blue-700 hover:text-white transition-all"><i
+            data-lucide="linkedin" class="w-5 h-5"></i></a>
+        <a href="https://wa.me/201144453259" target="_blank"
+          class="w-12 h-12 glass rounded-full flex items-center justify-center hover:bg-green-500 hover:text-white transition-all"><i
+            data-lucide="message-circle" class="w-5 h-5"></i></a>
       </div>
-
-      <div class="space-y-4 md:space-y-6">
-        <p
-          class="font-black text-2xl md:text-5xl max-w-2xl mx-auto leading-relaxed uppercase transition-colors duration-500 text-white">
-          Innovation Lab</p>
-        <p class="opacity-50 text-sm md:text-2xl font-bold tracking-[0.1em] md:tracking-[0.3em] uppercase">صناعة
-          المستقبل البرمجي السيادي</p>
-      </div>
-
-      <div
-        class="pt-12 md:pt-24 opacity-40 text-xs md:text-base tracking-[0.2em] md:tracking-[0.6em] uppercase font-black">
-        © 2026 CODX | ARCHITECTING THE FUTURE
-      </div>
+      <p class="text-slate-400 font-medium tracking-widest text-sm uppercase">© 2026 CODX LAB | صناعة المستقبل العربي
+      </p>
     </div>
   </footer>
 
   <!-- Contact Modal -->
   <div id="contact-modal"
-    class="hidden fixed inset-0 z-[200] flex items-center justify-center p-4 md:p-6 bg-black/90 backdrop-blur-2xl animate-fade-in overflow-y-auto">
-    <div
-      class="relative w-full max-w-4xl p-8 md:p-16 rounded-3xl md:rounded-[4rem] border-2 shadow-2xl animate-hero-reveal my-auto bg-slate-900 border-white/5 text-white">
-      <button onclick="toggleContactModal(false)"
-        class="absolute top-6 right-6 md:top-10 md:left-10 p-2 hover:rotate-90 transition-all duration-500"
-        aria-label="إغلاق">
-        <i data-lucide="x" class="w-8 h-8 md:w-10 md:h-10"></i>
+    class="hidden fixed inset-0 z-[200] flex items-center justify-center bg-black/80 backdrop-blur-xl p-4">
+    <div class="relative w-full max-w-xl glass rounded-[2.5rem] p-10 shadow-2xl animate-scale-up">
+      <button onclick="document.getElementById('contact-modal').classList.add('hidden')"
+        class="absolute top-6 left-6 text-slate-400 hover:text-white transition-colors">
+        <i data-lucide="x" class="w-8 h-8"></i>
       </button>
-
-      <div class="text-center space-y-8 md:space-y-12">
-        <div class="space-y-4 md:space-y-6">
-          <h2 class="text-4xl md:text-6xl font-black italic uppercase tracking-tighter">اتصل <span>بالنخبة</span></h2>
-          <p class="text-lg md:text-2xl opacity-60">نحن هنا لتحويل رؤيتك إلى واقع برمجي ملموس.</p>
-        </div>
-
-        <div class="grid md:grid-cols-2 gap-4 md:gap-10">
-          <a href="mailto:alomdaapoaref@gmail.com"
-            class="flex items-center gap-4 md:gap-6 p-6 md:p-10 rounded-2xl md:rounded-[2.5rem] border-2 transition-all hover:scale-105 border-white/5 bg-white/5 hover:border-white/30">
-            <i data-lucide="mail" class="w-8 h-8 md:w-10 md:h-10 text-white"></i>
-            <div class="text-right">
-              <p class="text-[10px] md:text-sm opacity-50 font-bold uppercase tracking-widest">Email Us</p>
-              <p class="text-sm md:text-2xl font-black truncate max-w-[150px] md:max-w-none">alomdaapoaref@gmail.com</p>
-            </div>
-          </a>
-          <a href="https://wa.me/201144453259" target="_blank"
-            class="flex items-center gap-4 md:gap-6 p-6 md:p-10 rounded-2xl md:rounded-[2.5rem] border-2 transition-all hover:scale-105 border-white/5 bg-white/5 hover:border-white/30">
-            <i data-lucide="message-square" class="w-8 h-8 md:w-10 md:h-10 text-white"></i>
-            <div class="text-right">
-              <p class="text-[10px] md:text-sm opacity-50 font-bold uppercase tracking-widest">WhatsApp</p>
-              <p class="text-sm md:text-2xl font-black">01144453259</p>
-            </div>
-          </a>
-        </div>
-
-        <div class="pt-4 md:pt-10">
-          <button onclick="window.open('mailto:alomdaapoaref@gmail.com')"
-            class="w-full py-5 md:py-8 rounded-2xl md:rounded-[2.5rem] text-xl md:text-3xl font-black transition-all shadow-xl bg-white text-black hover:bg-slate-200">
-            أرسل استفسارك الآن
-          </button>
-        </div>
-      </div>
+      <h2 class="text-4xl font-black mb-8 italic">تواصل مع <span class="text-blue-500">النخبة</span></h2>
+      <form action="https://formspree.io/f/mqkvrvqy" method="POST" class="space-y-4">
+        <input type="text" name="name" placeholder="الاسم الكامل" required
+          class="w-full bg-slate-100 dark:bg-white/5 border border-transparent focus:border-blue-500 p-4 rounded-xl outline-none transition-all">
+        <input type="email" name="email" placeholder="البريد الإلكتروني" required
+          class="w-full bg-slate-100 dark:bg-white/5 border border-transparent focus:border-blue-500 p-4 rounded-xl outline-none transition-all">
+        <textarea name="message" placeholder="كيف يمكننا مساعدتك؟" rows="4" required
+          class="w-full bg-slate-100 dark:bg-white/5 border border-transparent focus:border-blue-500 p-4 rounded-xl outline-none transition-all"></textarea>
+        <button type="submit"
+          class="w-full bg-blue-600 text-white py-5 rounded-xl font-black text-xl hover:bg-blue-700 shadow-lg shadow-blue-500/20 transition-all">إرسال
+          الطلب</button>
+      </form>
     </div>
   </div>
 
-  <script src="script.js"></script>
   <script>
     lucide.createIcons();
+
+    const themeToggle = document.getElementById('theme-toggle');
+    const html = document.documentElement;
+
+    themeToggle.addEventListener('click', () => {
+      html.classList.toggle('dark');
+      localStorage.setItem('theme', html.classList.contains('dark') ? 'dark' : 'light');
+    });
+
+    if (localStorage.getItem('theme') === 'light') {
+      html.classList.remove('dark');
+    }
+
+    window.addEventListener('scroll', () => {
+      const nav = document.getElementById('navbar');
+      if (window.scrollY > 50) {
+        nav.classList.add('py-2');
+        nav.querySelector('.container').classList.add('shadow-xl');
+      } else {
+        nav.classList.remove('py-2');
+        nav.querySelector('.container').classList.remove('shadow-xl');
+      }
+    });
   </script>
 </body>
 
