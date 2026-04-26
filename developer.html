@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl" class="dark">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>عبد الرءوف رفعت | مطور برمجيات - CODX Profile</title>
+  <meta name="description" content="تعرف على المسيرة المهنية والتقنية للمطور عبد الرءوف رفعت، العقل المدبر وراء مختبر CODX الرقمي.">
+  
+  <!-- Open Graph -->
+  <meta property="og:title" content="عبد الرءوف رفعت | خبير الحلول الرقمية">
+  <meta property="og:description" content="مطور برمجيات متخصص في بناء الأنظمة المعقدة والحلول الذكية. استكشف رؤيتي وطموحاتي التقنية.">
+  <meta property="og:image" content="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=1200&auto=format&fit=crop">
+  
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@200;400;600;900&display=swap" rel="stylesheet">
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: { sans: ['Cairo', 'sans-serif'] },
+          animation: {
+            'float': 'float 6s ease-in-out infinite',
+            'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+          },
+          keyframes: {
+            float: {
+              '0%, 100%': { transform: 'translateY(0)' },
+              '50%': { transform: 'translateY(-20px)' },
+            }
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    body { font-family: 'Cairo', sans-serif; scroll-behavior: smooth; }
+    .glass {
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+    .dark .glass {
+      background: rgba(15, 23, 42, 0.6);
+      border: 1px solid rgba(255, 255, 255, 0.05);
+    }
+    .developer-gradient {
+      background: linear-gradient(135deg, #2563eb 0%, #7c3aed 50%, #db2777 100%);
+    }
+    .text-gradient {
+      background: linear-gradient(to right, #3b82f6, #8b5cf6, #ec4899);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+  </style>
+</head>
+
+<body class="bg-slate-50 text-slate-900 dark:bg-[#020617] dark:text-slate-100 transition-colors duration-500 overflow-x-hidden">
+
+  <!-- Navigation -->
+  <nav class="fixed w-full z-[100] py-6 px-6">
+    <div class="container mx-auto flex justify-between items-center glass rounded-[2rem] px-8 py-4 shadow-2xl border-white/10">
+      <a href="index.html#developer" aria-label="Go back to home page" class="flex items-center gap-3 group">
+        <div class="w-12 h-12 bg-white dark:bg-slate-800 text-slate-900 dark:text-white flex items-center justify-center rounded-xl transition-transform group-hover:-translate-x-2">
+          <i data-lucide="arrow-right" class="w-6 h-6"></i>
+        </div>
+        <span class="text-xl font-black italic" data-ar="العودة" data-en="Go Back">العودة</span>
+      </a>
+      <div class="flex items-center gap-4">
+          <span class="text-2xl font-black italic tracking-tighter">CODX <span class="text-blue-500">BIO</span></span>
+      </div>
+    </div>
+  </nav>
+
+  <main class="pt-40 pb-20 px-6">
+    <div class="container mx-auto max-w-6xl space-y-32">
+      
+      <!-- Hero / Identity -->
+      <section class="grid lg:grid-cols-2 gap-16 items-center">
+        <div class="space-y-8">
+          <div class="space-y-4">
+             <h6 class="text-blue-500 font-black tracking-widest uppercase text-sm" data-ar="مرحباً بك في عالمي" data-en="Welcome to My World">مرحباً بك في عالمي</h6>
+             <h1 class="text-6xl md:text-8xl font-black tracking-tighter leading-none">
+               <span data-ar="عبد الرءوف" data-en="Abdulraouf">عبد الرءوف</span> <br /> <span class="text-gradient" data-ar="رفعت" data-en="Refaat">رفعت</span>
+             </h1>
+          </div>
+          <div class="flex items-center gap-3 text-slate-500 font-bold">
+            <i data-lucide="map-pin" class="w-5 h-5 text-blue-500"></i>
+            <span data-ar="سوهاج، مصر" data-en="Sohag, Egypt">سوهاج، مصر</span>
+            <span class="mx-2 text-slate-300">|</span>
+            <i data-lucide="user" class="w-5 h-5 text-purple-500"></i>
+            <span data-ar="25 سنة" data-en="25 Years Old">25 سنة</span>
+          </div>
+          
+          <div class="flex flex-wrap gap-4">
+             <div class="glass px-6 py-4 rounded-3xl border-blue-500/20">
+                <span class="text-blue-500 font-black text-2xl block" data-ar="مطور Full Stack" data-en="Full Stack Dev">مطور Full Stack</span>
+                <span class="text-slate-500 text-sm font-bold" data-ar="خبرة في الأنظمة المتكاملة" data-en="Integrated Systems Expert">خبرة في الأنظمة المتكاملة</span>
+             </div>
+             <div class="glass px-6 py-4 rounded-3xl border-purple-500/20">
+                <span class="text-purple-500 font-black text-2xl block" data-ar="خبير حلول مالية" data-en="FinTech Expert">خبير حلول مالية</span>
+                <span class="text-slate-500 text-sm font-bold" data-ar="سابق في كبرى الشركات" data-en="Ex-Financial Firm Dev">سابق في كبرى الشركات</span>
+             </div>
+          </div>
+        </div>
+
+        <div class="relative group">
+           <div class="absolute inset-0 developer-gradient blur-[100px] opacity-20 group-hover:opacity-40 transition-opacity"></div>
+           <div class="relative glass p-6 rounded-[4rem] border-white/20 shadow-2xl rotate-3 group-hover:rotate-0 transition-all duration-500">
+              <img src="developer.jpg" alt="Abdulraouf" class="w-full h-full rounded-[3rem] object-cover aspect-square shadow-2xl">
+              <div class="absolute -bottom-10 -right-10 glass p-8 rounded-[3rem] animate-float shadow-2xl border-white/20">
+                 <i data-lucide="award" class="w-12 h-12 text-yellow-500"></i>
+              </div>
+           </div>
+        </div>
+      </section>
+
+      <!-- Vision & Passion -->
+      <section class="grid md:grid-cols-2 gap-10">
+         <div class="glass p-12 rounded-[4rem] relative overflow-hidden group">
+            <div class="absolute top-0 right-0 p-8 opacity-10 group-hover:scale-110 transition-transform">
+               <i data-lucide="zap" class="w-32 h-32"></i>
+            </div>
+            <div class="relative z-10 space-y-6">
+               <h3 class="text-4xl font-black italic" data-ar="فلسفة الإنجاز" data-en="Execution Philosophy">فلسفة <span class="text-blue-500">الإنجاز</span></h3>
+               <p class="text-xl text-slate-600 dark:text-slate-400 leading-relaxed font-medium"
+                  data-ar="أؤمن بأن السرعة لا تتعارض مع الجودة. نجاحي في إطلاق تطبيقين متكاملين في شهر واحد كان نتيجة دمج الخبرة المالية التي اكتسبتها من عملي في الشركات الكبرى مع طموحي في بناء حلول تقنية مستقلة ومبتكرة."
+                  data-en="I believe speed doesn't compromise quality. My success in launching two integrated apps in one month resulted from merging the financial expertise gained from working in major firms with my ambition to build independent, innovative tech solutions.">
+                 أؤمن بأن السرعة لا تتعارض مع الجودة. نجاحي في إطلاق تطبيقين متكاملين في شهر واحد كان نتيجة دمج الخبرة المالية التي اكتسبتها من عملي في الشركات الكبرى مع طموحي في بناء حلول تقنية مستقلة ومبتكرة.
+               </p>
+            </div>
+         </div>
+
+         <div class="glass p-12 rounded-[4rem] relative overflow-hidden group">
+            <div class="absolute top-0 right-0 p-8 opacity-10 group-hover:scale-110 transition-transform">
+               <i data-lucide="building-2" class="w-32 h-32"></i>
+            </div>
+            <div class="relative z-10 space-y-6">
+               <h3 class="text-4xl font-black italic text-gradient" data-ar="نحو التأسيس" data-en="Towards Founding">نحو التأسيس</h3>
+               <p class="text-xl text-slate-600 dark:text-slate-400 leading-relaxed font-medium"
+                  data-ar="رحلتي الحالية لا تقتصر على البرمجة فقط، بل أقوم الآن بوضع حجر الأساس لشركتي الخاصة. أطمح لتحويل CODX LAB من مختبر رقمي إلى كيان مؤسسي يقود التحول الرقمي في المنطقة."
+                  data-en="My current journey isn't just about coding; I'm laying the foundation for my own company. I aspire to transform CODX LAB from a digital lab into a corporate entity leading the digital transformation in the region.">
+                 رحلتي الحالية لا تقتصر على البرمجة فقط، بل أقوم الآن بوضع حجر الأساس لشركتي الخاصة. أطمح لتحويل CODX LAB من مختبر رقمي إلى كيان مؤسسي يقود التحول الرقمي في المنطقة.
+               </p>
+            </div>
+         </div>
+      </section>
+
+      <!-- Technical Expertise -->
+      <section class="space-y-12">
+         <div class="text-center">
+            <h2 class="text-5xl font-black tracking-tighter" data-ar="الترسانة التقنية" data-en="Technical Arsenal">الترسانة <span class="text-purple-500">التقنية</span></h2>
+         </div>
+         <div class="grid md:grid-cols-4 gap-6">
+            <div class="glass p-8 rounded-[3rem] space-y-4 border-b-4 border-blue-500">
+               <h4 class="text-xl font-black">Full Stack</h4>
+               <div class="flex flex-wrap gap-2 text-xs">
+                  <span class="px-2 py-1 bg-blue-500/10 text-blue-500 rounded-lg">React</span>
+                  <span class="px-2 py-1 bg-blue-500/10 text-blue-500 rounded-lg">Flutter</span>
+                  <span class="px-2 py-1 bg-blue-500/10 text-blue-500 rounded-lg">Node.js</span>
+               </div>
+            </div>
+            <div class="glass p-8 rounded-[3rem] space-y-4 border-b-4 border-purple-500">
+               <h4 class="text-xl font-black">Databases</h4>
+               <div class="flex flex-wrap gap-2 text-xs">
+                  <span class="px-2 py-1 bg-purple-500/10 text-purple-500 rounded-lg">MongoDB</span>
+                  <span class="px-2 py-1 bg-purple-500/10 text-purple-500 rounded-lg">PostgreSQL</span>
+               </div>
+            </div>
+            <div class="glass p-8 rounded-[3rem] space-y-4 border-b-4 border-emerald-500">
+               <h4 class="text-xl font-black">Networking</h4>
+               <div class="flex flex-wrap gap-2 text-xs">
+                  <span class="px-2 py-1 bg-emerald-500/10 text-emerald-500 rounded-lg font-bold">CCNA Certified</span>
+                  <span class="px-2 py-1 bg-emerald-500/10 text-emerald-500 rounded-lg">Infrastructure</span>
+               </div>
+            </div>
+            <div class="glass p-8 rounded-[3rem] space-y-4 border-b-4 border-pink-500">
+               <h4 class="text-xl font-black">FinTech</h4>
+               <div class="flex flex-wrap gap-2 text-xs">
+                  <span class="px-2 py-1 bg-pink-500/10 text-pink-500 rounded-lg">Financial Logic</span>
+                  <span class="px-2 py-1 bg-pink-500/10 text-pink-500 rounded-lg">Secure Core</span>
+               </div>
+            </div>
+         </div>
+      </section>
+
+      <!-- Journey Timeline -->
+      <section class="space-y-16">
+         <div class="text-center">
+            <h2 class="text-5xl font-black tracking-tighter" data-ar="خارطة الإنجاز 2026" data-en="2026 Achievement Map">خارطة <span class="text-blue-500">الإنجاز 2026</span></h2>
+         </div>
+         <div class="relative space-y-8 before:absolute before:inset-0 before:ml-5 before:-translate-x-px md:before:mx-auto md:before:translate-x-0 before:h-full before:w-0.5 before:bg-gradient-to-b before:from-transparent before:via-slate-300 before:to-transparent">
+            <!-- Item 1: The Miracle Month -->
+            <div class="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group is-active">
+               <div class="flex items-center justify-center w-10 h-10 rounded-full border border-white bg-slate-300 group-[.is-active]:bg-blue-600 text-slate-500 group-[.is-active]:text-white shadow shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2 transition-colors duration-500">
+                  <i data-lucide="zap" class="w-5 h-5"></i>
+               </div>
+               <div class="w-[calc(100%-4rem)] md:w-[45%] glass p-6 rounded-3xl shadow-xl border-l-4 border-blue-500 transition-all duration-300 group-hover:scale-105">
+                  <div class="flex items-center justify-between space-x-2 mb-1">
+                     <div class="font-black text-slate-900 dark:text-white" data-ar="شهر التأسيس الخارق" data-en="The Miracle Month">شهر التأسيس الخارق</div>
+                     <time class="font-black text-blue-500">يناير 2026</time>
+                  </div>
+                  <div class="text-slate-500 text-sm font-medium" data-ar="إنجاز تاريخي بإنهاء تطبيقين متكاملين (ثراء & حاسبة البناء) في 30 يوماً فقط، مع دمج منطق مالي هندسي دقيق." data-en="Historical achievement finishing 2 integrated apps (WealthWay & Build Calc) in just 30 days, merging precise financial & engineering logic.">إنجاز تاريخي بإنهاء تطبيقين متكاملين (ثراء & حاسبة البناء) في 30 يوماً فقط، مع دمج منطق مالي هندسي دقيق.</div>
+               </div>
+            </div>
+            <!-- Item 2: TUK TUK GO -->
+            <div class="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group is-active">
+               <div class="flex items-center justify-center w-10 h-10 rounded-full border border-white bg-slate-300 group-[.is-active]:bg-purple-600 text-slate-500 group-[.is-active]:text-white shadow shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2 transition-colors duration-500">
+                  <i data-lucide="truck" class="w-5 h-5"></i>
+               </div>
+               <div class="w-[calc(100%-4rem)] md:w-[45%] glass p-6 rounded-3xl shadow-xl border-l-4 border-purple-500 transition-all duration-300 group-hover:scale-105">
+                  <div class="flex items-center justify-between space-x-2 mb-1">
+                     <div class="font-black text-slate-900 dark:text-white" data-ar="رقمنة النقل الشعبي" data-en="Digitizing Public Transport">رقمنة النقل الشعبي</div>
+                     <time class="font-black text-purple-500">فبراير - مارس 2026</time>
+                  </div>
+                  <div class="text-slate-500 text-sm font-medium" data-ar="تطوير TUK TUK GO في شهرين من العمل المكثف، وتجاوز تحديات النشر في Google Play خلال 15 يوماً فقط." data-en="Developing TUK TUK GO in 2 months of intense work, overcoming Google Play publishing challenges in just 15 days.">تطوير TUK TUK GO في شهرين من العمل المكثف، وتجاوز تحديات النشر في Google Play خلال 15 يوماً فقط.</div>
+               </div>
+            </div>
+            <!-- Item 3: Current State -->
+            <div class="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group is-active">
+               <div class="flex items-center justify-center w-10 h-10 rounded-full border border-white bg-slate-300 group-[.is-active]:bg-emerald-500 text-slate-500 group-[.is-active]:text-white shadow shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2 transition-colors duration-500">
+                  <i data-lucide="rocket" class="w-5 h-5"></i>
+               </div>
+               <div class="w-[calc(100%-4rem)] md:w-[45%] glass p-6 rounded-3xl shadow-xl border-l-4 border-emerald-500 bg-emerald-500/5 transition-all duration-300 group-hover:scale-105">
+                  <div class="flex items-center justify-between space-x-2 mb-1">
+                     <div class="font-black text-slate-900 dark:text-white" data-ar="عصر التأسيس المستقل" data-en="Independent Founding Era">عصر التأسيس المستقل</div>
+                     <time class="font-black text-emerald-500">أبريل 2026 (الآن)</time>
+                  </div>
+                  <div class="text-slate-500 text-sm font-medium" data-ar="دمج الخبرة العملية في الشركات المالية مع التجهيز لإطلاق شركتي الخاصة لقيادة الابتكار التقني." data-en="Merging practical experience in financial firms with preparations to launch my own company to lead technical innovation.">دمج الخبرة العملية في الشركات المالية مع التجهيز لإطلاق شركتي الخاصة لقيادة الابتكار التقني.</div>
+               </div>
+            </div>
+         </div>
+      </section>
+
+      <!-- Goals Cards -->
+      <section class="space-y-16">
+         <div class="text-center">
+            <h2 class="text-5xl font-black tracking-tighter" data-ar="أهدافي المهنية" data-en="Professional Goals">أهدافي <span class="text-blue-500 underline decoration-wavy">المهنية</span></h2>
+         </div>
+         <div class="grid md:grid-cols-4 gap-6">
+            <div class="glass p-8 rounded-[3rem] space-y-4 hover:bg-blue-600 hover:text-white transition-all duration-300 group">
+               <i data-lucide="check-circle" class="w-10 h-10 text-blue-500 group-hover:text-white"></i>
+               <h4 class="text-xl font-bold" data-ar="إتقان التقنيات" data-en="Mastering Technologies">إتقان التقنيات</h4>
+               <p class="text-sm opacity-70" data-ar="البقاء دائماً في مقدمة الركب التكنولوجي وتعلم أحدث الإطارات." data-en="Always staying at the forefront of the technological wave and learning the latest frameworks.">البقاء دائماً في مقدمة الركب التكنولوجي وتعلم أحدث الإطارات.</p>
+            </div>
+            <div class="glass p-8 rounded-[3rem] space-y-4 hover:bg-purple-600 hover:text-white transition-all duration-300 group">
+               <i data-lucide="users" class="w-10 h-10 text-purple-500 group-hover:text-white"></i>
+               <h4 class="text-xl font-bold" data-ar="بناء مجتمع" data-en="Building Community">بناء مجتمع</h4>
+               <p class="text-sm opacity-70" data-ar="مشاركة المعرفة مع المطورين الشباب والمساهمة في المصادر المفتوحة." data-en="Sharing knowledge with young developers and contributing to open source.">مشاركة المعرفة مع المطورين الشباب والمساهمة في المصادر المفتوحة.</p>
+            </div>
+            <div class="glass p-8 rounded-[3rem] space-y-4 hover:bg-pink-600 hover:text-white transition-all duration-300 group">
+               <i data-lucide="briefcase" class="w-10 h-10 text-pink-500 group-hover:text-white"></i>
+               <h4 class="text-xl font-bold" data-ar="حلول اقتصادية" data-en="Economic Solutions">حلول اقتصادية</h4>
+               <p class="text-sm opacity-70" data-ar="خلق منتجات برمجية تدعم النمو الاقتصادي الرقمي للأفراد والشركات." data-en="Creating software products that support digital economic growth for individuals and companies.">خلق منتجات برمجية تدعم النمو الاقتصادي الرقمي للأفراد والشركات.</p>
+            </div>
+            <div class="glass p-8 rounded-[3rem] space-y-4 hover:bg-emerald-600 hover:text-white transition-all duration-300 group">
+               <i data-lucide="zap" class="w-10 h-10 text-emerald-500 group-hover:text-white"></i>
+               <h4 class="text-xl font-bold" data-ar="الأداء الفائق" data-en="Ultra Performance">الأداء الفائق</h4>
+               <p class="text-sm opacity-70" data-ar="كتابة أكواد نظيفة وسريعة توفر أفضل تجربة مستخدم ممكنة." data-en="Writing clean and fast code that provides the best possible user experience.">كتابة أكواد نظيفة وسريعة توفر أفضل تجربة مستخدم ممكنة.</p>
+            </div>
+         </div>
+      </section>
+
+      <!-- Fun Social Section -->
+      <section class="space-y-12 pb-20">
+         <div class="text-center">
+            <h2 class="text-4xl font-black italic" data-ar="دعنا نتواصل بطريقة مميزة" data-en="Let's Connect Uniquely">دعنا نتواصل <span class="text-blue-500">بطريقة مميزة</span></h2>
+         </div>
+         <div class="flex flex-wrap justify-center gap-10">
+            <a href="https://wa.me/201144453259" target="_blank" class="group relative">
+               <div class="absolute inset-0 bg-[#25D366] blur-2xl opacity-20 group-hover:opacity-60 transition-opacity"></div>
+               <div class="relative glass w-24 h-24 rounded-full flex items-center justify-center hover:scale-125 hover:-rotate-12 transition-all duration-500 border-[#25D366]/30">
+                  <i class="fa-brands fa-whatsapp text-4xl text-[#25D366]"></i>
+               </div>
+               <span class="absolute -bottom-8 left-1/2 -translate-x-1/2 opacity-0 group-hover:opacity-100 transition-opacity font-black text-sm">واتساب</span>
+            </a>
+            
+            <a href="https://linkedin.com/in/al-aomda-1-0854b8261" target="_blank" class="group relative">
+               <div class="absolute inset-0 bg-[#0077b5] blur-2xl opacity-20 group-hover:opacity-60 transition-opacity"></div>
+               <div class="relative glass w-24 h-24 rounded-full flex items-center justify-center hover:scale-125 hover:rotate-12 transition-all duration-500 border-[#0077b5]/30">
+                  <i class="fa-brands fa-linkedin-in text-4xl text-[#0077b5]"></i>
+               </div>
+               <span class="absolute -bottom-8 left-1/2 -translate-x-1/2 opacity-0 group-hover:opacity-100 transition-opacity font-black text-sm">لينكد إن</span>
+            </a>
+
+            <a href="https://github.com/alomd" target="_blank" class="group relative">
+               <div class="absolute inset-0 bg-white blur-2xl opacity-10 group-hover:opacity-40 transition-opacity"></div>
+               <div class="relative glass w-24 h-24 rounded-full flex items-center justify-center hover:scale-125 hover:-translate-y-4 transition-all duration-500 border-white/30">
+                  <i class="fa-brands fa-github text-4xl text-white"></i>
+               </div>
+               <span class="absolute -bottom-8 left-1/2 -translate-x-1/2 opacity-0 group-hover:opacity-100 transition-opacity font-black text-sm">جيت هاب</span>
+            </a>
+
+            <a href="mailto:alomdaapoaref@gmail.com" target="_blank" class="group relative">
+               <div class="absolute inset-0 bg-red-500 blur-2xl opacity-20 group-hover:opacity-60 transition-opacity"></div>
+               <div class="relative glass w-24 h-24 rounded-full flex items-center justify-center hover:scale-125 hover:rotate-12 transition-all duration-500 border-red-500/30">
+                  <i class="fa-solid fa-envelope text-4xl text-red-500"></i>
+               </div>
+               <span class="absolute -bottom-8 left-1/2 -translate-x-1/2 opacity-0 group-hover:opacity-100 transition-opacity font-black text-sm">إيميل</span>
+            </a>
+
+            <a href="https://www.youtube.com/@codx_lab" target="_blank" class="group relative">
+               <div class="absolute inset-0 bg-[#FF0000] blur-2xl opacity-20 group-hover:opacity-60 transition-opacity"></div>
+               <div class="relative glass w-24 h-24 rounded-full flex items-center justify-center hover:scale-125 hover:-rotate-12 transition-all duration-500 border-[#FF0000]/30">
+                  <i class="fa-brands fa-youtube text-4xl text-[#FF0000]"></i>
+               </div>
+               <span class="absolute -bottom-8 left-1/2 -translate-x-1/2 opacity-0 group-hover:opacity-100 transition-opacity font-black text-sm">يوتيوب</span>
+            </a>
+         </div>
+      </section>
+
+    </div>
+  </main>
+
+  <footer class="py-10 border-t border-slate-200 dark:border-white/5 text-center mt-20">
+    <p class="text-slate-500 font-medium tracking-widest text-sm uppercase">CRAFTED WITH PASSION BY ALOMDA | 2026</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

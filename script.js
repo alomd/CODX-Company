@@ -1,201 +1,334 @@
+/**
+ * CODX - Core Website Logic
+ * Handles Theme, Translation, Animations, and Interactivity
+ */
 
-// State
-const PROJECTS = [
-    {
-        id: 5,
-        title: "WEALTH WAY",
-        category: "FinTech & AI",
-        description: "نظام مالي متكامل لإدارة الثروات الشخصية، يتميز بتحليلات ذكية مدعومة بالذكاء الاصطناعي، تتبع دقيق للميزانيات، وإدارة الأهداف المالية لتحقيق الاستقرار الحقيقي.",
-        image: "https://images.unsplash.com/photo-1563986768609-322da13575f3?auto=format&fit=crop&q=80&w=800",
-        tags: ["AI Analysis", "Financial OS", "React Native"],
-        link: "https://github.com/alomd",
-        icon: "wallet"
+const state = {
+    theme: localStorage.getItem('theme') || 'dark',
+    lang: localStorage.getItem('lang') || 'ar'
+};
+
+// --- Theme Management ---
+const ThemeManager = {
+    init() {
+        this.apply(state.theme);
+        const toggle = document.getElementById('theme-toggle');
+        if (toggle) {
+            toggle.addEventListener('click', () => {
+                state.theme = state.theme === 'dark' ? 'light' : 'dark';
+                this.apply(state.theme);
+            });
+        }
     },
-    {
-        id: 6,
-        title: "BUILD CALC",
-        category: "Engineering Tech",
-        description: "أداة هندسية احترافية لحساب تكاليف وكميات مواد البناء بدقة فائقة. تتضمن نظام ذكاء اصطناعي لتعديل الأسعار حسب المنطقة، وتصدير تقارير PDF، وسجل كامل للعمليات الحسابية.",
-        image: "https://images.unsplash.com/photo-1503387762-592dea58dd41?auto=format&fit=crop&q=80&w=800",
-        tags: ["Engineering", "AI Pricing", "PDF Reports"],
-        link: "https://github.com/alomd",
-        icon: "calculator"
+    apply(theme) {
+        if (theme === 'dark') {
+            document.documentElement.classList.add('dark');
+        } else {
+            document.documentElement.classList.remove('dark');
+        }
+        localStorage.setItem('theme', theme);
     }
-];
+};
 
-let currentProjectIndex = 0;
-// Check system preference or saved preference
-let isDark = true;
+// --- Translation Management ---
+const TranslationManager = {
+    init() {
+        this.apply(state.lang);
+        const toggle = document.getElementById('lang-toggle');
+        if (toggle) {
+            toggle.addEventListener('click', () => {
+                state.lang = state.lang === 'ar' ? 'en' : 'ar';
+                this.apply(state.lang);
+                // Dispatch event for components that need to re-run (like typing effect)
+                window.dispatchEvent(new CustomEvent('langChanged', { detail: state.lang }));
+            });
+        }
+    },
+    apply(lang) {
+        document.documentElement.lang = lang;
+        document.documentElement.dir = lang === 'ar' ? 'rtl' : 'ltr';
+        localStorage.setItem('lang', lang);
 
-// Initialization
-document.addEventListener('DOMContentLoaded', () => {
-    // Check for saved theme or system preference could be added here, currently defaulting to dark as per original
-    renderProjects();
-    initTheme();
-    initScrollListener();
-    lucide.createIcons();
+        // Update Text Elements
+        document.querySelectorAll('[data-ar], [data-en]').forEach(el => {
+            const text = el.getAttribute(`data-${lang}`);
+            if (text) {
+                if (el.tagName === 'INPUT' || el.tagName === 'TEXTAREA') {
+                    el.placeholder = text;
+                } else {
+                    el.innerText = text;
+                }
+            }
+        });
 
-    // Preloader Logic
-    setTimeout(() => {
-        const preloader = document.getElementById('preloader');
-        if (preloader) {
-            preloader.style.opacity = '0';
+        // Update Language Toggle Label
+        const langLabel = document.getElementById('lang-label');
+        if (langLabel) {
+            langLabel.innerText = lang === 'ar' ? 'EN' : 'AR';
+        }
+    }
+};
+
+// --- Animation & UI Logic ---
+const UIManager = {
+    init() {
+        this.initReveal();
+        this.initTyping();
+        this.initNavbar();
+        this.initLoader();
+        this.initForm();
+        this.initIdeas();
+        lucide.createIcons();
+    },
+
+    initIdeas() {
+        const IdeaManager = {
+            storageKey: 'codx_community_ideas',
+            defaultIdeas: [],
+            
+            init() {
+                this.render();
+                const btn = document.getElementById('post-idea-btn');
+                if (btn) {
+                    btn.addEventListener('click', () => this.post());
+                }
+            },
+
+            getIdeas() {
+                const stored = localStorage.getItem(this.storageKey);
+                return stored ? JSON.parse(stored) : this.defaultIdeas;
+            },
+
+            post() {
+                const nameInput = document.getElementById('idea-name');
+                const textInput = document.getElementById('idea-text');
+                const tagInput = document.getElementById('idea-tag');
+                const name = nameInput.value.trim();
+                const text = textInput.value.trim();
+                const tag = tagInput.value;
+
+                if (!name || !text) {
+                    alert(state.lang === 'ar' ? 'يرجى ملء جميع الحقول' : 'Please fill all fields');
+                    return;
+                }
+
+                // Send Email Notification via Formspree
+                fetch('https://formspree.io/f/mqkvrvqy', {
+                    method: 'POST',
+                    body: JSON.stringify({ name, idea: text, tag: tag, type: 'Community Idea' }),
+                    headers: { 'Accept': 'application/json', 'Content-Type': 'application/json' }
+                });
+
+                const ideas = this.getIdeas();
+                const newIdea = { 
+                    id: Date.now(), 
+                    name, 
+                    text, 
+                    tag,
+                    date: new Date().toISOString(), 
+                    likes: 0, 
+                    liked: false 
+                };
+                ideas.unshift(newIdea);
+                localStorage.setItem(this.storageKey, JSON.stringify(ideas));
+
+                nameInput.value = '';
+                textInput.value = '';
+                this.render();
+            },
+
+            toggleLike(id) {
+                const ideas = this.getIdeas();
+                const idea = ideas.find(i => i.id === id);
+                if (idea) {
+                    idea.liked = !idea.liked;
+                    idea.likes = idea.liked ? (idea.likes || 0) + 1 : (idea.likes || 1) - 1;
+                    localStorage.setItem(this.storageKey, JSON.stringify(ideas));
+                    this.render();
+                }
+            },
+
+            render() {
+                const feed = document.getElementById('idea-feed');
+                if (!feed) return;
+
+                const admins = ['abdulraouf', 'codx', 'alomda', 'عبدالرؤوف', 'العمده', 'عبد الرءوف'];
+                const ideas = this.getIdeas();
+
+                if (ideas.length === 0) {
+                    feed.innerHTML = `
+                        <div class="text-center py-12 glass rounded-3xl border-dashed border-2 border-slate-200 dark:border-white/10">
+                            <i data-lucide="sparkles" class="w-12 h-12 text-blue-500 mx-auto mb-4 opacity-50"></i>
+                            <p class="text-slate-500 font-bold" data-ar="كن أول من يشارك فكرة!" data-en="Be the first to share an idea!">
+                                ${state.lang === 'ar' ? 'كن أول من يشارك فكرة!' : 'Be the first to share an idea!'}
+                            </p>
+                        </div>
+                    `;
+                } else {
+                    feed.innerHTML = ideas.map(idea => {
+                        const isAdmin = admins.includes(idea.name.toLowerCase().trim());
+                        const tagColors = {
+                            'Idea': 'bg-blue-500/10 text-blue-500',
+                            'Feature': 'bg-purple-500/10 text-purple-500',
+                            'UI/UX': 'bg-emerald-500/10 text-emerald-500',
+                            'Crazy': 'bg-orange-500/10 text-orange-500'
+                        };
+
+                        return `
+                        <div class="glass p-6 rounded-3xl border-white/10 hover:border-blue-500/30 transition-all duration-300 group relative overflow-hidden">
+                            ${isAdmin ? '<div class="absolute top-0 right-0 w-24 h-24 bg-blue-600/5 blur-2xl -z-10"></div>' : ''}
+                            <div class="flex justify-between items-start mb-4">
+                                <div class="flex items-center gap-3">
+                                    <div class="w-10 h-10 rounded-full ${isAdmin ? 'bg-blue-600' : 'bg-gradient-to-tr from-slate-200 to-slate-400 dark:from-slate-700 dark:to-slate-800'} flex items-center justify-center text-white font-black text-xs shadow-lg">
+                                        ${isAdmin ? '<i data-lucide="shield-check" class="w-5 h-5"></i>' : idea.name.charAt(0).toUpperCase()}
+                                    </div>
+                                    <div>
+                                        <div class="flex items-center gap-2">
+                                            <h5 class="font-black text-sm">${idea.name}</h5>
+                                            ${isAdmin ? '<span class="bg-blue-600/10 text-blue-500 text-[8px] font-black px-2 py-0.5 rounded-full uppercase tracking-tighter">Developer</span>' : ''}
+                                        </div>
+                                        <p class="text-[10px] text-slate-500 font-bold uppercase">${new Date(idea.date).toLocaleDateString()}</p>
+                                    </div>
+                                </div>
+                                <div class="flex items-center gap-3">
+                                    <span class="px-3 py-1 ${tagColors[idea.tag] || tagColors['Idea']} text-[9px] font-black rounded-full uppercase">${idea.tag || 'Idea'}</span>
+                                    <button onclick="UIManager.ideaManager.toggleLike(${idea.id})" 
+                                            class="flex items-center gap-1 text-sm font-bold transition-colors ${idea.liked ? 'text-red-500' : 'text-slate-500 hover:text-red-400'}">
+                                        <span class="text-xs">${idea.likes || 0}</span>
+                                        <i data-lucide="heart" class="w-4 h-4 ${idea.liked ? 'fill-current' : ''}"></i>
+                                    </button>
+                                </div>
+                            </div>
+                            <p class="text-slate-600 dark:text-slate-400 font-medium leading-relaxed">${idea.text}</p>
+                        </div>
+                    `}).join('');
+                }
+                lucide.createIcons();
+            }
+        };
+
+        UIManager.ideaManager = IdeaManager; // Expose for onclick
+        IdeaManager.init();
+    },
+
+    initForm() {
+        const form = document.getElementById('contact-form');
+        const submitBtn = document.getElementById('submit-btn');
+        const formContent = document.getElementById('form-content');
+        const successScreen = document.getElementById('success-screen');
+
+        if (!form) return;
+
+        form.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            
+            const formData = new FormData(form);
+            const name = formData.get('name');
+            const email = formData.get('email');
+            const message = formData.get('message');
+
+            // WhatsApp Redirection
+            const waNumber = "201144453259";
+            const waText = encodeURIComponent(`*طلب تواصل جديد*\n\n*الاسم:* ${name}\n*الإيميل:* ${email}\n*الرسالة:* ${message}`);
+            const waUrl = `https://wa.me/${waNumber}?text=${waText}`;
+
+            // Show Success Screen First
+            formContent.classList.add('hidden');
+            successScreen.classList.remove('hidden');
+            form.reset();
+            lucide.createIcons();
+
+            // Redirect to WhatsApp after a short delay
             setTimeout(() => {
-                preloader.style.display = 'none';
-            }, 700);
+                window.open(waUrl, '_blank');
+            }, 1000);
+            
+            // Also send to Formspree in background for records
+            fetch('https://formspree.io/f/mqkvrvqy', {
+                method: 'POST',
+                body: formData,
+                headers: { 'Accept': 'application/json' }
+            });
+        });
+    },
+
+    initLoader() {
+        const loader = document.getElementById('page-loader');
+        if (loader) {
+            window.addEventListener('load', () => {
+                setTimeout(() => {
+                    loader.classList.add('hidden');
+                }, 800);
+            });
         }
-    }, 1500); // Minimum 1.5s display time for premium feel
-});
+    },
 
-// Theme Management
-function initTheme() {
-    const themeBtn = document.getElementById('theme-toggle');
-    const html = document.documentElement;
-
-    // Initial State Check
-    if (isDark) {
-        html.classList.add('dark');
-    } else {
-        html.classList.remove('dark');
-    }
-
-    themeBtn.addEventListener('click', () => {
-        isDark = !isDark;
-        if (isDark) {
-            html.classList.add('dark');
-        } else {
-            html.classList.remove('dark');
-        }
-
-        // Ensure Lucide icons update (sun icon toggles via CSS display classes, but good to trigger refresh if needed)
-        // actually the sun icon switching is handled by CSS classes (block/hidden) in the HTML
-    });
-}
-
-// Scroll Handling
-function initScrollListener() {
-    window.addEventListener('scroll', () => {
+    initNavbar() {
         const nav = document.getElementById('navbar');
-        if (window.scrollY > 50) {
-            nav.classList.add('backdrop-blur-luxury', 'py-3', 'md:py-4', 'border-b', 'shadow-2xl');
-            nav.classList.remove('bg-transparent', 'py-6', 'md:py-10');
+        if (!nav) return;
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                nav.classList.add('py-2');
+                nav.querySelector('.container')?.classList.add('shadow-xl');
+            } else {
+                nav.classList.remove('py-2');
+                nav.querySelector('.container')?.classList.remove('shadow-xl');
+            }
+        });
+    },
 
-            // Dynamic bg based on usage of .dark class in parent
-            // We use standard tailwind classes that react to parent .dark
-            nav.classList.add('dark:bg-black/80', 'dark:border-white/5', 'bg-white/80', 'border-slate-200');
-        } else {
-            nav.classList.remove('backdrop-blur-luxury', 'py-3', 'md:py-4', 'border-b', 'shadow-2xl',
-                'dark:bg-black/80', 'dark:border-white/5', 'bg-white/80', 'border-slate-200');
+    initReveal() {
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('reveal-visible');
+                }
+            });
+        }, { threshold: 0.15 });
 
-            nav.classList.add('bg-transparent', 'py-6', 'md:py-10');
-        }
-    });
-}
+        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+    },
 
-function scrollToSection(id) {
-    toggleMobileMenu(false);
-    const element = document.getElementById(id);
-    if (element) {
-        const offset = 80;
-        const bodyRect = document.body.getBoundingClientRect().top;
-        const elementRect = element.getBoundingClientRect().top;
-        const elementPosition = elementRect - bodyRect;
-        const offsetPosition = elementPosition - offset;
+    initTyping() {
+        const typingElements = document.querySelectorAll('.typing-cursor');
+        
+        const runTyping = (el) => {
+            const text = el.getAttribute(`data-text-${state.lang}`) || el.getAttribute('data-text');
+            if (!text) return;
+            
+            let i = 0;
+            el.innerText = '';
+            const type = () => {
+                if (i < text.length) {
+                    el.innerText += text.charAt(i);
+                    i++;
+                    setTimeout(type, 100);
+                }
+            };
+            type();
+        };
 
-        window.scrollTo({
-            top: offsetPosition,
-            behavior: 'smooth'
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    runTyping(entry.target);
+                    // observer.unobserve(entry.target); // Optional: only type once
+                }
+            });
+        });
+
+        typingElements.forEach(el => observer.observe(el));
+
+        // Re-run on language change
+        window.addEventListener('langChanged', () => {
+            typingElements.forEach(el => runTyping(el));
         });
     }
-}
+};
 
-// Mobile Menu
-function toggleMobileMenu(show) {
-    const menu = document.getElementById('mobile-menu');
-    if (show) {
-        menu.classList.remove('hidden');
-        menu.classList.add('flex');
-    } else {
-        menu.classList.add('hidden');
-        menu.classList.remove('flex');
-    }
-}
-
-// Contact Modal
-function toggleContactModal(show) {
-    const modal = document.getElementById('contact-modal');
-    if (show) {
-        modal.classList.remove('hidden');
-    } else {
-        modal.classList.add('hidden');
-    }
-}
-
-// Projects Carousel
-function renderProjects() {
-    const container = document.getElementById('projects-container');
-    container.innerHTML = PROJECTS.map((project, idx) => `
-        <div class="project-card ${idx === currentProjectIndex ? 'active' : ''}">
-             <div class="grid lg:grid-cols-2 gap-8 md:gap-20 h-full items-center">
-                <div class="relative aspect-video lg:aspect-[16/10] rounded-3xl md:rounded-[5rem] overflow-hidden border-2 transition-all duration-1000 group dark:border-white/5 dark:bg-slate-900/50 border-black/5 bg-white shadow-2xl" style="will-change: transform">
-                    <img src="${project.image}" alt="${project.title}" loading="lazy" decoding="async" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
-                    <div class="absolute inset-0 bg-gradient-to-t from-black/95 via-black/30 to-transparent opacity-90"></div>
-                    
-                    <div class="absolute bottom-6 md:bottom-16 right-6 md:right-16 left-6 md:left-16 space-y-2 md:space-y-6">
-                        <span class="inline-block px-4 md:px-8 py-1.5 md:py-3 rounded-full text-xs md:text-base font-black uppercase tracking-widest shadow-xl dark:bg-white dark:text-black bg-black text-white">${project.category}</span>
-                        <h3 class="text-3xl md:text-8xl font-black text-white tracking-tighter flex items-center gap-4">
-                            <i data-lucide="${project.icon}" class="text-white w-10 h-10 md:w-16 md:h-16"></i>
-                            ${project.title}
-                        </h3>
-                    </div>
-
-                    <a href="${project.link}" target="_blank" rel="noopener noreferrer" class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-700 scale-90 group-hover:scale-100 bg-black/40">
-                      <div class="p-6 md:p-10 bg-white text-black rounded-full shadow-2xl">
-                        <i data-lucide="external-link" class="w-8 h-8 md:w-12 md:h-12"></i>
-                      </div>
-                    </a>
-                </div>
-
-                <div class="space-y-6 md:space-y-12 px-2 md:px-8">
-                    <p class="text-2xl md:text-5xl font-semibold leading-relaxed tracking-tight dark:text-slate-300 text-slate-700">
-                      ${project.description}
-                    </p>
-                    <div class="flex flex-wrap gap-2 md:gap-5">
-                      ${project.tags.map(tag => `
-                        <span class="px-4 md:px-8 py-2 md:py-4 rounded-xl md:rounded-3xl text-sm md:text-xl font-black border-2 dark:border-white/10 dark:bg-white/5 dark:text-slate-300 border-black/10 bg-black/5 text-slate-700">
-                          ${tag}
-                        </span>
-                      `).join('')}
-                    </div>
-                    <button onclick="window.open('${project.link}', '_blank')" class="inline-flex items-center gap-2 md:gap-4 text-xl md:text-3xl font-black transition-colors dark:text-white text-black">
-                      عرض دراسة الحالة 
-                      <i data-lucide="arrow-right" class="rotate-180 w-6 h-6 md:w-8 md:h-8"></i>
-                    </button>
-                </div>
-            </div>
-        </div>
-    `).join('');
-
-    lucide.createIcons();
-}
-
-function nextProject() {
-    currentProjectIndex = (currentProjectIndex + 1) % PROJECTS.length;
-    updateProjectVisibility();
-}
-
-function prevProject() {
-    currentProjectIndex = (currentProjectIndex - 1 + PROJECTS.length) % PROJECTS.length;
-    updateProjectVisibility();
-}
-
-function updateProjectVisibility() {
-    const cards = document.querySelectorAll('.project-card');
-    cards.forEach((card, idx) => {
-        if (idx === currentProjectIndex) {
-            card.classList.add('active');
-        } else {
-            card.classList.remove('active');
-        }
-    });
-}
+// --- Initialize Everything ---
+document.addEventListener('DOMContentLoaded', () => {
+    ThemeManager.init();
+    TranslationManager.init();
+    UIManager.init();
+});

@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl" class="dark">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>WealthWay | إدارة الثروات بذكاء وأمان - CODX</title>
+  <meta name="description" content="تعرف على WealthWay، التطبيق المبتكر لإدارة الثروات الشخصية بخصوصية تامة وعمل محلي بالكامل.">
+  
+  <!-- Open Graph -->
+  <meta property="og:title" content="WealthWay | إدارة الثروات بذكاء">
+  <meta property="og:description" content="تحكم في مستقبلك المالي مع WealthWay. تتبع المصروفات، أدر الميزانية، وحافظ على خصوصيتك.">
+  <meta property="og:image" content="wealthway-app.png">
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@200;400;600;900&display=swap" rel="stylesheet">
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: { sans: ['Cairo', 'sans-serif'] },
+        }
+      }
+    }
+  </script>
+
+  <style>
+    body { font-family: 'Cairo', sans-serif; scroll-behavior: smooth; }
+    .glass {
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      background: rgba(255, 255, 255, 0.7);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+    }
+    .dark .glass {
+      background: rgba(15, 23, 42, 0.6);
+      border: 1px solid rgba(255, 255, 255, 0.05);
+    }
+    
+    /* Phone Mockup Animation */
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-20px); }
+    }
+    .phone-mockup {
+      animation: float 6s ease-in-out infinite;
+    }
+  </style>
+</head>
+
+<body class="bg-slate-50 text-slate-900 dark:bg-slate-950 dark:text-slate-100 transition-colors duration-500 overflow-x-hidden">
+
+  <!-- Navbar -->
+  <nav class="fixed w-full z-[100] py-6 px-6">
+    <div class="container mx-auto flex justify-between items-center glass rounded-2xl px-6 py-3 shadow-sm">
+      <a href="index.html#projects" aria-label="Go back to projects gallery" class="flex items-center gap-3 group transition-opacity hover:opacity-75">
+        <div class="w-10 h-10 bg-slate-900 dark:bg-white text-white dark:text-black flex items-center justify-center rounded-lg">
+          <i data-lucide="arrow-right" class="w-6 h-6"></i>
+        </div>
+        <span class="text-xl font-black italic" data-ar="العودة للمعرض" data-en="Back to Showcase">العودة للمعرض</span>
+      </a>
+      <span class="text-2xl font-black italic text-blue-600">WealthWay</span>
+    </div>
+  </nav>
+
+  <main class="pt-32 pb-20 px-6">
+    <div class="container mx-auto space-y-32">
+      
+      <!-- Hero Section -->
+      <section class="grid lg:grid-cols-2 gap-16 items-center">
+        <div class="space-y-8">
+          <div class="inline-flex items-center gap-2 px-4 py-2 bg-blue-500/10 text-blue-600 rounded-full font-bold text-sm">
+            <i data-lucide="wallet" class="w-4 h-4"></i> FinTech & AI
+          </div>
+          <h1 class="text-5xl md:text-7xl font-black tracking-tighter leading-tight">
+            <span data-ar="تطبيق" data-en="App">تطبيق</span> <span class="text-blue-600">WealthWay</span> <br /><span data-ar="لإدارة الثروات" data-en="Wealth Management">لإدارة الثروات</span>
+          </h1>
+          <p class="text-xl text-slate-600 dark:text-slate-400 leading-relaxed font-medium"
+             data-ar="تطبيق ذكي صُمم ليمنحك التحكم الكامل في أموالك الشخصية. يتميز بخصوصية تامة، حيث يعمل محلياً (Offline) لمساعدتك في تتبع النفقات وإدارة الميزانية وبلوغ الاستقرار المالي بمنتهى الأمان."
+             data-en="A smart app designed to give you full control over your personal finances. Features complete privacy, working locally (Offline) to help you track expenses, manage budgets, and achieve financial stability with utmost security.">
+            تطبيق ذكي صُمم ليمنحك التحكم الكامل في أموالك الشخصية. يتميز بخصوصية تامة، حيث يعمل محلياً (Offline) لمساعدتك في تتبع النفقات وإدارة الميزانية وبلوغ الاستقرار المالي بمنتهى الأمان.
+          </p>
+          
+          <div class="flex flex-wrap gap-4 pt-4">
+            <a href="https://play.google.com/store/apps/details?id=com.codx.WealthWay&pcampaignid=web_share" target="_blank"
+              data-ar="تحميل التطبيق" data-en="Download App"
+              class="flex items-center gap-3 bg-blue-600 text-white px-8 py-4 rounded-2xl font-black text-lg hover:bg-blue-700 hover:shadow-lg hover:shadow-blue-500/30 transition-all duration-300">
+              <i data-lucide="download" class="w-6 h-6"></i> تحميل التطبيق
+            </a>
+            <a href="wealthway-privacy.html"
+              data-ar="سياسة الخصوصية" data-en="Privacy Policy"
+              class="flex items-center gap-3 bg-slate-200 dark:bg-slate-800 text-slate-800 dark:text-white px-8 py-4 rounded-2xl font-black text-lg hover:bg-slate-300 dark:hover:bg-slate-700 transition-all duration-300">
+              <i data-lucide="shield-check" class="w-6 h-6"></i> سياسة الخصوصية
+            </a>
+          </div>
+        </div>
+
+        <!-- Phone Mockup Gallery Area -->
+        <div class="relative flex justify-center items-center h-full">
+          <!-- Abstract Blobs -->
+          <div class="absolute w-96 h-96 bg-blue-600/20 rounded-full blur-[100px] -z-10"></div>
+          
+          <div class="phone-mockup relative w-[300px] h-[620px] bg-slate-900 dark:bg-black rounded-[3rem] p-3 shadow-2xl border-[8px] border-slate-800 ring-4 ring-slate-900/50">
+            <!-- Notch -->
+            <div class="absolute top-0 inset-x-0 h-7 bg-slate-800 dark:bg-black rounded-b-3xl w-40 mx-auto z-20"></div>
+            <!-- Screen -->
+            <div class="w-full h-full rounded-[2rem] overflow-hidden bg-slate-100 relative shadow-[inset_0_0_20px_rgba(0,0,0,0.5)]">
+              <!-- Screenshot Placeholder -->
+              <img src="wealthway-app.png" alt="WealthWay Screen" class="absolute inset-0 w-full h-full object-cover">
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- App Details -->
+      <section class="grid md:grid-cols-3 gap-8">
+        <div class="glass p-10 rounded-[3rem] space-y-6">
+          <div class="w-16 h-16 bg-blue-500/10 rounded-2xl flex items-center justify-center text-blue-600">
+            <i data-lucide="target" class="w-8 h-8"></i>
+          </div>
+          <h3 class="text-2xl font-black" data-ar="الفئة المستهدفة" data-en="Target Audience">الفئة المستهدفة</h3>
+          <p class="text-slate-600 dark:text-slate-400 font-medium leading-relaxed"
+             data-ar="الشباب، رواد الأعمال، وأي شخص يسعى للتحكم في أمواله، مراقبة نفقاته بدقة، وتحقيق أهداف الادخار الشخصية بفعالية."
+             data-en="Youth, entrepreneurs, and anyone seeking control over their money, accurately monitoring their expenses, and effectively achieving personal savings goals.">
+            الشباب، رواد الأعمال، وأي شخص يسعى للتحكم في أمواله، مراقبة نفقاته بدقة، وتحقيق أهداف الادخار الشخصية بفعالية.
+          </p>
+        </div>
+
+        <div class="glass p-10 rounded-[3rem] space-y-6 border-t-4 border-blue-500">
+          <div class="w-16 h-16 bg-blue-500/10 rounded-2xl flex items-center justify-center text-blue-600">
+            <i data-lucide="pie-chart" class="w-8 h-8"></i>
+          </div>
+          <h3 class="text-2xl font-black">تحليل المصروفات</h3>
+          <p class="text-slate-600 dark:text-slate-400 font-medium leading-relaxed">
+            يوفر التطبيق رسوماً بيانية تفصيلية تقارن بين الدخل والمصروف، مما يساعدك على اكتشاف عاداتك الشرائية وتعديلها بسهولة.
+          </p>
+        </div>
+
+        <div class="glass p-10 rounded-[3rem] space-y-6">
+          <div class="w-16 h-16 bg-blue-500/10 rounded-2xl flex items-center justify-center text-blue-600">
+            <i data-lucide="lock" class="w-8 h-8"></i>
+          </div>
+          <h3 class="text-2xl font-black">آمن ومحلي (Offline)</h3>
+          <p class="text-slate-600 dark:text-slate-400 font-medium leading-relaxed">
+            جميع بياناتك المالية مخزنة ومُشفرة على جهازك فقط. لن يتم رفع أرقامك أو حساباتك لأي خوادم خارجية للحفاظ التام على السرية.
+          </p>
+        </div>
+      </section>
+
+      <!-- Additional Screenshots Grid -->
+      <section class="space-y-12 pb-20">
+        <div class="text-center space-y-4">
+          <h2 class="text-4xl font-black" data-ar="لقطات من التطبيق" data-en="App Screenshots">لقطات من <span class="text-blue-600">التطبيق</span></h2>
+          <p class="text-slate-500 font-medium" data-ar="واجهة مستخدم احترافية وبسيطة مصممة لراحتك" data-en="Professional and simple user interface designed for your comfort">واجهة مستخدم احترافية وبسيطة مصممة لراحتك</p>
+        </div>
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+          <div class="aspect-[9/16] bg-slate-200 dark:bg-slate-800 rounded-3xl overflow-hidden glass">
+            <img src="https://images.unsplash.com/photo-1563986768494-4dee2763ff0f?q=80&w=600&auto=format&fit=crop" alt="Screenshot 1" class="w-full h-full object-cover">
+          </div>
+          <div class="aspect-[9/16] bg-slate-200 dark:bg-slate-800 rounded-3xl overflow-hidden glass">
+             <img src="https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?q=80&w=600&auto=format&fit=crop" alt="Screenshot 2" class="w-full h-full object-cover">
+          </div>
+          <div class="aspect-[9/16] bg-slate-200 dark:bg-slate-800 rounded-3xl overflow-hidden glass">
+             <img src="https://images.unsplash.com/photo-1526304640581-d334cdbbf45e?q=80&w=600&auto=format&fit=crop" alt="Screenshot 3" class="w-full h-full object-cover">
+          </div>
+          <div class="aspect-[9/16] bg-slate-200 dark:bg-slate-800 rounded-3xl overflow-hidden glass">
+             <div class="w-full h-full flex flex-col items-center justify-center text-slate-400 space-y-4">
+                <i data-lucide="image-plus" class="w-12 h-12"></i>
+                <span class="font-bold">مساحة لصورة</span>
+             </div>
+          </div>
+        </div>
+      </section>
+
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="py-10 border-t border-slate-200 dark:border-white/5 text-center space-y-6">
+    <div class="flex justify-center gap-6">
+        <a href="https://www.youtube.com/@codx_lab" target="_blank" class="w-10 h-10 glass rounded-full flex items-center justify-center text-slate-600 dark:text-slate-300 hover:bg-[#FF0000] hover:text-white transition-all"><i class="fa-brands fa-youtube"></i></a>
+        <a href="https://github.com/alomd" target="_blank" class="w-10 h-10 glass rounded-full flex items-center justify-center text-slate-600 dark:text-slate-300 hover:bg-[#24292e] hover:text-white transition-all"><i class="fa-brands fa-github"></i></a>
+    </div>
+    <p class="text-slate-400 font-medium tracking-widest text-sm uppercase">© 2026 CODX LAB | جميع الحقوق محفوظة</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

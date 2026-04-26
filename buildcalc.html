@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl" class="dark">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Build Calc | دقة الهندسة في جيبك - CODX</title>
+  <meta name="description" content="استكشف Build Calc، الأداة الهندسية الأكثر دقة لحساب كميات وتكاليف مواد البناء وتصدير التقارير الاحترافية.">
+  
+  <!-- Open Graph -->
+  <meta property="og:title" content="Build Calc | الحل الهندسي المتكامل">
+  <meta property="og:description" content="وفر الوقت والمال مع Build Calc. حسابات هندسية دقيقة وتقارير PDF فورية لمشاريعك الإنشائية.">
+  <meta property="og:image" content="buildcalc_app.png">
+  
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@200;400;600;900&display=swap" rel="stylesheet">
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: { sans: ['Cairo', 'sans-serif'] },
+        }
+      }
+    }
+  </script>
+
+  <style>
+    body { font-family: 'Cairo', sans-serif; scroll-behavior: smooth; }
+    .glass {
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      background: rgba(255, 255, 255, 0.7);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+    }
+    .dark .glass {
+      background: rgba(15, 23, 42, 0.6);
+      border: 1px solid rgba(255, 255, 255, 0.05);
+    }
+    
+    /* Phone Mockup Animation */
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-20px); }
+    }
+    .phone-mockup {
+      animation: float 6s ease-in-out infinite;
+    }
+  </style>
+</head>
+
+<body class="bg-slate-50 text-slate-900 dark:bg-slate-950 dark:text-slate-100 transition-colors duration-500 overflow-x-hidden">
+
+  <!-- Navbar -->
+  <nav class="fixed w-full z-[100] py-6 px-6">
+    <div class="container mx-auto flex justify-between items-center glass rounded-2xl px-6 py-3 shadow-sm">
+      <a href="index.html#projects" class="flex items-center gap-3 group transition-opacity hover:opacity-75">
+        <div class="w-10 h-10 bg-slate-900 dark:bg-white text-white dark:text-black flex items-center justify-center rounded-lg">
+          <i data-lucide="arrow-right" class="w-6 h-6"></i>
+        </div>
+        <span class="text-xl font-black italic" data-ar="العودة للمعرض" data-en="Back to Showcase">العودة للمعرض</span>
+      </a>
+      <span class="text-2xl font-black italic text-emerald-600">Build Calc</span>
+    </div>
+  </nav>
+
+  <main class="pt-32 pb-20 px-6">
+    <div class="container mx-auto space-y-32">
+      
+      <!-- Hero Section -->
+      <section class="grid lg:grid-cols-2 gap-16 items-center">
+        <div class="space-y-8">
+          <div class="inline-flex items-center gap-2 px-4 py-2 bg-emerald-500/10 text-emerald-600 rounded-full font-bold text-sm">
+            <i data-lucide="building" class="w-4 h-4"></i> Engineering & Construction
+          </div>
+          <h1 class="text-5xl md:text-7xl font-black tracking-tighter leading-tight">
+            حاسبة <span class="text-emerald-600">Build Calc</span> <br />الاحترافية
+          </h1>
+          <p class="text-xl text-slate-600 dark:text-slate-400 leading-relaxed font-medium"
+             data-ar="تم تطوير Build Calc لمعالجة هدر المواد في مواقع البناء. يعتمد التطبيق على خوارزميات رياضية دقيقة لحساب الأوزان والكميات، مع توفير واجهة مستخدم بديهية تسمح للمهندسين بإصدار مقايسات كاملة في دقائق."
+             data-en="Build Calc was developed to address material waste on construction sites. The app relies on precise mathematical algorithms to calculate weights and quantities, providing an intuitive UI that allows engineers to issue full estimates in minutes.">
+            تم تطوير Build Calc لمعالجة هدر المواد في مواقع البناء. يعتمد التطبيق على خوارزميات رياضية دقيقة لحساب الأوزان والكميات، مع توفير واجهة مستخدم بديهية تسمح للمهندسين بإصدار مقايسات كاملة في دقائق.
+          </p>
+          
+          <div class="flex flex-wrap gap-4 pt-4">
+            <a href="https://play.google.com/store/apps/details?id=com.buildcalc.flutter_application_2&pcampaignid=web_share" target="_blank" aria-label="تحميل التطبيق من جوجل بلاي"
+              class="flex items-center gap-3 bg-emerald-600 text-white px-8 py-4 rounded-2xl font-black text-lg hover:bg-emerald-700 hover:shadow-lg hover:shadow-emerald-500/30 transition-all duration-300">
+              <i data-lucide="play" class="w-6 h-6"></i> جوجل بلاي
+            </a>
+            <a href="buildcalc-privacy.html"
+              class="flex items-center gap-3 bg-slate-200 dark:bg-slate-800 text-slate-800 dark:text-white px-8 py-4 rounded-2xl font-black text-lg hover:bg-slate-300 dark:hover:bg-slate-700 transition-all duration-300">
+              <i data-lucide="shield-check" class="w-6 h-6"></i> سياسة الخصوصية
+            </a>
+          </div>
+        </div>
+
+        <!-- Phone Mockup Gallery Area -->
+        <div class="relative flex justify-center items-center h-full">
+          <!-- Abstract Blobs -->
+          <div class="absolute w-96 h-96 bg-emerald-600/20 rounded-full blur-[100px] -z-10"></div>
+          
+          <!-- Mockup -->
+          <div class="phone-mockup relative w-[300px] h-[620px] bg-slate-900 dark:bg-black rounded-[3rem] p-3 shadow-2xl border-[8px] border-slate-800 ring-4 ring-slate-900/50">
+            <!-- Notch -->
+            <div class="absolute top-0 inset-x-0 h-7 bg-slate-800 dark:bg-black rounded-b-3xl w-40 mx-auto z-20"></div>
+            <!-- Screen -->
+            <div class="w-full h-full rounded-[2rem] overflow-hidden bg-slate-100 relative shadow-[inset_0_0_20px_rgba(0,0,0,0.5)]">
+              <!-- Screenshot Placeholder -->
+              <img src="buildcalc_app.png" alt="Build Calc Screen" class="absolute inset-0 w-full h-full object-cover">
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- App Details -->
+      <section class="grid md:grid-cols-3 gap-8">
+        <div class="glass p-10 rounded-[3rem] space-y-6">
+          <div class="w-16 h-16 bg-emerald-500/10 rounded-2xl flex items-center justify-center text-emerald-600">
+            <i data-lucide="users" class="w-8 h-8"></i>
+          </div>
+          <h3 class="text-2xl font-black">الفئة المستهدفة</h3>
+          <p class="text-slate-600 dark:text-slate-400 font-medium leading-relaxed">
+            المهندسون المدنيون والمعماريون، المقاولون، مكاتب الاستشارات الهندسية، وأصحاب الشقق المقبلين على البناء أو التشطيب.
+          </p>
+        </div>
+
+        <div class="glass p-10 rounded-[3rem] space-y-6">
+          <div class="w-16 h-16 bg-emerald-500/10 rounded-2xl flex items-center justify-center text-emerald-600">
+            <i data-lucide="calculator" class="w-8 h-8"></i>
+          </div>
+          <h3 class="text-2xl font-black">دقة الحسابات الهندسية</h3>
+          <p class="text-slate-600 dark:text-slate-400 font-medium leading-relaxed">
+            يحتوي على معادلات هندسية متقدمة لضمان دقة حساب كميات الخرسانة، الحديد، الطوب، التشطيبات، والتكاليف الإجمالية للتقليل من الهدر.
+          </p>
+        </div>
+
+        <div class="glass p-10 rounded-[3rem] space-y-6 border-t-4 border-emerald-500">
+          <div class="w-16 h-16 bg-emerald-500/10 rounded-2xl flex items-center justify-center text-emerald-600">
+            <i data-lucide="file-text" class="w-8 h-8"></i>
+          </div>
+          <h3 class="text-2xl font-black">تقارير PDF</h3>
+          <p class="text-slate-600 dark:text-slate-400 font-medium leading-relaxed">
+            يمكنك بعد الانتهاء من الحسابات تصدير النتائج والمقايسة الكاملة بصيغة ملف PDF ومشاركتها مع العميل أو فريق العمل فوراً.
+          </p>
+        </div>
+      </section>
+
+      <!-- Additional Screenshots Grid -->
+      <section class="space-y-12 pb-20">
+        <div class="text-center space-y-4">
+          <h2 class="text-4xl font-black">لقطات من <span class="text-emerald-600">التطبيق</span></h2>
+          <p class="text-slate-500 font-medium">خطوات بسيطة توصلك لنتائج دقيقة لمشروعك</p>
+        </div>
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+          <div class="aspect-[9/16] bg-slate-200 dark:bg-slate-800 rounded-3xl overflow-hidden glass hover:scale-105 transition-transform duration-300">
+             <img src="https://images.unsplash.com/photo-1541888087514-c3bf4d82b3a0?q=80&w=600&auto=format&fit=crop" alt="Screenshot 1" class="w-full h-full object-cover">
+          </div>
+          <div class="aspect-[9/16] bg-slate-200 dark:bg-slate-800 rounded-3xl overflow-hidden glass hover:scale-105 transition-transform duration-300">
+             <img src="https://images.unsplash.com/photo-1590496464871-3fa4ae34ec6e?q=80&w=600&auto=format&fit=crop" alt="Screenshot 2" class="w-full h-full object-cover">
+          </div>
+          <div class="aspect-[9/16] bg-slate-200 dark:bg-slate-800 rounded-3xl overflow-hidden glass hover:scale-105 transition-transform duration-300">
+             <img src="https://images.unsplash.com/photo-1416339158484-9637228cc908?q=80&w=600&auto=format&fit=crop" alt="Screenshot 3" class="w-full h-full object-cover">
+          </div>
+          <div class="aspect-[9/16] bg-slate-200 dark:bg-slate-800 rounded-3xl overflow-hidden glass hover:scale-105 transition-transform duration-300 cursor-pointer">
+             <div class="w-full h-full flex flex-col items-center justify-center text-slate-400 space-y-4 hover:text-emerald-500 transition-colors">
+                <i data-lucide="image-plus" class="w-12 h-12"></i>
+                <span class="font-bold">أضف لقطة شاشة</span>
+             </div>
+          </div>
+        </div>
+      </section>
+
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="py-10 border-t border-slate-200 dark:border-white/5 text-center space-y-6">
+    <div class="flex justify-center gap-6">
+        <a href="https://www.youtube.com/@codx_lab" target="_blank" class="w-10 h-10 glass rounded-full flex items-center justify-center text-slate-600 dark:text-slate-300 hover:bg-[#FF0000] hover:text-white transition-all"><i class="fa-brands fa-youtube"></i></a>
+        <a href="https://github.com/alomd" target="_blank" class="w-10 h-10 glass rounded-full flex items-center justify-center text-slate-600 dark:text-slate-300 hover:bg-[#24292e] hover:text-white transition-all"><i class="fa-brands fa-github"></i></a>
+    </div>
+    <p class="text-slate-400 font-medium tracking-widest text-sm uppercase">© 2026 CODX LAB | جميع الحقوق محفوظة</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

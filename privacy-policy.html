@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl" class="dark">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>سياسة الخصوصية | CODX</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@200;400;600;900&display=swap" rel="stylesheet">
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: { sans: ['Cairo', 'sans-serif'] },
+        }
+      }
+    }
+  </script>
+
+  <style>
+    body { font-family: 'Cairo', sans-serif; scroll-behavior: smooth; }
+    .glass {
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      background: rgba(255, 255, 255, 0.7);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+    }
+    .dark .glass {
+      background: rgba(15, 23, 42, 0.6);
+      border: 1px solid rgba(255, 255, 255, 0.05);
+    }
+  </style>
+</head>
+
+<body class="bg-slate-50 text-slate-900 dark:bg-slate-950 dark:text-slate-100 transition-colors duration-500">
+
+  <nav class="fixed w-full z-[100] py-6 px-6">
+    <div class="container mx-auto flex justify-between items-center glass rounded-2xl px-6 py-3 shadow-sm">
+      <a href="index.html" class="flex items-center gap-3 group">
+        <div class="w-10 h-10 bg-slate-900 dark:bg-white text-white dark:text-black flex items-center justify-center rounded-lg">
+          <i data-lucide="arrow-right" class="w-6 h-6"></i>
+        </div>
+        <span class="text-xl font-black italic">العودة للرئيسية</span>
+      </a>
+      <span class="text-2xl font-black italic">CODX</span>
+    </div>
+  </nav>
+
+  <main class="pt-40 pb-20 px-6">
+    <div class="container mx-auto max-w-4xl space-y-16">
+      
+      <header class="text-center space-y-4">
+        <h1 class="text-5xl md:text-7xl font-black tracking-tighter">سياسة <span class="text-blue-600">الخصوصية</span></h1>
+        <p class="text-slate-500 text-xl">التزامنا بحماية بياناتك هو جزء لا يتجزأ من جودة منتجاتنا.</p>
+      </header>
+
+      <!-- General Policy -->
+      <section class="glass p-8 md:p-12 rounded-[3rem] space-y-6">
+        <h2 class="text-3xl font-black flex items-center gap-4"><i data-lucide="shield-check" class="text-blue-600"></i> مقدمة عامة</h2>
+        <p class="leading-relaxed text-lg text-slate-600 dark:text-slate-400">
+          في <b>CODX</b>، نؤمن بأن الخصوصية حق أصيل لكل مستخدم. تم تصميم تطبيقاتنا لتعمل بأقل قدر ممكن من جمع البيانات، ومعالجة أغلب المعلومات محلياً على جهاز المستخدم لضمان أقصى درجات الأمان.
+        </p>
+      </section>
+
+      <!-- WealthWay Policy -->
+      <section class="glass p-8 md:p-12 rounded-[3rem] space-y-6 border-r-8 border-blue-600">
+        <h2 class="text-3xl font-black flex items-center gap-4"><i data-lucide="wallet" class="text-blue-600"></i> تطبيق WealthWay (ثراء)</h2>
+        <div class="space-y-4 text-slate-600 dark:text-slate-400">
+          <p><b>سيادة البيانات:</b> يعمل التطبيق بدون إنترنت بنسبة 100% (Offline)، مما يضمن عدم خروج أي بايت من بياناتك خارج جهازك.</p>
+          <p><b>الذكاء الاصطناعي:</b> تتم كافة عمليات التحليل الذكي لمصاريفك محلياً على هاتفك دون استخدام خوادم سحابية.</p>
+          <p><b>لا تتبع:</b> لا نستخدم أي أدوات تتبع خارجية (Analytics) أو حسابات مستخدمين؛ أنت المالك الوحيد والكامل لبياناتك.</p>
+        </div>
+      </section>
+
+      <!-- TUK TUK GO Policy -->
+      <section class="glass p-8 md:p-12 rounded-[3rem] space-y-6 border-r-8 border-purple-600">
+        <h2 class="text-3xl font-black flex items-center gap-4">🛺 تطبيق TUK TUK GO</h2>
+        <div class="space-y-4 text-slate-600 dark:text-slate-400">
+          <p><b>بيانات الموقع:</b> نجمع بيانات الموقع الدقيقة لتمكين حجز الرحلات وتتبع المسارات لضمان سلامة الركاب والسائقين.</p>
+          <p><b>معلومات الحساب:</b> نطلب الاسم، الهاتف، وصور الهوية (للسائقين) لتوثيق الحسابات وضمان الموثوقية.</p>
+          <p><b>مشاركة البيانات:</b> نشارك المعلومات الضرورية فقط بين السائق والراكب لتسهيل الرحلة، ومع مزودي الخدمات التقنية (Firebase).</p>
+        </div>
+      </section>
+
+      <!-- Build Calc Policy -->
+      <section class="glass p-8 md:p-12 rounded-[3rem] space-y-6 border-r-8 border-emerald-600">
+        <h2 class="text-3xl font-black flex items-center gap-4"><i data-lucide="calculator" class="text-emerald-600"></i> تطبيق Build Calc</h2>
+        <div class="space-y-4 text-slate-600 dark:text-slate-400">
+          <p><b>جمع البيانات:</b> لا يطلب التطبيق أي بيانات شخصية (اسم، بريد، هاتف) ويعمل بخصوصية تامة.</p>
+          <p><b>التخزين المحلي:</b> يتم حفظ كافة إعداداتك ونتائج الحسابات محلياً على جهازك فقط ولا تُرفع أبداً.</p>
+          <p><b>تصدير التقارير:</b> ملفات PDF التي يتم إنشاؤها تُخزن في جهازك مباشرة ولا يحتفظ التطبيق بنسخ منها خارجياً.</p>
+        </div>
+      </section>
+
+      <!-- Contact Info -->
+      <footer class="text-center pt-10">
+        <p class="text-slate-500 mb-4">لأي استفسارات بخصوص الخصوصية، تواصل معنا عبر:</p>
+        <a href="mailto:alomdaapoaref@gmail.com" class="text-2xl font-black text-blue-600 hover:underline">alomdaapoaref@gmail.com</a>
+      </footer>
+
+    </div>
+  </main>
+
+  <script>
+    lucide.createIcons();
+  </script>
+</body>
+</html>
