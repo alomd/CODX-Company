@@ -282,11 +282,14 @@ const UIManager = {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
                     entry.target.classList.add('reveal-visible');
+                    if (entry.target.classList.contains('stagger-reveal')) {
+                        entry.target.classList.add('active');
+                    }
                 }
             });
         }, { threshold: 0.15 });
 
-        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+        document.querySelectorAll('.reveal, .stagger-reveal').forEach(el => observer.observe(el));
     },
 
     initTyping() {
@@ -326,9 +329,107 @@ const UIManager = {
     }
 };
 
+// --- Gallery Management ---
+const GalleryManager = {
+    currentIndex: 0,
+    images: [],
+    
+    init() {
+        const container = document.getElementById('gallery-container');
+        if (!container) return;
+        
+        this.images = Array.from(container.querySelectorAll('img')).map(img => img.src);
+        
+        // Keydown support
+        window.addEventListener('keydown', (e) => {
+            if (document.getElementById('lightbox').classList.contains('hidden')) return;
+            if (e.key === 'Escape') this.close();
+            if (e.key === 'ArrowRight') this.prev();
+            if (e.key === 'ArrowLeft') this.next();
+        });
+    },
+    
+    open(index) {
+        this.currentIndex = index;
+        this.update();
+        document.getElementById('lightbox').classList.remove('hidden');
+        document.body.style.overflow = 'hidden';
+    },
+    
+    close() {
+        document.getElementById('lightbox').classList.add('hidden');
+        document.body.style.overflow = '';
+    },
+    
+    next() {
+        this.currentIndex = (this.currentIndex + 1) % this.images.length;
+        this.update();
+    },
+    
+    prev() {
+        this.currentIndex = (this.currentIndex - 1 + this.images.length) % this.images.length;
+        this.update();
+    },
+    
+    update() {
+        const img = document.getElementById('lightbox-img');
+        const counter = document.getElementById('lightbox-counter');
+        if (img) img.src = this.images[this.currentIndex];
+        if (counter) counter.innerText = `${this.currentIndex + 1} / ${this.images.length}`;
+    }
+};
+
+// --- Source Code Protection ---
+const SecurityManager = {
+    init() {
+        this.disableRightClick();
+        this.disableDevTools();
+        this.disablePrint();
+    },
+
+    disableRightClick() {
+        document.addEventListener('contextmenu', (e) => {
+            e.preventDefault();
+        });
+    },
+
+    disableDevTools() {
+        document.addEventListener('keydown', (e) => {
+            // F12
+            if (e.keyCode === 123) {
+                e.preventDefault();
+            }
+            // Ctrl + Shift + I (Inspect)
+            if (e.ctrlKey && e.shiftKey && e.keyCode === 73) {
+                e.preventDefault();
+            }
+            // Ctrl + Shift + J (Console)
+            if (e.ctrlKey && e.shiftKey && e.keyCode === 74) {
+                e.preventDefault();
+            }
+            // Ctrl + U (View Source)
+            if (e.ctrlKey && e.keyCode === 85) {
+                e.preventDefault();
+            }
+        });
+    },
+
+    disablePrint() {
+        document.addEventListener('keydown', (e) => {
+            // Ctrl + P
+            if (e.ctrlKey && e.keyCode === 80) {
+                e.preventDefault();
+            }
+        });
+    }
+};
+
 // --- Initialize Everything ---
 document.addEventListener('DOMContentLoaded', () => {
     ThemeManager.init();
     TranslationManager.init();
     UIManager.init();
+    GalleryManager.init();
+    SecurityManager.init();
+    UIManager.galleryManager = GalleryManager;
 });

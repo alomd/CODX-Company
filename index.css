@@ -1,3 +1,11 @@
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
 .custom-scrollbar::-webkit-scrollbar {
   width: 4px;
 }
@@ -6,11 +14,54 @@
   border-radius: 10px;
 }
 
-@keyframes fade-in {
-  from { opacity: 0; }
-  to { opacity: 1; }
+@keyframes reveal-up {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
 }
 
-.animate-fade-in {
-  animation: fade-in 0.4s ease-out forwards;
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
 }
+
+.reveal-up {
+  animation: reveal-up 0.8s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+.hover-glow:hover {
+  box-shadow: 0 0 30px rgba(79, 70, 229, 0.4);
+  border-color: rgba(79, 70, 229, 0.6);
+}
+
+.perspective-1000 {
+  perspective: 1000px;
+}
+
+.preserve-3d {
+  transform-style: preserve-3d;
+}
+
+.group:hover .tilt-image {
+  transform: rotateX(5deg) rotateY(-5deg) scale(1.05);
+}
+
+.stagger-reveal > * {
+  opacity: 0;
+}
+
+.stagger-reveal.active > *:nth-child(1) { animation: reveal-up 0.6s 0.1s forwards; }
+.stagger-reveal.active > *:nth-child(2) { animation: reveal-up 0.6s 0.2s forwards; }
+.stagger-reveal.active > *:nth-child(3) { animation: reveal-up 0.6s 0.3s forwards; }
+.stagger-reveal.active > *:nth-child(4) { animation: reveal-up 0.6s 0.4s forwards; }
+.stagger-reveal.active > *:nth-child(5) { animation: reveal-up 0.6s 0.5s forwards; }
+.stagger-reveal.active > *:nth-child(6) { animation: reveal-up 0.6s 0.6s forwards; }
+.stagger-reveal.active > *:nth-child(7) { animation: reveal-up 0.6s 0.7s forwards; }
+.stagger-reveal.active > *:nth-child(8) { animation: reveal-up 0.6s 0.8s forwards; }
+.stagger-reveal.active > *:nth-child(9) { animation: reveal-up 0.6s 0.9s forwards; }
+.stagger-reveal.active > *:nth-child(10) { animation: reveal-up 0.6s 1.0s forwards; }
+.stagger-reveal.active > *:nth-child(11) { animation: reveal-up 0.6s 1.1s forwards; }
+.stagger-reveal.active > *:nth-child(12) { animation: reveal-up 0.6s 1.2s forwards; }
+.stagger-reveal.active > *:nth-child(13) { animation: reveal-up 0.6s 1.3s forwards; }
+.stagger-reveal.active > *:nth-child(14) { animation: reveal-up 0.6s 1.4s forwards; }
+.stagger-reveal.active > *:nth-child(15) { animation: reveal-up 0.6s 1.5s forwards; }
+.stagger-reveal.active > *:nth-child(16) { animation: reveal-up 0.6s 1.6s forwards; }
