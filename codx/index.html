@@ -1,0 +1,1504 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl" class="dark transition-all duration-700">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CODX | صناعة المستقبل الرقمي - Digital Future Lab</title>
+  <meta name="description"
+    content="مختبر التميز الرقمي. نحول الأفكار المعقدة إلى منتجات برمجية عالمية المستوى تجمع بين الدقة الهندسية والجمال التصميمي. Digital excellence lab transforming complex ideas into world-class software.">
+  <meta name="keywords" content="CODX, Software Development, UI/UX Design, AI Solutions, Web Development, Mobile Apps, Abdulraouf Refaat">
+  <meta name="author" content="Abdulraouf Refaat">
+
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://codx-lab.com/">
+  <meta property="og:title" content="CODX | صناعة المستقبل الرقمي">
+  <meta property="og:description" content="نحول الأفكار المعقدة إلى منتجات برمجية عالمية المستوى تجمع بين الدقة الهندسية والجمال التصميمي.">
+  <meta property="og:image" content="https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=1200&auto=format&fit=crop">
+
+  <!-- Twitter -->
+  <meta property="twitter:card" content="summary_large_image">
+  <meta property="twitter:url" content="https://codx-lab.com/">
+  <meta property="twitter:title" content="CODX | صناعة المستقبل الرقمي">
+  <meta property="twitter:description" content="نحول الأفكار المعقدة إلى منتجات برمجية عالمية المستوى تجمع بين الدقة الهندسية والجمال التصميمي.">
+  <meta property="twitter:image" content="https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=1200&auto=format&fit=crop">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='20' fill='black'/><path d='M30 70 L50 30 L70 70' stroke='white' stroke-width='8' fill='none'/></svg>">
+
+  <!-- Google Fonts: Readex Pro, Plus Jakarta Sans, JetBrains Mono -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400&family=Readex+Pro:wght@200;300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Readex Pro', 'Plus Jakarta Sans', 'sans-serif'],
+            mono: ['JetBrains Mono', 'monospace'],
+          },
+          fontSize: {
+            'hero': ['3rem', { lineHeight: '1.2', letterSpacing: '-0.02em' }],
+            'hero-mob': ['2rem', { lineHeight: '1.2', letterSpacing: '-0.02em' }],
+            'h2': ['2rem', { lineHeight: '1.3' }],
+            'h2-mob': ['1.5rem', { lineHeight: '1.3' }],
+            'h3': ['1.25rem', { lineHeight: '1.4' }],
+            'h3-mob': ['1.125rem', { lineHeight: '1.4' }],
+            'body-custom': ['1rem', { lineHeight: '1.7' }],
+            'body-mob': ['0.938rem', { lineHeight: '1.7' }],
+            'small-custom': ['0.812rem', { lineHeight: '1.5' }],
+            'small-mob': ['0.75rem', { lineHeight: '1.5' }],
+            'btn-custom': ['0.875rem', { lineHeight: '1.0' }],
+          },
+          animation: {
+            'pulse-slow': 'pulse 6s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+            'spin-slow': 'spin 12s linear infinite',
+            'float': 'float 3s ease-in-out infinite',
+            'scale-up': 'scaleUp 0.4s ease-out forwards',
+          },
+          keyframes: {
+            float: {
+              '0%, 100%': { transform: 'translateY(0)' },
+              '50%': { transform: 'translateY(-20px)' },
+            },
+            scaleUp: {
+              '0%': { transform: 'scale(0.9)', opacity: '0' },
+              '100%': { transform: 'scale(1)', opacity: '1' },
+            }
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    :root {
+      --bg-light: #F8FAFC;
+      --bg-dark: #020617;
+    }
+
+    body {
+      font-family: 'Readex Pro', 'Plus Jakarta Sans', sans-serif;
+      overflow-x: hidden;
+      scroll-behavior: smooth;
+      font-variant-numeric: tabular-nums;
+    }
+
+    .font-mono, .stat-counter, #est-price, #est-time {
+      font-family: 'JetBrains Mono', monospace;
+      font-variant-numeric: tabular-nums;
+    }
+
+    .mesh-bg {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+      overflow: hidden;
+      background: var(--bg-light);
+      transition: background 0.5s ease;
+    }
+
+    .dark .mesh-bg {
+      background: var(--bg-dark);
+    }
+
+    .mesh-ball {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(100px);
+      opacity: 0.15;
+      mix-blend-mode: screen;
+      animation: move 25s infinite alternate ease-in-out;
+    }
+
+    .dark .mesh-ball {
+      opacity: 0.12;
+    }
+
+    @keyframes move {
+      0% {
+        transform: translate(0, 0) scale(1);
+      }
+
+      33% {
+        transform: translate(30vw, 20vh) scale(1.2);
+      }
+
+      66% {
+        transform: translate(-10vw, 40vh) scale(0.8);
+      }
+
+      100% {
+        transform: translate(10vw, -10vh) scale(1.1);
+      }
+    }
+
+    .glass {
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      background: rgba(255, 255, 255, 0.85);
+      border: 1px solid rgba(14, 165, 233, 0.2);
+    }
+
+    .dark .glass {
+      background: rgba(15, 23, 42, 0.85);
+      border: 1px solid rgba(14, 165, 233, 0.25);
+    }
+
+    .developer-gradient {
+      background: linear-gradient(135deg, #0EA5E9 0%, #0284C7 100%);
+    }
+
+    ::selection {
+      background: #0EA5E9;
+      color: #020617;
+    }
+
+    ::-webkit-scrollbar {
+      width: 6px;
+    }
+
+    ::-webkit-scrollbar-track {
+      background: transparent;
+    }
+
+    ::-webkit-scrollbar-thumb {
+      background: rgba(14, 165, 233, 0.3);
+      border-radius: 10px;
+    }
+
+    .dark ::-webkit-scrollbar-thumb {
+      background: rgba(14, 165, 233, 0.3);
+    }
+
+    /* Animation Reveal Classes */
+    .reveal {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: all 1.2s cubic-bezier(0.2, 1, 0.3, 1);
+    }
+
+    .reveal-visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    @keyframes typing {
+      from { width: 0 }
+      to { width: 100% }
+    }
+
+    @keyframes blink {
+      50% { border-color: transparent }
+    }
+
+    .typing-cursor::after {
+      content: '|';
+      animation: blink 0.8s infinite;
+      margin-inline-start: 4px;
+      color: #D4AF37;
+    }
+
+    /* ═══════════════════════════════════════════ */
+    /*        CODX — Professional Loader          */
+    /* ═══════════════════════════════════════════ */
+
+    #page-loader {
+      position: fixed;
+      inset: 0;
+      z-index: 9999;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      background: #020617;
+      overflow: hidden;
+      transition: opacity 0.8s cubic-bezier(0.4, 0, 0.2, 1),
+                  transform 0.8s cubic-bezier(0.4, 0, 0.2, 1),
+                  visibility 0.8s;
+    }
+
+    html:not(.dark) #page-loader {
+      background: #F8FAFC;
+    }
+
+    #page-loader.loader-exit {
+      opacity: 0;
+      transform: scale(1.05);
+      visibility: hidden;
+    }
+
+    /* ── Grid Background ── */
+    .loader-grid {
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(14, 165, 233, 0.06) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(14, 165, 233, 0.06) 1px, transparent 1px);
+      background-size: 40px 40px;
+      animation: gridPulse 3s ease-in-out infinite;
+    }
+
+    html:not(.dark) .loader-grid {
+      background-image:
+        linear-gradient(rgba(15, 23, 42, 0.06) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(15, 23, 42, 0.06) 1px, transparent 1px);
+    }
+
+    @keyframes gridPulse {
+      0%, 100% { opacity: 0.5; }
+      50% { opacity: 1; }
+    }
+
+    /* ── Floating Code Snippets ── */
+    .code-rain {
+      position: absolute;
+      inset: 0;
+      overflow: hidden;
+      pointer-events: none;
+    }
+
+    .code-line {
+      position: absolute;
+      white-space: nowrap;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      opacity: 0;
+      color: rgba(14, 165, 233, 0.25);
+      animation: codeFloat linear infinite;
+    }
+
+    html:not(.dark) .code-line {
+      color: rgba(15, 23, 42, 0.15);
+    }
+
+    @keyframes codeFloat {
+      0%   { transform: translateX(110vw); opacity: 0; }
+      5%   { opacity: 1; }
+      95%  { opacity: 1; }
+      100% { transform: translateX(-110vw); opacity: 0; }
+    }
+
+    /* ── Central Logo Container ── */
+    .loader-logo-wrap {
+      position: relative;
+      z-index: 2;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 28px;
+    }
+
+    /* Hexagonal glowing ring around the icon */
+    .loader-hex-ring {
+      position: relative;
+      width: 100px;
+      height: 100px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .loader-hex-ring::before {
+      content: '';
+      position: absolute;
+      inset: -6px;
+      border-radius: 24px;
+      border: 2px solid transparent;
+      background: conic-gradient(from 0deg, #0EA5E9, #10B981, #0EA5E9, transparent 50%) border-box;
+      -webkit-mask: linear-gradient(#fff 0 0) padding-box, linear-gradient(#fff 0 0);
+      -webkit-mask-composite: xor;
+      mask-composite: exclude;
+      animation: hexSpin 3s linear infinite;
+    }
+
+    @keyframes hexSpin {
+      to { rotate: 360deg; }
+    }
+
+    .loader-icon-box {
+      width: 80px;
+      height: 80px;
+      background: linear-gradient(135deg, #0EA5E9 0%, #0284C7 60%, #10B981 100%);
+      border-radius: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow:
+        0 0 40px rgba(14, 165, 233, 0.35),
+        0 0 80px rgba(14, 165, 233, 0.15);
+      animation: iconPulse 2s ease-in-out infinite;
+    }
+
+    @keyframes iconPulse {
+      0%, 100% { box-shadow: 0 0 40px rgba(14,165,233,0.35), 0 0 80px rgba(14,165,233,0.15); transform: scale(1); }
+      50%      { box-shadow: 0 0 60px rgba(14,165,233,0.5), 0 0 120px rgba(14,165,233,0.25); transform: scale(1.04); }
+    }
+
+    .loader-icon-box svg {
+      width: 44px;
+      height: 44px;
+      fill: none;
+      stroke: #020617;
+      stroke-width: 2;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    /* ── Brand Name ── */
+    .loader-brand {
+      font-family: 'Readex Pro', sans-serif;
+      font-size: 2.2rem;
+      font-weight: 900;
+      font-style: italic;
+      letter-spacing: -0.06em;
+      background: linear-gradient(135deg, #0EA5E9 30%, #10B981 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      animation: brandReveal 1s 0.3s ease-out both;
+    }
+
+    @keyframes brandReveal {
+      from { opacity: 0; transform: translateY(12px) scale(0.92); filter: blur(8px); }
+      to   { opacity: 1; transform: translateY(0) scale(1); filter: blur(0); }
+    }
+
+    /* ── Terminal Typing Effect ── */
+    .loader-terminal {
+      margin-top: 8px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.72rem;
+      color: rgba(14, 165, 233, 0.6);
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      animation: termReveal 0.8s 0.6s ease-out both;
+    }
+
+    html:not(.dark) .loader-terminal {
+      color: rgba(15, 23, 42, 0.5);
+    }
+
+    @keyframes termReveal {
+      from { opacity: 0; transform: translateY(8px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    .loader-terminal .cursor-blink {
+      display: inline-block;
+      width: 7px;
+      height: 14px;
+      background: #0EA5E9;
+      animation: cursorBlink 0.9s step-end infinite;
+      border-radius: 1px;
+    }
+
+    @keyframes cursorBlink {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0; }
+    }
+
+    /* ── Progress Bar ── */
+    .loader-progress-track {
+      margin-top: 28px;
+      width: 220px;
+      height: 3px;
+      background: rgba(14, 165, 233, 0.1);
+      border-radius: 10px;
+      overflow: hidden;
+      animation: termReveal 0.8s 0.8s ease-out both;
+    }
+
+    html:not(.dark) .loader-progress-track {
+      background: rgba(15, 23, 42, 0.08);
+    }
+
+    .loader-progress-bar {
+      height: 100%;
+      width: 0%;
+      border-radius: 10px;
+      background: linear-gradient(90deg, #0EA5E9, #10B981);
+      box-shadow: 0 0 12px rgba(14, 165, 233, 0.5);
+      animation: progressFill 2s 0.5s ease-in-out forwards;
+    }
+
+    @keyframes progressFill {
+      0%   { width: 0%; }
+      30%  { width: 40%; }
+      60%  { width: 70%; }
+      85%  { width: 90%; }
+      100% { width: 100%; }
+    }
+
+    /* ── Scan Line ── */
+    .loader-scanline {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, #0EA5E9, transparent);
+      opacity: 0.4;
+      animation: scanMove 2.5s ease-in-out infinite;
+      z-index: 3;
+    }
+
+    @keyframes scanMove {
+      0%   { top: 0; }
+      50%  { top: 100%; }
+      100% { top: 0; }
+    }
+
+    /* ── Corner Brackets (HUD feel) ── */
+    .loader-corner {
+      position: absolute;
+      width: 30px;
+      height: 30px;
+      border-color: rgba(14, 165, 233, 0.3);
+      border-style: solid;
+      z-index: 3;
+    }
+    .loader-corner.tl { top: 20px; left: 20px; border-width: 2px 0 0 2px; }
+    .loader-corner.tr { top: 20px; right: 20px; border-width: 2px 2px 0 0; }
+    .loader-corner.bl { bottom: 20px; left: 20px; border-width: 0 0 2px 2px; }
+    .loader-corner.br { bottom: 20px; right: 20px; border-width: 0 2px 2px 0; }
+
+    html:not(.dark) .loader-corner {
+      border-color: rgba(15, 23, 42, 0.15);
+    }
+
+    /* ── Particles ── */
+    .loader-particle {
+      position: absolute;
+      width: 3px;
+      height: 3px;
+      background: #0EA5E9;
+      border-radius: 50%;
+      opacity: 0;
+      animation: particleDrift 4s ease-in-out infinite;
+    }
+
+    @keyframes particleDrift {
+      0%   { opacity: 0; transform: translateY(0) scale(0); }
+      20%  { opacity: 0.8; transform: translateY(-20px) scale(1); }
+      80%  { opacity: 0.3; transform: translateY(-80px) scale(0.5); }
+      100% { opacity: 0; transform: translateY(-120px) scale(0); }
+    }
+  </style>
+</head>
+
+<body class="bg-[#F8FAFC] dark:bg-[#020617] text-slate-900 dark:text-slate-100 transition-colors duration-500">
+
+  <!-- ═══════════════ CODX LOADING SCREEN ═══════════════ -->
+  <div id="page-loader">
+    <!-- Grid Background -->
+    <div class="loader-grid"></div>
+
+    <!-- Scan Line -->
+    <div class="loader-scanline"></div>
+
+    <!-- Corner Brackets (HUD) -->
+    <div class="loader-corner tl"></div>
+    <div class="loader-corner tr"></div>
+    <div class="loader-corner bl"></div>
+    <div class="loader-corner br"></div>
+
+    <!-- Code Rain Background -->
+    <div class="code-rain">
+      <span class="code-line" style="top:6%; animation-duration:12s; animation-delay:0s;">const app = new CODX({ mode: 'production', debug: false });</span>
+      <span class="code-line" style="top:14%; animation-duration:15s; animation-delay:1.2s;">import { createDigitalFuture } from '@codx/core';</span>
+      <span class="code-line" style="top:22%; animation-duration:11s; animation-delay:0.5s;">async function deployService(config) { await init(config); }</span>
+      <span class="code-line" style="top:30%; animation-duration:14s; animation-delay:2s;">export default class DigitalArchitect extends CoreEngine { }</span>
+      <span class="code-line" style="top:38%; animation-duration:13s; animation-delay:0.8s;">const pipeline = await buildPipeline({ target: 'cloud', region: 'me-central1' });</span>
+      <span class="code-line" style="top:46%; animation-duration:16s; animation-delay:1.5s;">interface Solution { id: string; status: 'active'; performance: number; }</span>
+      <span class="code-line" style="top:54%; animation-duration:10s; animation-delay:3s;">render(() => &lt;App theme="cyber-precision" locale="ar" /&gt;);</span>
+      <span class="code-line" style="top:62%; animation-duration:14s; animation-delay:0.3s;">const { encrypt, validate } = require('@codx/security');</span>
+      <span class="code-line" style="top:70%; animation-duration:12s; animation-delay:2.5s;">function optimize(metrics) { return metrics.map(m => m * 1.8); }</span>
+      <span class="code-line" style="top:78%; animation-duration:15s; animation-delay:1s;">await database.connect({ ssl: true, pool: 10, retry: 3 });</span>
+      <span class="code-line" style="top:86%; animation-duration:11s; animation-delay:1.8s;">console.log('✦ CODX Digital Lab — Systems Online ✦');</span>
+      <span class="code-line" style="top:94%; animation-duration:13s; animation-delay:0.6s;">export const API_VERSION = '3.0.0'; // Stable Release</span>
+    </div>
+
+    <!-- Floating Particles -->
+    <div class="loader-particle" style="left:15%; bottom:20%; animation-delay:0s;"></div>
+    <div class="loader-particle" style="left:30%; bottom:35%; animation-delay:0.8s;"></div>
+    <div class="loader-particle" style="left:50%; bottom:15%; animation-delay:1.6s;"></div>
+    <div class="loader-particle" style="left:70%; bottom:25%; animation-delay:0.4s;"></div>
+    <div class="loader-particle" style="left:85%; bottom:40%; animation-delay:1.2s;"></div>
+    <div class="loader-particle" style="left:40%; bottom:50%; animation-delay:2s;"></div>
+    <div class="loader-particle" style="left:60%; bottom:10%; animation-delay:2.5s;"></div>
+    <div class="loader-particle" style="left:25%; bottom:60%; animation-delay:1.4s;"></div>
+
+    <!-- Central Logo -->
+    <div class="loader-logo-wrap">
+      <!-- Spinning Hex Ring + Icon -->
+      <div class="loader-hex-ring">
+        <div class="loader-icon-box">
+          <!-- Inline SVG: Code brackets < / > -->
+          <svg viewBox="0 0 24 24">
+            <polyline points="16 18 22 12 16 6"></polyline>
+            <polyline points="8 6 2 12 8 18"></polyline>
+            <line x1="12" y1="2" x2="12" y2="22" stroke-dasharray="3 3" opacity="0.4"></line>
+          </svg>
+        </div>
+      </div>
+
+      <!-- Brand Name -->
+      <span class="loader-brand">CODX</span>
+
+      <!-- Terminal Line -->
+      <div class="loader-terminal">
+        <span style="color:#10B981;">❯</span>
+        <span id="loader-typing-text">initializing system</span>
+        <span class="cursor-blink"></span>
+      </div>
+
+      <!-- Progress Bar -->
+      <div class="loader-progress-track">
+        <div class="loader-progress-bar"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Mesh Background -->
+  <div class="mesh-bg">
+    <div class="mesh-ball bg-[#0EA5E9] w-[600px] h-[600px] top-[-10%] left-[-10%]" style="animation-delay: 0s;"></div>
+    <div class="mesh-ball bg-[#10B981] w-[500px] h-[500px] bottom-[-10%] right-[-10%]" style="animation-delay: -5s;">
+    </div>
+    <div class="mesh-ball bg-[#0EA5E9] w-[400px] h-[400px] top-[30%] right-[10%]" style="animation-delay: -10s;"></div>
+    <div class="absolute inset-0 opacity-[0.03] dark:opacity-[0.05]"
+      style="background-image: url('https://grainy-gradients.vercel.app/noise.svg');"></div>
+  </div>
+
+  <!-- Navigation -->
+  <nav id="navbar" class="fixed w-full z-[100] transition-all duration-500 py-4 px-6">
+    <div class="container mx-auto flex justify-between items-center glass rounded-2xl px-6 py-3 shadow-sm border border-[#0EA5E9]/20">
+      <div class="flex items-center gap-3 cursor-pointer group" onclick="window.scrollTo({top:0, behavior:'smooth'})">
+        <div
+          class="w-10 h-10 bg-[#0EA5E9] text-[#020617] flex items-center justify-center rounded-lg shadow-lg group-hover:rotate-12 transition-transform">
+          <i data-lucide="zap" class="w-6 h-6"></i>
+        </div>
+        <span class="text-2xl font-black italic tracking-tighter text-[#0EA5E9]">CODX</span>
+      </div>
+
+      <div class="hidden md:flex gap-6 text-xs lg:text-sm font-bold uppercase tracking-widest text-slate-400">
+        <a href="#home" class="hover:text-[#0EA5E9] transition-colors translate-el" data-ar="الرئيسية" data-en="Home">الرئيسية</a>
+        <a href="#philosophy" class="hover:text-[#0EA5E9] transition-colors translate-el" data-ar="رؤيتنا" data-en="Our Vision">رؤيتنا</a>
+        <a href="#projects" class="hover:text-[#0EA5E9] transition-colors translate-el" data-ar="المشاريع" data-en="Projects">المشاريع</a>
+        <a href="#developer" class="hover:text-[#0EA5E9] transition-colors translate-el" data-ar="المطور" data-en="Developer">المطور</a>
+        <a href="#services" class="hover:text-[#0EA5E9] transition-colors translate-el" data-ar="الخدمات" data-en="Services">الخدمات</a>
+        <a href="#estimator" class="hover:text-[#0EA5E9] transition-colors translate-el" data-ar="الحاسبة" data-en="Estimator">الحاسبة</a>
+        <a href="#insights" class="hover:text-[#0EA5E9] transition-colors translate-el" data-ar="المقالات" data-en="Insights">المقالات</a>
+        <a href="#faq" class="hover:text-[#0EA5E9] transition-colors translate-el" data-ar="الأسئلة" data-en="FAQ">الأسئلة</a>
+      </div>
+
+      <div class="flex items-center gap-3">
+        <!-- Language Switcher -->
+        <button id="lang-toggle" aria-label="Switch Language"
+          class="group relative flex items-center gap-2 p-2.5 rounded-xl border border-[#0EA5E9]/30 hover:bg-[#0EA5E9]/10 transition-all overflow-hidden">
+          <div class="flex flex-col transition-transform duration-500 transform group-active:scale-95" id="lang-text-container">
+            <span class="text-xs font-black text-slate-100" id="lang-label">EN</span>
+          </div>
+          <i data-lucide="languages" class="w-4 h-4 text-[#0EA5E9] transition-transform group-hover:rotate-12"></i>
+        </button>
+
+        <!-- Theme Switcher -->
+        <button id="theme-toggle" aria-label="Toggle Theme"
+          class="p-2.5 rounded-xl border border-[#0EA5E9]/30 hover:bg-[#0EA5E9]/10 transition-all">
+          <i data-lucide="sun" class="w-5 h-5 block dark:hidden text-[#0EA5E9]"></i>
+          <i data-lucide="moon" class="w-5 h-5 hidden dark:block text-[#0EA5E9]"></i>
+        </button>
+
+        <button onclick="document.getElementById('contact-modal').classList.remove('hidden')"
+          data-ar="تواصل معنا" data-en="Contact Us"
+          class="bg-[#0EA5E9] text-[#020617] px-6 py-2.5 rounded-xl font-black text-sm hover:scale-105 transition-transform translate-el hover-cyan-glow shadow-[0_0_20px_rgba(14,165,233,0.3)]">
+          تواصل معنا
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <section id="home" class="relative min-h-screen flex items-center justify-center pt-20 px-6">
+    <div class="container mx-auto text-center space-y-10">
+      <div
+        class="inline-flex items-center gap-3 px-6 py-2 rounded-full border border-[#0EA5E9]/30 glass text-xs font-bold tracking-[0.3em] uppercase text-[#0EA5E9]">
+        <span class="w-2 h-2 rounded-full bg-[#10B981] animate-pulse"></span>
+        CODX Innovation Lab
+      </div>
+
+      <h1
+        class="text-hero-mob md:text-hero font-extrabold leading-[1.2] tracking-tight text-slate-900 dark:text-white hover-3d inline-block transition-transform duration-500"
+        data-ar="نصنعُ الأثر الرقمي." data-en="We Craft Digital Impact.">
+        نصنعُ <span
+          class="italic text-[#0EA5E9] underline decoration-8 decoration-[#0EA5E9]">الأثر</span> الرقمي.
+      </h1>
+
+      <p class="max-w-3xl mx-auto text-body-mob md:text-body-custom font-normal leading-[1.7] text-slate-600 dark:text-slate-300 text-right md:text-center"
+         data-ar="نحول الأفكار المعقدة إلى منتجات برمجية عالمية المستوى، تجمع بين الدقة الهندسية والجمال التصميمي الفائق بلمسة عربية طموحة."
+         data-en="We transform complex ideas into world-class software products, combining engineering precision with superior design beauty and an ambitious Arab touch.">
+        نحول الأفكار المعقدة إلى منتجات برمجية عالمية المستوى، تجمع بين الدقة الهندسية والجمال التصميمي الفائق بلمسة
+        عربية طموحة.
+      </p>
+
+      <div class="flex flex-wrap justify-center gap-6">
+        <button onclick="document.getElementById('contact-modal').classList.remove('hidden')"
+          data-ar="ابدأ مشروعك" data-en="Start Your Project"
+          class="px-10 py-5 bg-[#0EA5E9] text-[#020617] rounded-2xl font-black text-xl shadow-2xl hover:-translate-y-1 transition-all hover-cyan-glow shadow-[0_0_30px_rgba(14,165,233,0.4)]">
+          ابدأ مشروعك
+        </button>
+        <button onclick="document.getElementById('philosophy').scrollIntoView()"
+          data-ar="اكتشف فلسفتنا" data-en="Discover Our Philosophy"
+          class="px-10 py-5 glass border-[#0EA5E9]/30 rounded-2xl font-black text-xl hover:bg-[#0EA5E9]/10 text-[#0EA5E9] transition-all">
+          اكتشف فلسفتنا
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Philosophy Section -->
+  <section id="philosophy" class="py-32 px-6 relative">
+    <div class="container mx-auto">
+      <div class="grid lg:grid-cols-2 gap-16 items-center">
+        <div class="space-y-8">
+          <div class="inline-block p-4 bg-gold/10 text-gold rounded-2xl shadow-xl transform rotate-3 hover:rotate-0 transition-transform duration-300">
+            <i data-lucide="globe" class="w-10 h-10"></i>
+          </div>
+          <h2 class="text-h2-mob md:text-h2 font-semibold leading-[1.3] text-slate-900 dark:text-white" 
+              data-ar="فلسفة عربية في عالم تقني" data-en="Arab Philosophy in a Tech World">فلسفة عربية في <br><span
+              class="text-[#0EA5E9] underline decoration-[#0EA5E9]/50 italic">عالم تقني</span></h2>
+          <p class="text-body-mob md:text-body-custom text-slate-600 dark:text-slate-300 leading-[1.7] font-normal text-right"
+             data-ar="في CODX، نؤمن أن التكنولوجيا ليست مجرد أداة، بل هي لغة العصر التي يجب أن نتحدثها بطلاقة وبصمة عربية. فلسفتنا تقوم على دمج القيم الهندسية الصارمة مع الإبداع الفني."
+             data-en="At CODX, we believe technology is not just a tool, but the language of the age that we must speak fluently with an Arab imprint. Our philosophy is based on merging rigorous engineering values with artistic creativity.">
+            في CODX، نؤمن أن التكنولوجيا ليست مجرد أداة، بل هي لغة العصر التي يجب أن نتحدثها بطلاقة وبصمة عربية. فلسفتنا
+            تقوم على دمج القيم الهندسية الصارمة مع الإبداع الفني.
+          </p>
+          <div class="grid grid-cols-2 gap-8 pt-6">
+            <div class="space-y-3">
+              <h4 class="text-3xl font-black text-gold" data-ar="رؤيتنا" data-en="Our Vision">رؤيتنا</h4>
+              <p class="text-slate-600 dark:text-slate-300 font-medium" data-ar="أن نقود الحراك الرقمي في المنطقة العربية ونصدر حلولاً برمجية تنافس عالمياً."
+                 data-en="To lead the digital movement in the Arab region and export globally competitive software solutions.">أن نقود الحراك الرقمي في المنطقة العربية ونصدر حلولاً برمجية
+                تنافس عالمياً.</p>
+            </div>
+            <div class="space-y-3">
+              <h4 class="text-3xl font-black text-gold" data-ar="رسالتنا" data-en="Our Mission">رسالتنا</h4>
+              <p class="text-slate-600 dark:text-slate-300 font-medium" data-ar="تمكين الشركات والمبدعين العرب من امتلاك التكنولوجيا السيادية بأعلى المعايير."
+                 data-en="Empowering Arab companies and creators to own sovereign technology at the highest standards.">تمكين الشركات والمبدعين العرب من امتلاك التكنولوجيا السيادية
+                بأعلى المعايير.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Vision Graphic -->
+        <div class="relative flex justify-center items-center perspective-1000">
+          <div
+            class="absolute inset-0 bg-gradient-to-tr from-[#0EA5E9]/20 to-sky-900/20 blur-[100px] animate-pulse-slow">
+          </div>
+          <div
+            class="relative glass p-10 md:p-16 rounded-[4rem] border-2 border-[#0EA5E9]/30 hover:border-[#0EA5E9]/60 shadow-2xl space-y-10 group overflow-hidden hover-3d preserve-3d transition-all">
+            <div
+              class="absolute -top-20 -right-20 w-64 h-64 bg-[#0EA5E9]/10 rounded-full blur-3xl group-hover:bg-[#0EA5E9]/20 transition-all">
+            </div>
+            <div class="relative z-10 space-y-6 text-center lg:text-right">
+              <div class="flex justify-center lg:justify-end gap-2 mb-4">
+                <span
+                  class="px-3 py-1 bg-[#0EA5E9]/20 border border-[#0EA5E9]/40 text-[#0EA5E9] text-[10px] font-bold rounded-full uppercase">Innovation</span>
+                <span
+                  class="px-3 py-1 bg-slate-200 dark:bg-white/10 text-slate-800 dark:text-white text-[10px] font-bold rounded-full uppercase">Leadership</span>
+              </div>
+              <h3 class="text-3xl font-black text-slate-900 dark:text-white" data-ar="السيادة الرقمية" data-en="Digital Sovereignty">السيادة الرقمية</h3>
+              <p class="text-lg text-slate-700 dark:text-slate-200 font-bold leading-relaxed"
+                 data-ar="&quot;نحن لا نبني برمجيات فقط؛ نحن نبني جسراً يربط طموحنا العربي بمستقبل تكنولوجي نتحكم في مفاصله.&quot;"
+                 data-en="&quot;We don't just build software; we build a bridge connecting our Arab ambition to a technological future where we control the mechanisms.&quot;">
+                "نحن لا نبني برمجيات فقط؛ نحن نبني جسراً يربط طموحنا العربي بمستقبل تكنولوجي نتحكم في مفاصله."
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Impact & Stats Counter Section -->
+  <section id="stats" class="py-20 px-6 relative border-y border-[#0EA5E9]/10 bg-slate-100/80 dark:bg-black/50 backdrop-blur-md">
+    <div class="container mx-auto">
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-center reveal">
+        <div class="glass p-8 rounded-3xl border-[#0EA5E9]/20 hover:border-[#0EA5E9]/50 transition-all hover-cyan-glow">
+          <div class="text-4xl md:text-6xl font-black text-[#0EA5E9] mb-2 flex justify-center items-center gap-1">
+            <span>+</span><span class="stat-counter" data-target="400">0</span>
+          </div>
+          <p class="text-sm md:text-base text-slate-700 dark:text-slate-300 font-bold uppercase tracking-wider" data-ar="مستخدم نشط" data-en="Active Users">مستخدم نشط</p>
+        </div>
+
+        <div class="glass p-8 rounded-3xl border-[#0EA5E9]/20 hover:border-[#0EA5E9]/50 transition-all hover-cyan-glow">
+          <div class="text-4xl md:text-6xl font-black text-[#0EA5E9] mb-2 flex justify-center items-center gap-1">
+            <span class="stat-counter" data-target="80">0</span><span>%</span>
+          </div>
+          <p class="text-sm md:text-base text-slate-700 dark:text-slate-300 font-bold uppercase tracking-wider" data-ar="استقرار الأنظمة" data-en="System Uptime">استقرار الأنظمة</p>
+        </div>
+
+        <div class="glass p-8 rounded-3xl border-[#0EA5E9]/20 hover:border-[#0EA5E9]/50 transition-all hover-cyan-glow">
+          <div class="text-4xl md:text-6xl font-black text-[#0EA5E9] mb-2 flex justify-center items-center gap-1">
+            <span class="stat-counter" data-target="3">0</span>
+          </div>
+          <p class="text-sm md:text-base text-slate-700 dark:text-slate-300 font-bold uppercase tracking-wider" data-ar="مشاريع رئيسية" data-en="Core Projects">مشاريع رئيسية</p>
+        </div>
+
+        <div class="glass p-8 rounded-3xl border-[#0EA5E9]/20 hover:border-[#0EA5E9]/50 transition-all hover-cyan-glow">
+          <div class="text-4xl md:text-6xl font-black text-[#0EA5E9] mb-2 flex justify-center items-center gap-1">
+            <span class="stat-counter" data-target="100">0</span><span>%</span>
+          </div>
+          <p class="text-sm md:text-base text-slate-700 dark:text-slate-300 font-bold uppercase tracking-wider" data-ar="خصوصية وأمان" data-en="Data Privacy">خصوصية وأمان</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Projects Section (New) -->
+  <section id="projects" class="py-32 px-6 bg-slate-100/50 dark:bg-[#0a0a0a]">
+    <div class="container mx-auto">
+      <div class="text-center mb-20 space-y-4 reveal">
+        <h2 class="text-h2-mob md:text-h2 font-semibold italic uppercase text-slate-900 dark:text-white" data-ar="معرض الإنجازات" data-en="Achievement Showcase">معرض <span class="text-[#0EA5E9] underline decoration-[#0EA5E9]/50">الإنجازات</span></h2>
+        <p class="text-slate-600 dark:text-slate-400 text-lg md:text-xl font-medium"
+           data-ar="حلول رقمية مبتكرة تم تصميمها بعناية لتلبية احتياجات السوق العالمي."
+           data-en="Innovative digital solutions carefully designed to meet the needs of the global market.">حلول رقمية مبتكرة تم تصميمها بعناية لتلبية احتياجات السوق العالمي.</p>
+      </div>
+
+      <div class="grid lg:grid-cols-3 gap-10">
+        <!-- Project 1: WealthWay -->
+        <div onclick="window.location.href='wealthway.html'" class="cursor-pointer group glass rounded-[3rem] p-8 space-y-6 hover-3d transition-all duration-500 border border-[#0EA5E9]/20 active:scale-95 reveal perspective-1000 preserve-3d">
+          <div class="relative overflow-hidden rounded-3xl aspect-[16/10] bg-black group-hover:shadow-2xl transition-all duration-500 tilt-image">
+             <img src="wealthway-hero.png" alt="WealthWay" loading="lazy" decoding="async" class="absolute inset-0 w-full h-full object-cover opacity-80 group-hover:scale-110 group-hover:opacity-100 transition-all duration-700">
+             <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent opacity-80 group-hover:opacity-60 transition-all duration-500"></div>
+          </div>
+          <div class="space-y-4">
+            <div class="flex justify-between items-center">
+              <span class="text-xs font-black tracking-widest text-[#0EA5E9] uppercase">FinTech & AI</span>
+              <div class="flex gap-2">
+                <i data-lucide="smartphone" class="w-4 h-4 text-[#0EA5E9]"></i>
+                <i data-lucide="shield-check" class="w-4 h-4 text-[#0EA5E9]"></i>
+              </div>
+            </div>
+            <h3 class="text-4xl font-black text-slate-900 dark:text-white group-hover:text-[#0EA5E9] transition-colors duration-300">WealthWay (ثراء)</h3>
+            <p class="text-slate-600 dark:text-slate-300 font-medium leading-relaxed">تطبيق ذكي لإدارة الثروات الشخصية، يتميز بخصوصية تامة وعمل محلي (Offline) لمساعدة المستخدمين على تحقيق الاستقرار المالي.</p>
+            <div class="flex flex-wrap gap-2 pt-2">
+              <span class="px-4 py-1.5 bg-[#0EA5E9]/10 text-[#0EA5E9] text-[10px] font-black rounded-full uppercase">Privacy Focus</span>
+              <span class="px-4 py-1.5 bg-[#0EA5E9]/10 text-[#0EA5E9] text-[10px] font-black rounded-full uppercase">Expense Tracker</span>
+            </div>
+            <div class="flex justify-between items-center border-t border-[#0EA5E9]/20 pt-4 mt-6">
+              <a href="wealthway-privacy.html" onclick="event.stopPropagation()" class="inline-flex items-center gap-2 text-slate-500 dark:text-slate-400 hover:text-[#0EA5E9] text-sm font-bold transition-colors">
+                <i data-lucide="shield" class="w-4 h-4"></i> سياسة الخصوصية
+              </a>
+              <a href="https://play.google.com/store/apps/details?id=com.codx.WealthWay&pcampaignid=web_share" onclick="event.stopPropagation()" target="_blank"
+                 class="inline-flex items-center gap-2 bg-[#0EA5E9] text-[#020617] px-4 py-2 rounded-xl font-black text-sm hover:scale-105 hover:gap-4 transition-all hover-cyan-glow">
+                جوجل بلاي <i data-lucide="arrow-left" class="w-4 h-4"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Project 2: Tok Tok Go -->
+        <div onclick="window.location.href='toktokgo.html'" class="cursor-pointer group glass rounded-[3rem] p-8 space-y-6 hover-3d transition-all duration-500 border border-[#0EA5E9]/20 active:scale-95 reveal perspective-1000 preserve-3d" style="transition-delay: 0.2s;">
+          <div class="relative overflow-hidden rounded-3xl aspect-[16/10] bg-black group-hover:shadow-2xl transition-all duration-500 tilt-image">
+             <img src="toktokgo-hero.png" alt="Tok Tok Go" loading="lazy" decoding="async" class="absolute inset-0 w-full h-full object-cover opacity-80 group-hover:scale-110 group-hover:opacity-100 transition-all duration-700">
+             <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent opacity-80 group-hover:opacity-60 transition-all duration-500"></div>
+          </div>
+          <div class="space-y-4">
+            <div class="flex justify-between items-center">
+              <span class="text-xs font-black tracking-widest text-[#0EA5E9] uppercase">Mobility & Transport</span>
+              <div class="flex gap-2">
+                <i data-lucide="smartphone" class="w-4 h-4 text-[#0EA5E9]"></i>
+                <i data-lucide="map-pin" class="w-4 h-4 text-[#0EA5E9]"></i>
+              </div>
+            </div>
+            <h3 class="text-4xl font-black text-slate-900 dark:text-white group-hover:text-[#0EA5E9] transition-colors duration-300">Tok Tok Go</h3>
+            <p class="text-slate-600 dark:text-slate-300 font-medium leading-relaxed">منصة متكاملة لحجز وإدارة رحلات التوك توك في مصر، تهدف لرقمنة قطاع النقل وتوفير تجربة آمنة ومنظمة للركاب والسائقين.</p>
+            <div class="flex flex-wrap gap-2 pt-2">
+              <span class="px-4 py-1.5 bg-[#0EA5E9]/10 text-[#0EA5E9] text-[10px] font-black rounded-full uppercase">Real-time Tracking</span>
+              <span class="px-4 py-1.5 bg-[#0EA5E9]/10 text-[#0EA5E9] text-[10px] font-black rounded-full uppercase">Booking System</span>
+            </div>
+            <div class="flex justify-between items-center border-t border-[#0EA5E9]/20 pt-4 mt-6">
+              <a href="toktokgo-privacy.html" onclick="event.stopPropagation()" class="inline-flex items-center gap-2 text-slate-500 dark:text-slate-400 hover:text-[#0EA5E9] text-sm font-bold transition-colors">
+                <i data-lucide="shield" class="w-4 h-4"></i> سياسة الخصوصية
+              </a>
+              <a href="https://play.google.com/store/apps/details?id=com.tuktukgo.app&pcampaignid=web_share" onclick="event.stopPropagation()" target="_blank"
+                 class="inline-flex items-center gap-2 bg-[#0EA5E9] text-[#020617] px-4 py-2 rounded-xl font-black text-sm hover:scale-105 hover:gap-4 transition-all hover-cyan-glow">
+                جوجل بلاي <i data-lucide="arrow-left" class="w-4 h-4"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Project 3: Build Calc -->
+        <div onclick="window.location.href='buildcalc.html'" class="cursor-pointer group glass rounded-[3rem] p-8 space-y-6 hover-3d transition-all duration-500 border border-[#0EA5E9]/20 active:scale-95 reveal perspective-1000 preserve-3d" style="transition-delay: 0.4s;">
+          <div class="relative overflow-hidden rounded-3xl aspect-[16/10] bg-black group-hover:shadow-2xl transition-all duration-500 tilt-image">
+             <img src="buildcalc-hero.png" alt="Build Calc" loading="lazy" decoding="async" class="absolute inset-0 w-full h-full object-cover opacity-80 group-hover:scale-110 group-hover:opacity-100 transition-all duration-700">
+             <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent opacity-80 group-hover:opacity-60 transition-all duration-500"></div>
+          </div>
+          <div class="space-y-4">
+            <div class="flex justify-between items-center">
+              <span class="text-xs font-black tracking-widest text-[#0EA5E9] uppercase">Engineering & Tools</span>
+              <div class="flex gap-2">
+                <i data-lucide="database" class="w-4 h-4 text-[#0EA5E9]"></i>
+                <i data-lucide="file-text" class="w-4 h-4 text-[#0EA5E9]"></i>
+              </div>
+            </div>
+            <h3 class="text-4xl font-black text-slate-900 dark:text-white group-hover:text-[#0EA5E9] transition-colors duration-300">Build Calc</h3>
+            <p class="text-slate-600 dark:text-slate-300 font-medium leading-relaxed"
+               data-ar="تم تطوير Build Calc لمعالجة هدر المواد في مواقع البناء. يعتمد التطبيق على خوارزميات رياضية دقيقة لحساب الأوزان والكميات، مع توفير واجهة مستخدم بديهية تسمح للمهندسين بإصدار مقايسات كاملة في دقائق."
+               data-en="Build Calc was developed to address material waste on construction sites. The app relies on precise mathematical algorithms to calculate weights and quantities, providing an intuitive UI that allows engineers to issue full estimates in minutes.">أداة هندسية دقيقة لحساب كميات وتكاليف مواد البناء، مخصصة للمهندسين والمقاولين لضمان دقة التخطيط المالي للمشاريع.</p>
+            <div class="flex flex-wrap gap-2 pt-2">
+              <span class="px-4 py-1.5 bg-[#0EA5E9]/10 text-[#0EA5E9] text-[10px] font-black rounded-full uppercase">Accuracy focus</span>
+              <span class="px-4 py-1.5 bg-[#0EA5E9]/10 text-[#0EA5E9] text-[10px] font-black rounded-full uppercase">PDF Export</span>
+            </div>
+            <div class="flex justify-between items-center border-t border-[#0EA5E9]/20 pt-4 mt-6">
+              <a href="buildcalc-privacy.html" onclick="event.stopPropagation()" class="inline-flex items-center gap-2 text-slate-500 dark:text-slate-400 hover:text-[#0EA5E9] text-sm font-bold transition-colors">
+                <i data-lucide="shield" class="w-4 h-4"></i> سياسة الخصوصية
+              </a>
+              <a href="https://play.google.com/store/apps/details?id=com.buildcalc.flutter_application_2&pcampaignid=web_share" onclick="event.stopPropagation()" target="_blank" class="inline-flex items-center gap-2 bg-[#0EA5E9] text-[#020617] px-4 py-2 rounded-xl font-black text-sm hover:scale-105 hover:gap-4 transition-all hover-cyan-glow">
+                جوجل بلاي <i data-lucide="arrow-left" class="w-4 h-4"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Developer Profile Section (New) -->
+  <section id="developer" class="py-32 px-6 relative overflow-hidden reveal">
+    <div class="container mx-auto">
+      <div onclick="window.location.href='developer.html'" class="cursor-pointer group glass rounded-[4rem] p-8 md:p-20 relative overflow-hidden border border-[#0EA5E9]/20 shadow-2xl hover:shadow-[#0EA5E9]/10 hover-cyan-glow transition-all duration-700">
+        <!-- Abstract Decorations -->
+        <div
+          class="absolute top-0 right-0 w-96 h-96 bg-[#0EA5E9]/5 rounded-full blur-[120px] -translate-y-1/2 translate-x-1/2">
+        </div>
+        <div
+          class="absolute bottom-0 left-0 w-80 h-80 bg-[#0EA5E9]/5 rounded-full blur-[100px] translate-y-1/2 -translate-x-1/2">
+        </div>
+
+        <div class="relative z-10 grid lg:grid-cols-12 gap-16 items-center reveal">
+          <!-- Textual Content -->
+          <div class="lg:col-span-7 space-y-8">
+            <div class="space-y-4">
+              <h6 class="text-[#0EA5E9] font-black tracking-widest uppercase text-sm" data-ar="العقل المدبر" data-en="The Mastermind">العقل المدبر</h6>
+              <h2 class="text-5xl md:text-7xl font-black tracking-tighter text-slate-900 dark:text-white">
+                <span data-ar="عبد الرءوف رفعت" data-en="Abdulraouf Refaat">عبد الرءوف رفعت</span> <br>
+                <span id="typing-title" 
+                      data-text-ar="خبير الحلول الرقمية" 
+                      data-text-en="Digital Solutions Expert"
+                      class="italic text-[#0EA5E9] typing-cursor"></span>
+              </h2>
+            </div>
+            <p class="text-xl text-slate-600 dark:text-slate-300 leading-relaxed font-medium"
+               data-ar="مطور برمجيات ومهتم بالتكنولوجيا التطبيقية، متخصص في بناء أنظمة معقدة تخدم قطاعات التكنولوجيا المالية (FinTech)، النقل، والأدوات الهندسية. أسعى دائماً لدمج الدقة الهندسية مع أحدث تقنيات تطوير الويب والموبايل لخلق منتجات رقمية تجعل الحياة أسهل وأكثر تنظيماً."
+               data-en="Software developer interested in applied technology, specialized in building complex systems for FinTech, transport, and engineering tools. I always strive to merge engineering precision with the latest web and mobile technologies to create digital products that make life easier and more organized.">
+              مطور برمجيات ومهتم بالتكنولوجيا التطبيقية، متخصص في بناء أنظمة معقدة تخدم قطاعات التكنولوجيا المالية (FinTech)، النقل، والأدوات الهندسية.
+              أسعى دائماً لدمج الدقة الهندسية مع أحدث تقنيات تطوير الويب والموبايل لخلق منتجات رقمية تجعل الحياة أسهل وأكثر تنظيماً.
+            </p>
+
+            <!-- Skills Tags -->
+            <div class="flex flex-wrap gap-3">
+              <span class="px-6 py-3 glass rounded-full text-sm font-bold border border-[#0EA5E9]/20 text-[#0EA5E9]">Full-Stack
+                Architect</span>
+              <span class="px-6 py-3 glass rounded-full text-sm font-bold border border-[#0EA5E9]/20 text-[#0EA5E9]">UI/UX
+                Strategist</span>
+              <span class="px-6 py-3 glass rounded-full text-sm font-bold border border-[#0EA5E9]/20 text-[#0EA5E9]">AI
+                Integration</span>
+              <span class="px-6 py-3 glass rounded-full text-sm font-bold border border-[#0EA5E9]/20 text-[#0EA5E9]">Clean Code
+                Advocate</span>
+            </div>
+
+            <div class="pt-8 flex items-center gap-8">
+              <div class="flex -space-x-4 space-x-reverse">
+                <div
+                  class="w-14 h-14 rounded-full border-4 border-slate-900 bg-[#0EA5E9] text-[#020617] flex items-center justify-center font-black">
+                  JS</div>
+                <div
+                  class="w-14 h-14 rounded-full border-4 border-slate-900 bg-[#0284C7] text-white flex items-center justify-center font-black">
+                  PY</div>
+                <div
+                  class="w-14 h-14 rounded-full border-4 border-slate-900 bg-[#0EA5E9] text-[#020617] flex items-center justify-center font-black">
+                  React</div>
+              </div>
+              <p class="text-sm font-bold text-slate-500 dark:text-slate-400">خبرة في بناء الأنظمة المعقدة والقابلة للتوسع</p>
+            </div>
+          </div>
+
+          <!-- Creative Visual (Avatar/Card) -->
+          <div class="lg:col-span-5 flex justify-center">
+            <div class="relative w-full max-w-sm group">
+              <!-- Animated Rings -->
+              <div
+                class="absolute inset-0 bg-gradient-to-br from-[#0EA5E9]/20 to-sky-900/20 rounded-[3rem] blur-2xl opacity-20 group-hover:opacity-40 transition-opacity animate-pulse-slow">
+              </div>
+
+              <div
+                class="relative glass rounded-[3rem] p-4 border border-[#0EA5E9]/30 shadow-2xl transform rotate-3 hover-3d transition-transform duration-500 perspective-1000 preserve-3d">
+                <div
+                  class="rounded-[2.5rem] overflow-hidden bg-black aspect-[4/5] flex items-center justify-center relative tilt-image">
+                  <!-- Real Developer Image -->
+                  <img src="developer.jpg" alt="The Developer" class="absolute inset-0 w-full h-full object-cover">
+                  <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-transparent to-transparent"></div>
+
+                  <div class="relative z-10 text-white text-center p-6 space-y-4 mt-auto">
+                    <div
+                      class="w-16 h-16 bg-[#0EA5E9]/20 backdrop-blur-md rounded-2xl mx-auto flex items-center justify-center mb-2 border border-[#0EA5E9]/30 text-[#0EA5E9]">
+                      <i data-lucide="terminal" class="w-8 h-8"></i>
+                    </div>
+                    <h4 class="text-2xl font-black tracking-widest uppercase text-[#0EA5E9]">The Developer</h4>
+                    <p class="text-xs font-bold text-[#0EA5E9] tracking-[0.2em]">CRAFTING DIGITAL REALMS</p>
+                  </div>
+
+                  <!-- Floating UI Elements -->
+                  <div class="absolute bottom-6 right-6 glass p-3 rounded-xl animate-float shadow-lg">
+                    <i data-lucide="code" class="w-6 h-6 text-[#0EA5E9]"></i>
+                  </div>
+                  <div class="absolute top-6 left-6 glass p-3 rounded-xl animate-float shadow-lg"
+                    style="animation-delay: 1.5s;">
+                    <i data-lucide="sparkles" class="w-6 h-6 text-[#0EA5E9]"></i>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Digital Idea Hub (Comments System) -->
+  <section id="idea-hub" class="py-32 px-6 relative overflow-hidden">
+    <div class="container mx-auto">
+      <div class="grid lg:grid-cols-12 gap-16">
+        <!-- Info & Stats -->
+        <div class="lg:col-span-5 space-y-8 reveal">
+          <div class="inline-flex items-center gap-3 px-6 py-2 rounded-full border border-[#0EA5E9]/20 glass text-xs font-black tracking-widest uppercase text-[#0EA5E9]">
+            <i data-lucide="lightbulb" class="w-4 h-4"></i> Community Pulse
+          </div>
+          <h2 class="text-4xl md:text-6xl font-black italic uppercase text-slate-900 dark:text-white" data-ar="مختبر الأفكار" data-en="Digital Idea Hub">مختبر <span class="text-[#0EA5E9] underline decoration-[#0EA5E9]/50">الأفكار</span></h2>
+          <p class="text-xl text-slate-600 dark:text-slate-300 font-medium leading-relaxed"
+             data-ar="شاركنا رؤيتك للمستقبل. هنا، تتحول الأفكار البسيطة إلى مشاريع تقنية كبرى. نؤمن بأن كل تعليق قد يكون شرارة لابتكار قادم."
+             data-en="Share your vision for the future. Here, simple ideas transform into major tech projects. We believe every comment could be the spark for the next innovation.">
+            شاركنا رؤيتك للمستقبل. هنا، تتحول الأفكار البسيطة إلى مشاريع تقنية كبرى. نؤمن بأن كل تعليق قد يكون شرارة لابتكار قادم.
+          </p>
+        </div>
+
+        <!-- Idea Submission & Feed -->
+        <div class="lg:col-span-7 space-y-10 reveal" style="transition-delay: 0.2s;">
+          <!-- Post Form -->
+          <div class="glass p-8 rounded-[2.5rem] border-[#0EA5E9]/20 shadow-2xl space-y-6">
+            <div class="flex items-start gap-4">
+              <div class="w-12 h-12 bg-[#0EA5E9] text-[#020617] rounded-2xl flex items-center justify-center shrink-0 shadow-lg">
+                <i data-lucide="message-square-plus" class="w-6 h-6"></i>
+              </div>
+              <div class="flex-1 space-y-4">
+                <div class="grid grid-cols-2 gap-4">
+                  <input type="text" id="idea-name" placeholder="اسمك الكريم" data-ar="اسمك الكريم" data-en="Your Name"
+                         class="w-full bg-slate-100 dark:bg-white/5 border border-slate-300 dark:border-white/10 focus:border-[#0EA5E9] text-slate-900 dark:text-white p-4 rounded-xl outline-none transition-all font-bold text-sm">
+                  <select id="idea-tag" class="w-full bg-white dark:bg-[#111] border border-slate-300 dark:border-white/10 focus:border-[#0EA5E9] p-4 rounded-xl outline-none transition-all font-bold text-sm text-[#0EA5E9]">
+                    <option value="Idea" data-ar="فكرة جديدة" data-en="New Idea">فكرة جديدة</option>
+                    <option value="Feature" data-ar="طلب ميزة" data-en="Feature Request">طلب ميزة</option>
+                    <option value="UI/UX" data-ar="تحسين تصميم" data-en="Design Feedback">تحسين تصميم</option>
+                    <option value="Crazy" data-ar="فكرة مجنونة" data-en="Crazy Idea">فكرة مجنونة</option>
+                  </select>
+                </div>
+                <textarea id="idea-text" placeholder="ما هي فكرتك العظيمة؟" data-ar="ما هي فكرتك العظيمة؟" data-en="What is your great idea?" rows="3"
+                          class="w-full bg-slate-100 dark:bg-white/5 border border-slate-300 dark:border-white/10 focus:border-[#0EA5E9] text-slate-900 dark:text-white p-4 rounded-xl outline-none transition-all font-medium"></textarea>
+              </div>
+            </div>
+            <div class="flex justify-between items-center pt-2">
+              <p class="text-xs text-slate-500 dark:text-slate-400 font-medium" data-ar="سيتم إرسال فكرتك لمختبرنا فوراً" data-en="Your idea will be sent to our lab immediately">سيتم إرسال فكرتك لمختبرنا فوراً</p>
+              <button id="post-idea-btn" class="bg-[#0EA5E9] text-[#020617] px-8 py-3 rounded-xl font-black text-sm hover:scale-105 active:scale-95 transition-all shadow-lg hover-cyan-glow"
+                      data-ar="نشر الفكرة" data-en="Post Idea">
+                نشر الفكرة
+              </button>
+            </div>
+          </div>
+
+          <!-- Idea Feed -->
+          <div id="idea-feed" class="space-y-6 max-h-[500px] overflow-y-auto pr-4 scroll-smooth">
+             <!-- Ideas will be injected here -->
+             <div class="animate-pulse space-y-4">
+               <div class="h-24 bg-slate-200 dark:bg-white/5 rounded-3xl w-full"></div>
+               <div class="h-24 bg-slate-200 dark:bg-white/5 rounded-3xl w-full"></div>
+             </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="services" class="py-32 px-6">
+    <div class="container mx-auto">
+      <div class="text-center mb-20 reveal">
+        <h2 class="text-4xl md:text-6xl font-black mb-6 text-slate-900 dark:text-white" data-ar="خدماتنا الرائدة" data-en="Our Leading Services">خدماتنا <span class="text-[#0EA5E9] italic underline decoration-[#0EA5E9]/50">الرائدة</span></h2>
+        <p class="text-slate-600 dark:text-slate-300 max-w-2xl mx-auto text-lg"
+           data-ar="نقدم حلولاً متكاملة تغطي كافة جوانب المنتج الرقمي."
+           data-en="We provide integrated solutions covering all aspects of the digital product.">نقدم حلولاً متكاملة تغطي كافة جوانب
+          المنتج الرقمي.</p>
+      </div>
+      <div class="grid md:grid-cols-3 gap-8">
+        <div
+          class="group p-12 rounded-[3rem] glass hover:bg-[#0EA5E9]/5 hover-3d transition-all duration-500 border-transparent hover:border-[#0EA5E9]/30 shadow-xl reveal perspective-1000 preserve-3d">
+          <div
+            class="w-16 h-16 bg-[#0EA5E9] text-[#020617] rounded-2xl flex items-center justify-center mb-8 group-hover:scale-110 transition-transform tilt-image">
+            <i data-lucide="layout" class="w-8 h-8"></i>
+          </div>
+          <h3 class="text-3xl font-black mb-4 text-slate-900 dark:text-white" data-ar="تصميم UX/UI" data-en="UX/UI Design">تصميم UX/UI</h3>
+          <p class="text-slate-600 dark:text-slate-400 leading-relaxed text-lg" data-ar="واجهات بصرية تخاطب الحواس وتضمن تجربة مستخدم سلسة." data-en="Visual interfaces that speak to the senses and ensure a seamless user experience.">واجهات بصرية تخاطب الحواس وتضمن تجربة
+            مستخدم سلسة.</p>
+        </div>
+        <div
+          class="group p-12 rounded-[3rem] glass hover:bg-[#0EA5E9]/5 hover-3d transition-all duration-500 border-transparent hover:border-[#0EA5E9]/30 shadow-xl reveal perspective-1000 preserve-3d" style="transition-delay: 0.2s;">
+          <div
+            class="w-16 h-16 bg-[#0EA5E9] text-[#020617] rounded-2xl flex items-center justify-center mb-8 group-hover:scale-110 transition-transform tilt-image">
+            <i data-lucide="code-2" class="w-8 h-8"></i>
+          </div>
+          <h3 class="text-3xl font-black mb-4 text-slate-900 dark:text-white" data-ar="تطوير الويب" data-en="Web Development">تطوير الويب</h3>
+          <p class="text-slate-600 dark:text-slate-400 leading-relaxed text-lg" data-ar="بناء منصات ويب متطورة باستخدام أحدث التقنيات لضمان السرعة." data-en="Building advanced web platforms using the latest technologies to ensure speed.">بناء منصات ويب متطورة باستخدام أحدث
+            التقنيات لضمان السرعة.</p>
+        </div>
+        <div
+          class="group p-12 rounded-[3rem] glass hover:bg-[#0EA5E9]/5 hover-3d transition-all duration-500 border-transparent hover:border-[#0EA5E9]/30 shadow-xl reveal perspective-1000 preserve-3d" style="transition-delay: 0.4s;">
+          <div
+            class="w-16 h-16 bg-[#0EA5E9] text-[#020617] rounded-2xl flex items-center justify-center mb-8 group-hover:scale-110 transition-transform tilt-image">
+            <i data-lucide="cpu" class="w-8 h-8"></i>
+          </div>
+          <h3 class="text-3xl font-black mb-4 text-slate-900 dark:text-white" data-ar="حلول AI" data-en="AI Solutions">حلول AI</h3>
+          <p class="text-slate-600 dark:text-slate-400 leading-relaxed text-lg" data-ar="أتمتة ذكية تمنح عملك التفوق والقدرة على المنافسة." data-en="Smart automation that gives your business an edge and the ability to compete.">أتمتة ذكية تمنح عملك التفوق والقدرة على
+            المنافسة.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Interactive Cost & Project Estimator -->
+  <section id="estimator" class="py-32 px-6 bg-slate-100/80 dark:bg-[#080808] relative">
+    <div class="container mx-auto max-w-5xl">
+      <div class="text-center mb-16 space-y-4 reveal">
+        <div class="inline-flex items-center gap-2 px-6 py-2 rounded-full border border-[#0EA5E9]/30 glass text-xs font-bold uppercase tracking-widest text-[#0EA5E9]">
+          <i data-lucide="calculator" class="w-4 h-4"></i> Interactive Estimator
+        </div>
+        <h2 class="text-4xl md:text-6xl font-black text-slate-900 dark:text-white" data-ar="حاسبة تخطيط المشروع" data-en="Project Cost Estimator">حاسبة <span class="text-[#0EA5E9] italic underline decoration-[#0EA5E9]/50">تخطيط المشروع</span></h2>
+        <p class="text-slate-600 dark:text-slate-300 text-lg max-w-2xl mx-auto" data-ar="اختر متطلبات مشروعك للحصول على تقدير فوري ونطاق زمني استرشادي." data-en="Select your project requirements for an instant estimate and timeline range.">اختر متطلبات مشروعك للحصول على تقدير فوري ونطاق زمني استرشادي.</p>
+      </div>
+
+      <div class="glass p-8 md:p-12 rounded-[3rem] border border-[#0EA5E9]/30 shadow-2xl space-y-12 reveal">
+        <!-- Step 1: Platform Selection -->
+        <div class="space-y-4">
+          <h4 class="text-lg font-black text-[#0EA5E9] uppercase tracking-wider" data-ar="1. اختر نوع المنصة" data-en="1. Select Platform Type">1. اختر نوع المنصة</h4>
+          <div class="grid grid-cols-2 md:grid-cols-4 gap-4" id="estimator-type-container">
+            <div class="estimator-card glass p-6 rounded-2xl text-center space-y-3 selected" data-value="mobile" data-base="1500" data-days="14">
+              <i data-lucide="smartphone" class="w-8 h-8 text-[#0EA5E9] mx-auto"></i>
+              <div class="font-bold text-slate-900 dark:text-white text-sm" data-ar="تطبيق موبايل" data-en="Mobile App">تطبيق موبايل</div>
+            </div>
+            <div class="estimator-card glass p-6 rounded-2xl text-center space-y-3" data-value="web" data-base="1200" data-days="10">
+              <i data-lucide="globe" class="w-8 h-8 text-[#0EA5E9] mx-auto"></i>
+              <div class="font-bold text-slate-900 dark:text-white text-sm" data-ar="منصة ويب" data-en="Web Platform">منصة ويب</div>
+            </div>
+            <div class="estimator-card glass p-6 rounded-2xl text-center space-y-3" data-value="ai" data-base="2000" data-days="20">
+              <i data-lucide="cpu" class="w-8 h-8 text-[#0EA5E9] mx-auto"></i>
+              <div class="font-bold text-slate-900 dark:text-white text-sm" data-ar="حلول AI / أتمتة" data-en="AI & Automation">حلول AI / أتمتة</div>
+            </div>
+            <div class="estimator-card glass p-6 rounded-2xl text-center space-y-3" data-value="fintech" data-base="2500" data-days="25">
+              <i data-lucide="shield-check" class="w-8 h-8 text-[#0EA5E9] mx-auto"></i>
+              <div class="font-bold text-slate-900 dark:text-white text-sm" data-ar="نظام FinTech" data-en="FinTech System">نظام FinTech</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Step 2: Features Selection -->
+        <div class="space-y-4">
+          <h4 class="text-lg font-black text-[#0EA5E9] uppercase tracking-wider" data-ar="2. الميزات المطلوب تضمينها" data-en="2. Features to Include">2. الميزات المطلوب تضمينها</h4>
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-4" id="estimator-features-container">
+            <div class="estimator-card glass p-4 rounded-xl flex items-center gap-3" data-cost="300" data-days="3">
+              <input type="checkbox" class="w-5 h-5 accent-[#0EA5E9] rounded cursor-pointer feature-check">
+              <span class="text-sm font-bold text-slate-700 dark:text-slate-200" data-ar="لوحة تحكم أدمن" data-en="Admin Dashboard">لوحة تحكم أدمن</span>
+            </div>
+            <div class="estimator-card glass p-4 rounded-xl flex items-center gap-3" data-cost="400" data-days="4">
+              <input type="checkbox" class="w-5 h-5 accent-[#0EA5E9] rounded cursor-pointer feature-check">
+              <span class="text-sm font-bold text-slate-700 dark:text-slate-200" data-ar="عمل أوفلاين (Offline Mode)" data-en="Offline Mode">عمل أوفلاين (Offline Mode)</span>
+            </div>
+            <div class="estimator-card glass p-4 rounded-xl flex items-center gap-3" data-cost="500" data-days="5">
+              <input type="checkbox" class="w-5 h-5 accent-[#0EA5E9] rounded cursor-pointer feature-check">
+              <span class="text-sm font-bold text-slate-700 dark:text-slate-200" data-ar="تكامل بوابة الدفع" data-en="Payment Gateway">تكامل بوابة الدفع</span>
+            </div>
+            <div class="estimator-card glass p-4 rounded-xl flex items-center gap-3" data-cost="350" data-days="4">
+              <input type="checkbox" class="w-5 h-5 accent-[#0EA5E9] rounded cursor-pointer feature-check">
+              <span class="text-sm font-bold text-slate-700 dark:text-slate-200" data-ar="دعم لغات متعددة (Multilingual)" data-en="Multilingual Support">دعم لغات متعددة (Multilingual)</span>
+            </div>
+            <div class="estimator-card glass p-4 rounded-xl flex items-center gap-3" data-cost="450" data-days="4">
+              <input type="checkbox" class="w-5 h-5 accent-[#0EA5E9] rounded cursor-pointer feature-check">
+              <span class="text-sm font-bold text-slate-700 dark:text-slate-200" data-ar="خرائط وتتبع زمني حي" data-en="Real-time Tracking">خرائط وتتبع زمني حي</span>
+            </div>
+            <div class="estimator-card glass p-4 rounded-xl flex items-center gap-3" data-cost="600" data-days="6">
+              <input type="checkbox" class="w-5 h-5 accent-[#0EA5E9] rounded cursor-pointer feature-check">
+              <span class="text-sm font-bold text-slate-700 dark:text-slate-200" data-ar="ربط مع خوارزميات AI" data-en="AI Algorithm Integration">ربط مع خوارزميات AI</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Output Summary Card -->
+        <div class="border-t border-[#0EA5E9]/20 pt-8 flex flex-col md:flex-row items-center justify-between gap-6">
+          <div class="space-y-1 text-center md:text-right">
+            <p class="text-xs font-bold text-slate-500 dark:text-slate-400 uppercase tracking-widest" data-ar="التقدير الإسترشادي الزمني والكلفة" data-en="Estimated Cost & Timeline">التقدير الإسترشادي الزمني والكلفة</p>
+            <div class="flex items-baseline gap-4 justify-center md:justify-start">
+              <span class="text-3xl md:text-5xl font-black text-[#0EA5E9]" id="est-price">$1,500</span>
+              <span class="text-slate-700 dark:text-slate-300 font-bold text-sm" id="est-time">~ 14 يوم عمل</span>
+            </div>
+          </div>
+
+          <button id="send-estimate-btn" class="bg-[#0EA5E9] text-[#020617] px-10 py-4 rounded-2xl font-black text-lg hover-cyan-glow hover:scale-105 transition-all shadow-xl">
+            <span data-ar="طلب هذا التقدير الآن" data-en="Request This Estimate">طلب هذا التقدير الآن</span>
+            <i data-lucide="arrow-left" class="w-5 h-5 inline-block mr-2"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Tech Insights & Articles Section -->
+  <section id="insights" class="py-32 px-6">
+    <div class="container mx-auto">
+      <div class="text-center mb-20 space-y-4 reveal">
+        <div class="inline-flex items-center gap-2 px-6 py-2 rounded-full border border-[#0EA5E9]/30 glass text-xs font-bold uppercase tracking-widest text-[#0EA5E9]">
+          <i data-lucide="book-open" class="w-4 h-4"></i> Knowledge & Innovation
+        </div>
+        <h2 class="text-4xl md:text-6xl font-black text-slate-900 dark:text-white" data-ar="رؤى ومقالات تقنية" data-en="Tech Insights">رؤى ومقالات <span class="text-[#0EA5E9] italic underline decoration-[#0EA5E9]/50">تقنية</span></h2>
+        <p class="text-slate-600 dark:text-slate-300 text-lg max-w-2xl mx-auto" data-ar="أفكار ودراسات صادرة عن مختبرنا حول الذكاء الاصطناعي وهندسة البرمجيات." data-en="Thoughts and case studies from our lab on AI and software engineering.">أفكار ودراسات صادرة عن مختبرنا حول الذكاء الاصطناعي وهندسة البرمجيات.</p>
+      </div>
+
+      <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+        <!-- Article 1 (New Featured Article) -->
+        <div class="glass rounded-[2.5rem] p-8 border border-[#0EA5E9]/40 hover:border-[#0EA5E9] transition-all space-y-6 hover-3d reveal bg-[#0EA5E9]/5 flex flex-col justify-between">
+          <div class="space-y-4">
+            <div class="flex justify-between items-center text-xs font-bold text-[#0EA5E9]">
+              <span>DIGITAL TRANSFORMATION</span>
+              <span>6 min read</span>
+            </div>
+            <h3 class="text-xl font-black text-slate-900 dark:text-white hover:text-[#0EA5E9] transition-colors leading-snug" data-ar="من الروتين إلى الرقمنة: خريطة طريق شخصية لشغف إعادة رسم الخدمات في مصر" data-en="From Routine to Digitalization: A Personal Roadmap for Transforming Services in Egypt">من الروتين إلى الرقمنة: خريطة طريق شخصية لشغف إعادة رسم الخدمات في مصر</h3>
+            <p class="text-slate-600 dark:text-slate-300 text-xs leading-relaxed line-clamp-4" data-ar="تخوض مصر اليوم واحدة من أهم معاركها التنموية. الرقمنة بالنسبة لي ليست مجرد مصطلح براق، بل هي أداة حقيقية لرد الاعتبار لأغلى ما يملكه الإنسان: وقتُه وكرامتُه." data-en="Egypt is fighting one of its most critical development battles today. Digitalization to me is a real tool to restore what matters most: human time and dignity.">تخوض مصر اليوم واحدة من أهم معاركها التنموية. الرقمنة بالنسبة لي ليست مجرد مصطلح براق، بل هي أداة حقيقية لرد الاعتبار لأغلى ما يملكه الإنسان: وقتُه وكرامتُه.</p>
+          </div>
+          <button onclick="document.getElementById('article-modal').classList.remove('hidden')" class="inline-flex items-center gap-2 text-[#0EA5E9] font-black text-sm hover:translate-x-[-4px] transition-transform pt-4 border-t border-[#0EA5E9]/20">
+            <span data-ar="قراءة المقال كاملاً" data-en="Read Full Article">قراءة المقال كاملاً</span> <i data-lucide="arrow-left" class="w-4 h-4"></i>
+          </button>
+        </div>
+
+        <!-- Article 2 -->
+        <div class="glass rounded-[2.5rem] p-8 border border-[#0EA5E9]/20 hover:border-[#0EA5E9]/50 transition-all space-y-6 hover-3d reveal flex flex-col justify-between">
+          <div class="space-y-4">
+            <div class="flex justify-between items-center text-xs font-bold text-[#0EA5E9]">
+              <span>AI & ARCHITECTURE</span>
+              <span>5 min read</span>
+            </div>
+            <h3 class="text-xl font-black text-slate-900 dark:text-white hover:text-[#0EA5E9] transition-colors leading-snug" data-ar="كيف تبني تطبيقات تعمل 100% بدون إنترنت مع الحفاظ على الخصوصية؟" data-en="How to Build 100% Offline Apps while Maintaining Privacy?">كيف تبني تطبيقات تعمل 100% بدون إنترنت مع الحفاظ على الخصوصية؟</h3>
+            <p class="text-slate-600 dark:text-slate-300 text-xs leading-relaxed" data-ar="تحليل لمعمارية تطبيق WealthWay وكيف استطعنا تشفير البيانات المحلية بالكامل دون استخدام سيرفرات خارجية." data-en="Analysis of WealthWay architecture and how we encrypted local data completely without external servers.">تحليل لمعمارية تطبيق WealthWay وكيف استطعنا تشفير البيانات المحلية بالكامل دون استخدام سيرفرات خارجية.</p>
+          </div>
+          <button onclick="document.getElementById('contact-modal').classList.remove('hidden')" class="inline-flex items-center gap-2 text-[#0EA5E9] font-bold text-sm hover:translate-x-[-4px] transition-transform pt-4 border-t border-[#0EA5E9]/20">
+            <span data-ar="قراءة المزيد" data-en="Read Article">قراءة المزيد</span> <i data-lucide="arrow-left" class="w-4 h-4"></i>
+          </button>
+        </div>
+
+        <!-- Article 3 -->
+        <div class="glass rounded-[2.5rem] p-8 border border-[#0EA5E9]/20 hover:border-[#0EA5E9]/50 transition-all space-y-6 hover-3d reveal" style="transition-delay: 0.2s;">
+          <div class="flex justify-between items-center text-xs font-bold text-[#0EA5E9]">
+            <span>FINTECH SECURITY</span>
+            <span>7 min read</span>
+          </div>
+          <h3 class="text-2xl font-black text-slate-900 dark:text-white hover:text-[#0EA5E9] transition-colors" data-ar="مستقبل التكنولوجيا المالية في المنطقة العربية لعام 2026" data-en="The Future of FinTech in the Arab Region for 2026">مستقبل التكنولوجيا المالية في المنطقة العربية لعام 2026</h3>
+          <p class="text-slate-600 dark:text-slate-300 text-sm leading-relaxed" data-ar="رؤية حول تطور الأنظمة المالية الذكية والربط البنكي الآمن في التطبيقات الحديثة." data-en="Insights on the evolution of smart financial systems and secure banking integration in modern apps.">رؤية حول تطور الأنظمة المالية الذكية والربط البنكي الآمن في التطبيقات الحديثة.</p>
+          <button onclick="document.getElementById('contact-modal').classList.remove('hidden')" class="inline-flex items-center gap-2 text-[#0EA5E9] font-bold text-sm hover:translate-x-[-4px] transition-transform">
+            <span data-ar="قراءة المزيد" data-en="Read Article">قراءة المزيد</span> <i data-lucide="arrow-left" class="w-4 h-4"></i>
+          </button>
+        </div>
+
+        <!-- Article 4 -->
+        <div class="glass rounded-[2.5rem] p-8 border border-[#0EA5E9]/20 hover:border-[#0EA5E9]/50 transition-all space-y-6 hover-3d reveal" style="transition-delay: 0.4s;">
+          <div class="flex justify-between items-center text-xs font-bold text-[#0EA5E9]">
+            <span>GEOLOCATION & MAPS</span>
+            <span>4 min read</span>
+          </div>
+          <h3 class="text-2xl font-black text-slate-900 dark:text-white hover:text-[#0EA5E9] transition-colors" data-ar="تحديات تتبع المركبات لحظياً في البيئات المزدحمة" data-en="Challenges of Real-time Vehicle Tracking in Dense Environments">تحديات تتبع المركبات لحظياً في البيئات المزدحمة</h3>
+          <p class="text-slate-600 dark:text-slate-300 text-sm leading-relaxed" data-ar="دروس مستفادة من تطوير Tok Tok Go لتنسيق حركة وسائل النقل في المدن المزدحمة بكفاءة." data-en="Lessons learned from developing Tok Tok Go to coordinate transportation efficiently in crowded cities.">دروس مستفادة من تطوير Tok Tok Go لتنسيق حركة وسائل النقل في المدن المزدحمة بكفاءة.</p>
+          <button onclick="document.getElementById('contact-modal').classList.remove('hidden')" class="inline-flex items-center gap-2 text-[#0EA5E9] font-bold text-sm hover:translate-x-[-4px] transition-transform">
+            <span data-ar="قراءة المزيد" data-en="Read Article">قراءة المزيد</span> <i data-lucide="arrow-left" class="w-4 h-4"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ Accordion Section -->
+  <section id="faq" class="py-32 px-6 bg-slate-100/80 dark:bg-[#060606] relative">
+    <div class="container mx-auto max-w-4xl">
+      <div class="text-center mb-16 space-y-4 reveal">
+        <div class="inline-flex items-center gap-2 px-6 py-2 rounded-full border border-[#0EA5E9]/30 glass text-xs font-bold uppercase tracking-widest text-[#0EA5E9]">
+          <i data-lucide="help-circle" class="w-4 h-4"></i> Clear Answers
+        </div>
+        <h2 class="text-4xl md:text-6xl font-black text-slate-900 dark:text-white" data-ar="الأسئلة الشائعة" data-en="Frequently Asked Questions">الأسئلة <span class="text-[#0EA5E9] italic underline decoration-[#0EA5E9]/50">الشائعة</span></h2>
+        <p class="text-slate-600 dark:text-slate-300 text-lg max-w-xl mx-auto" data-ar="إجابات مباشرة على أكثر التساؤلات شيوعاً حول خدماتنا وآلية العمل." data-en="Direct answers to the most common questions about our services and process.">إجابات مباشرة على أكثر التساؤلات شيوعاً حول خدماتنا وآلية العمل.</p>
+      </div>
+
+      <div class="space-y-4 reveal" id="faq-container">
+        <!-- Item 1 -->
+        <div class="faq-item glass rounded-2xl border border-[#0EA5E9]/20 p-6 cursor-pointer">
+          <div class="flex justify-between items-center">
+            <h4 class="text-lg font-bold text-slate-900 dark:text-white" data-ar="كم تستغرق مدة تطوير وتنسيق المشروع؟" data-en="How long does it take to develop a project?">كم تستغرق مدة تطوير وتنسيق المشروع؟</h4>
+            <i data-lucide="chevron-down" class="faq-icon w-6 h-6 text-[#0EA5E9] transition-transform"></i>
+          </div>
+          <div class="faq-answer mt-4 text-slate-600 dark:text-slate-300 leading-relaxed text-sm" data-ar="تعتمد المدة على حجم وتعقيد المشروع. عادة ما تستغرق المشاريع المتوسطة بين 2 إلى 4 أسابيع، بينما يتم تحديد النطاق الزمني الدقيق مسبقاً في خطة العمل." data-en="Timeline depends on complexity. Medium projects typically take 2 to 4 weeks, with an exact schedule defined upfront in the plan.">
+            تعتمد المدة على حجم وتعقيد المشروع. عادة ما تستغرق المشاريع المتوسطة بين 2 إلى 4 أسابيع، بينما يتم تحديد النطاق الزمني الدقيق مسبقاً في خطة العمل.
+          </div>
+        </div>
+
+        <!-- Item 2 -->
+        <div class="faq-item glass rounded-2xl border border-[#0EA5E9]/20 p-6 cursor-pointer">
+          <div class="flex justify-between items-center">
+            <h4 class="text-lg font-bold text-slate-900 dark:text-white" data-ar="كيف تضمنون خصوصية وسرية بيانات البرمجيات؟" data-en="How do you ensure data privacy and security?">كيف تضمنون خصوصية وسرية بيانات البرمجيات؟</h4>
+            <i data-lucide="chevron-down" class="faq-icon w-6 h-6 text-[#0EA5E9] transition-transform"></i>
+          </div>
+          <div class="faq-answer mt-4 text-slate-600 dark:text-slate-300 leading-relaxed text-sm" data-ar="نلتزم بأعلى معايير التشفير (AES-256) ونستعمل هندسة معمارية تضمن ملكية العميل الكاملة للكود والشفرة المصدرية مع اتفاقية حماية الملكية الفكرية (NDA)." data-en="We strictly follow AES-256 encryption standards and ensure complete client ownership of source code with an NDA agreement.">
+            نلتزم بأعلى معايير التشفير (AES-256) ونستعمل هندسة معمارية تضمن ملكية العميل الكاملة للكود والشفرة المصدرية مع اتفاقية حماية الملكية الفكرية (NDA).
+          </div>
+        </div>
+
+        <!-- Item 3 -->
+        <div class="faq-item glass rounded-2xl border border-[#0EA5E9]/20 p-6 cursor-pointer">
+          <div class="flex justify-between items-center">
+            <h4 class="text-lg font-bold text-slate-900 dark:text-white" data-ar="هل توفرون الدعم والصيانة بعد إطلاق التطبيق؟" data-en="Do you offer post-launch support and maintenance?">هل توفرون الدعم والصيانة بعد إطلاق التطبيق؟</h4>
+            <i data-lucide="chevron-down" class="faq-icon w-6 h-6 text-[#0EA5E9] transition-transform"></i>
+          </div>
+          <div class="faq-answer mt-4 text-slate-600 dark:text-slate-300 leading-relaxed text-sm" data-ar="نعم، نقدم ضمان دعم فني مجاني ومتابعة استقرار النظام لمدة 3 أشهر بعد الإطلاق، مع إمكانية التمديد لعقود صيانة سنوية." data-en="Yes, we provide 3 months of free technical support and system monitoring post-launch, with optional long-term maintenance contracts.">
+            نعم، نقدم ضمان دعم فني مجاني ومتابعة استقرار النظام لمدة 3 أشهر بعد الإطلاق، مع إمكانية التمديد لعقود صيانة سنوية.
+          </div>
+        </div>
+
+        <!-- Item 4 -->
+        <div class="faq-item glass rounded-2xl border border-[#0EA5E9]/20 p-6 cursor-pointer">
+          <div class="flex justify-between items-center">
+            <h4 class="text-lg font-bold text-slate-900 dark:text-white" data-ar="ما هي التقنيات الأساسية التي يعتمد عليها مختبر CODX؟" data-en="What core technologies does CODX Lab use?">ما هي التقنيات الأساسية التي يعتمد عليها مختبر CODX؟</h4>
+            <i data-lucide="chevron-down" class="faq-icon w-6 h-6 text-[#0EA5E9] transition-transform"></i>
+          </div>
+          <div class="faq-answer mt-4 text-slate-600 dark:text-slate-300 leading-relaxed text-sm" data-ar="نستخدم أحدث لغات وأطر العمل العالمية مثل Flutter, React, Node.js, Python, ورسومات الويب المتقدمة لضمان أقصى سرعة وكفاءة." data-en="We leverage cutting-edge tech stacks including Flutter, React, Node.js, Python, and advanced web graphics to ensure top performance.">
+            نستخدم أحدث لغات وأطر العمل العالمية مثل Flutter, React, Node.js, Python, ورسومات الويب المتقدمة لضمان أقصى سرعة وكفاءة.
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="py-20 border-t border-slate-300 dark:border-[#0EA5E9]/20 mt-20">
+    <div class="container mx-auto px-6 text-center space-y-8">
+      <div class="text-4xl font-black italic tracking-tighter text-[#0EA5E9]">CODX</div>
+      <div class="flex justify-center flex-wrap gap-6">
+        <a href="https://github.com/alomd" target="_blank" aria-label="Visit GitHub Profile"
+          class="w-14 h-14 glass rounded-full flex items-center justify-center text-[#0EA5E9] hover:-translate-y-2 hover:bg-[#24292e] hover:text-white hover:border-[#24292e] shadow-lg hover:shadow-[0_10px_20px_rgba(14,165,233,0.2)] transition-all duration-300 group"><i
+            class="fa-brands fa-github text-2xl group-hover:scale-110 transition-transform"></i></a>
+        <a href="https://x.com/iAHNDJVAEUSEH2E" target="_blank" aria-label="Visit X (Twitter) Profile"
+          class="w-14 h-14 glass rounded-full flex items-center justify-center text-[#0EA5E9] hover:-translate-y-2 hover:bg-white hover:text-black hover:border-white shadow-lg hover:shadow-[0_10px_20px_rgba(14,165,233,0.2)] transition-all duration-300 group"><i
+            class="fa-brands fa-x-twitter text-2xl group-hover:scale-110 transition-transform"></i></a>
+        <a href="https://www.youtube.com/@al3omda1" target="_blank" aria-label="Visit YouTube Channel"
+          class="w-14 h-14 glass rounded-full flex items-center justify-center text-[#0EA5E9] hover:-translate-y-2 hover:bg-[#FF0000] hover:text-white hover:border-[#FF0000] shadow-lg hover:shadow-[0_10px_20px_rgba(255,0,0,0.3)] transition-all duration-300 group"><i
+            class="fa-brands fa-youtube text-2xl group-hover:scale-110 transition-transform"></i></a>
+        <a href="https://www.instagram.com/3omda_46?igsh=NWw1ZTQ3aHNsNThz" target="_blank" aria-label="Visit Instagram Profile"
+          class="w-14 h-14 glass rounded-full flex items-center justify-center text-[#0EA5E9] hover:-translate-y-2 hover:bg-gradient-to-tr hover:from-[#f09433] hover:via-[#e6683c] hover:to-[#bc1888] hover:text-white hover:border-transparent shadow-lg hover:shadow-[0_10px_20px_rgba(225,48,108,0.3)] transition-all duration-300 group"><i
+            class="fa-brands fa-instagram text-2xl group-hover:scale-110 transition-transform"></i></a>
+        <a href="https://www.linkedin.com/in/al-aomda-1-0854b8261?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" aria-label="Visit LinkedIn Profile"
+          target="_blank"
+          class="w-14 h-14 glass rounded-full flex items-center justify-center text-[#0EA5E9] hover:-translate-y-2 hover:bg-[#0077b5] hover:text-white hover:border-[#0077b5] shadow-lg hover:shadow-[0_10px_20px_rgba(0,119,181,0.3)] transition-all duration-300 group"><i
+            class="fa-brands fa-linkedin-in text-2xl group-hover:scale-110 transition-transform"></i></a>
+        <a href="https://wa.me/201223347637" target="_blank" aria-label="Contact via WhatsApp"
+          class="w-14 h-14 glass rounded-full flex items-center justify-center text-[#0EA5E9] hover:-translate-y-2 hover:bg-[#25D366] hover:text-white hover:border-[#25D366] shadow-lg hover:shadow-[0_10px_20px_rgba(37,211,102,0.3)] transition-all duration-300 group"><i
+            class="fa-brands fa-whatsapp text-2xl group-hover:scale-110 transition-transform"></i></a>
+      </div>
+      <div class="flex flex-col items-center gap-4 mt-12 mb-2">
+        <p class="text-slate-600 dark:text-slate-400 font-medium tracking-widest text-sm uppercase" data-ar="© 2026 CODX LAB | صناعة المستقبل العربي" data-en="© 2026 CODX LAB | CRAFTING THE ARAB FUTURE">© 2026 CODX LAB | صناعة المستقبل العربي</p>
+        <a href="privacy-policy.html" class="text-slate-600 dark:text-slate-400 hover:text-[#0EA5E9] text-xs font-bold transition-colors underline underline-offset-4" data-ar="سياسة الخصوصية العامة" data-en="General Privacy Policy">سياسة الخصوصية العامة</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Hybrid Contact Modal -->
+  <div id="contact-modal"
+    class="hidden fixed inset-0 z-[200] flex items-center justify-center bg-slate-900/60 dark:bg-black/85 backdrop-blur-xl p-4 md:p-6 overflow-y-auto">
+    <div class="relative w-full max-w-2xl glass rounded-[2.5rem] p-8 md:p-10 border border-[#0EA5E9]/30 shadow-2xl animate-scale-up space-y-8 my-auto">
+      <button onclick="document.getElementById('contact-modal').classList.add('hidden')"
+        class="absolute top-6 left-6 text-slate-400 hover:text-slate-900 dark:hover:text-white transition-colors p-2 glass rounded-full">
+        <i data-lucide="x" class="w-6 h-6"></i>
+      </button>
+
+      <div class="space-y-3">
+        <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-[#10B981]/40 bg-[#10B981]/10 text-xs font-bold text-[#10B981]">
+          <span class="w-2 h-2 rounded-full bg-[#10B981] animate-pulse"></span>
+          <span data-ar="ساعات العمل: 9:00 ص - 6:00 م" data-en="Business Hours: 9:00 AM - 6:00 PM">ساعات العمل: 9:00 ص - 6:00 م</span>
+        </div>
+        <h2 class="text-3xl md:text-4xl font-black text-slate-900 dark:text-white" data-ar="قنوات التواصل المؤسسي" data-en="Official Business Channels">قنوات التواصل <span class="text-[#0EA5E9]">المؤسسي</span></h2>
+        <p class="text-slate-600 dark:text-slate-300 text-sm font-medium" data-ar="اختر القناة المناسبة للتواصل مع فريق CODX بسهولة وسرعة." data-en="Choose your preferred channel to connect with CODX team easily.">اختر القناة المناسبة للتواصل مع فريق CODX بسهولة وسرعة.</p>
+      </div>
+
+      <!-- Hybrid Contact Options Grid -->
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <!-- 1. WhatsApp Business -->
+        <a href="https://wa.me/201223347637?text=%D8%A3%D9%87%D9%84%D8%A3%20%D8%A8%D9%83%D9%8F!%20%D8%B4%D8%B1%D9%81%D8%AA%D9%86%D8%A7%20%D8%A8%D8%A7%D9%84%D8%AA%D9%88%D8%A7%D8%B5%D9%84%20%D9%85%D8%B9%20CODX%20Lab.%20%D9%8A%D8%B1%D8%AC%D9%89%20%D8%A5%D8%B1%D8%B3%D8%A7%D9%84%20%D8%AA%D9%81%D8%A7%D8%B5%D9%8A%D9%84%20%D8%A7%D8%B3%D8%AA%D9%81%D8%B3%D8%A7%D8%B1%D9%83%20%D8%A3%D9%88%20%D9%86%D9%88%D8%B9%20%D8%A7%D9%84%D9%85%D8%B4%D8%B1%D9%88%D8%B9%20%D8%A7%D9%84%D8%B0%D9%8A%20%D8%AA%D8%B1%D8%BA%D8%A8%20%D9%81%D9%8A%20%D8%AA%D9%86%D9%81%D9%8A%D8%B0%D9%87%D9%8F%D8%8C%20%D9%88%D8%B3%D9%8A%D9%82%D9%88%D9%85%20%D9%81%D8%B1%D9%8A%D9%82%D9%86%D8%A7%20%D8%A8%D8%A7%D9%84%D8%B1%D8%AF%20%D8%B9%D9%84%D9%8A%D9%83%20%D9%81%D9%8A%20%D8%A3%D9%82%D8%B1%D8%A8%20%D9%88%D9%80%D9%82%D8%AA%20%D8%AE%D9%84%D8%A7%D9%84%20%D8%B3%D8%A7%D8%B9%D8%A7%D8%AA%20%D8%A7%D9%84%D8%B9%D9%85%D9%84."
+           target="_blank" class="glass p-5 rounded-2xl border border-[#25D366]/40 hover:border-[#25D366] hover:bg-[#25D366]/10 transition-all flex items-center gap-4 group">
+          <div class="w-12 h-12 rounded-xl bg-[#25D366]/20 text-[#25D366] flex items-center justify-center font-bold text-xl group-hover:scale-110 transition-transform shrink-0">
+            <i class="fa-brands fa-whatsapp"></i>
+          </div>
+          <div>
+            <div class="font-bold text-slate-900 dark:text-white text-base" data-ar="واتساب للأعمال" data-en="WhatsApp Business">واتساب للأعمال</div>
+            <div class="text-xs text-slate-500 dark:text-slate-400 font-medium" data-ar="محادثة واستشارات فورية" data-en="Instant Chat & Consultation">محادثة واستشارات فورية</div>
+          </div>
+        </a>
+
+        <!-- 2. Direct Phone Call -->
+        <a href="tel:+201223347637" class="glass p-5 rounded-2xl border border-[#0EA5E9]/40 hover:border-[#0EA5E9] hover:bg-[#0EA5E9]/10 transition-all flex items-center gap-4 group">
+          <div class="w-12 h-12 rounded-xl bg-[#0EA5E9]/20 text-[#0EA5E9] flex items-center justify-center font-bold text-xl group-hover:scale-110 transition-transform shrink-0">
+            <i data-lucide="phone-call" class="w-6 h-6"></i>
+          </div>
+          <div>
+            <div class="font-bold text-slate-900 dark:text-white text-base" data-ar="اتصال هاتفي مباشر" data-en="Direct Call">اتصال هاتفي مباشر</div>
+            <div class="text-xs text-slate-500 dark:text-slate-400 font-medium" data-ar="متاح خلال ساعات العمل" data-en="Available during work hours">متاح خلال ساعات العمل</div>
+          </div>
+        </a>
+
+        <!-- 3. Book Consultation Call -->
+        <a href="https://wa.me/201223347637?text=%D8%A3%D8%B1%D8%BA%D8%A8%20%D9%81%D9%8A%20%D8%AD%D8%AC%D8%B2%20%D9%85%D9%88%D8%B9%D8%AF%20%D9%84%D9%85%D9%83%D8%A7%D9%84%D9%85%D8%A9%20%D8%A7%D8%B3%D8%AA%D8%B4%D8%A7%D8%B1%D9%8A%D8%A9%20%D8%AA%D9%82%D9%86%D9%8A%D8%A9%20%D9%85%D8%B9%20%D9%81%D8%B1%D9%8A%D9%82%20CODX."
+           target="_blank" class="glass p-5 rounded-2xl border border-[#10B981]/40 hover:border-[#10B981] hover:bg-[#10B981]/10 transition-all flex items-center gap-4 group">
+          <div class="w-12 h-12 rounded-xl bg-[#10B981]/20 text-[#10B981] flex items-center justify-center font-bold text-xl group-hover:scale-110 transition-transform shrink-0">
+            <i data-lucide="calendar" class="w-6 h-6"></i>
+          </div>
+          <div>
+            <div class="font-bold text-slate-900 dark:text-white text-base" data-ar="حجز مكالمة استشارية" data-en="Book Consultation">حجز مكالمة استشارية</div>
+            <div class="text-xs text-slate-500 dark:text-slate-400 font-medium" data-ar="تنسيق موعد اجتماع تقني" data-en="Schedule a structured tech meeting">تنسيق موعد اجتماع تقني</div>
+          </div>
+        </a>
+
+        <!-- 4. Telegram Business -->
+        <a href="https://t.me/alomda1" target="_blank" class="glass p-5 rounded-2xl border border-sky-400/40 hover:border-sky-400 hover:bg-sky-400/10 transition-all flex items-center gap-4 group">
+          <div class="w-12 h-12 rounded-xl bg-sky-400/20 text-sky-400 flex items-center justify-center font-bold text-xl group-hover:scale-110 transition-transform shrink-0">
+            <i class="fa-brands fa-telegram"></i>
+          </div>
+          <div>
+            <div class="font-bold text-slate-900 dark:text-white text-base" data-ar="تليجرام للأعمال" data-en="Telegram Business">تليجرام للأعمال</div>
+            <div class="text-xs text-slate-500 dark:text-slate-400 font-medium" data-ar="تبادل الأكواد والملفات الكبيرة" data-en="Share large files & code">تبادل الأكواد والملفات الكبيرة</div>
+          </div>
+        </a>
+      </div>
+
+      <!-- Divider & Email Form Fallback -->
+      <div class="border-t border-slate-300 dark:border-slate-700/50 pt-6 space-y-4">
+        <h4 class="text-sm font-bold text-slate-700 dark:text-slate-300" data-ar="أو يمكنك إرسال رسالة مباشرة عبر البريد الإلكتروني:" data-en="Or send a direct message via email:">أو يمكنك إرسال رسالة مباشرة عبر البريد الإلكتروني:</h4>
+        <form id="contact-form" class="space-y-3">
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
+            <input type="text" name="name" placeholder="الاسم الكامل" data-ar="الاسم الكامل" data-en="Full Name" required
+              class="w-full bg-slate-100 dark:bg-white/5 border border-slate-300 dark:border-white/10 focus:border-[#0EA5E9] text-slate-900 dark:text-white p-3.5 rounded-xl outline-none transition-all text-sm font-medium">
+            <input type="email" name="email" placeholder="البريد الإلكتروني" data-ar="البريد الإلكتروني" data-en="Email Address" required
+              class="w-full bg-slate-100 dark:bg-white/5 border border-slate-300 dark:border-white/10 focus:border-[#0EA5E9] text-slate-900 dark:text-white p-3.5 rounded-xl outline-none transition-all text-sm font-medium">
+          </div>
+          <textarea name="message" placeholder="تفاصيل استفسارك أو مشروعك..." data-ar="تفاصيل استفسارك أو مشروعك..." data-en="Your message or project details..." rows="3" required
+            class="w-full bg-slate-100 dark:bg-white/5 border border-slate-300 dark:border-white/10 focus:border-[#0EA5E9] text-slate-900 dark:text-white p-3.5 rounded-xl outline-none transition-all text-sm font-medium"></textarea>
+          <button type="submit" id="submit-btn" data-ar="إرسال عبر الإيميل" data-en="Send via Email"
+            class="w-full bg-[#0EA5E9] text-[#020617] py-4 rounded-xl font-black text-base hover-cyan-glow shadow-lg transition-all">إرسال عبر الإيميل</button>
+        </form>
+      </div>
+
+      <!-- Success Screen -->
+      <div id="success-screen" class="hidden flex flex-col items-center text-center space-y-6 py-8">
+        <div class="w-20 h-20 bg-[#10B981]/20 border border-[#10B981]/50 text-[#10B981] rounded-full flex items-center justify-center animate-bounce">
+          <i data-lucide="check-circle-2" class="w-12 h-12"></i>
+        </div>
+        <h3 class="text-3xl font-black text-slate-900 dark:text-white" data-ar="تم الإرسال بنجاح!" data-en="Sent Successfully!">تم الإرسال بنجاح!</h3>
+        <p class="text-slate-600 dark:text-slate-300 text-base" data-ar="لقد تلقينا رسالتك وسيتواصل معك فريقنا في أقرب وقت ممكن." data-en="We have received your message and our team will contact you as soon as possible.">لقد تلقينا رسالتك وسيتواصل معك فريقنا في أقرب وقت ممكن.</p>
+        <button onclick="document.getElementById('contact-modal').classList.add('hidden'); setTimeout(() => { document.getElementById('form-content').classList.remove('hidden'); document.getElementById('success-screen').classList.add('hidden'); }, 500)"
+          class="px-8 py-3 glass border-[#0EA5E9]/30 text-[#0EA5E9] rounded-xl font-bold hover:bg-[#0EA5E9]/10 transition-all" data-ar="إغلاق" data-en="Close">إغلاق</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Dedicated Article Modal -->
+  <div id="article-modal" class="hidden fixed inset-0 z-[200] flex items-center justify-center bg-slate-900/60 dark:bg-black/90 backdrop-blur-2xl p-4 md:p-8 overflow-y-auto">
+    <div class="relative w-full max-w-3xl glass rounded-[2.5rem] p-8 md:p-12 border border-[#0EA5E9]/40 shadow-2xl space-y-8 my-auto max-h-[90vh] overflow-y-auto custom-scrollbar">
+      <button onclick="document.getElementById('article-modal').classList.add('hidden')"
+        class="absolute top-6 left-6 text-slate-400 hover:text-[#0EA5E9] transition-colors p-2 glass rounded-full">
+        <i data-lucide="x" class="w-6 h-6"></i>
+      </button>
+
+      <div class="space-y-4 border-b border-[#0EA5E9]/20 pb-6">
+        <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-[#0EA5E9]/30 glass text-xs font-bold text-[#0EA5E9] uppercase">
+          <i data-lucide="book-open" class="w-3.5 h-3.5"></i> Digital Transformation & Egypt
+        </div>
+        <h2 class="text-2xl md:text-4xl font-black text-slate-900 dark:text-white leading-tight" data-ar="من الروتين إلى الرقمنة: خريطة طريق شخصية لشغف إعادة رسم الخدمات في مصر" data-en="From Routine to Digitalization: A Personal Roadmap for Transforming Services in Egypt">
+          من الروتين إلى الرقمنة: خريطة طريق شخصية لشغف إعادة رسم الخدمات في مصر
+        </h2>
+        <div class="flex items-center gap-4 text-xs font-bold text-slate-500 dark:text-slate-400 pt-2">
+          <span>بقلم: عبد الرءوف رفعت</span>
+          <span>•</span>
+          <span>زمن القراءة: 6 دقائق</span>
+        </div>
+      </div>
+
+      <div class="space-y-6 text-slate-700 dark:text-slate-200 text-base md:text-lg leading-relaxed font-medium">
+        <p class="first-letter:text-4xl first-letter:font-black first-letter:text-[#0EA5E9]">
+          تخوض مصر اليوم واحدة من أهم معاركها التنموية، معركة إعادة رسم ملامح الخدمات الحكومية والخاصة لتلائم إيقاع العصر. بالنسبة لي، لم يكن "التحول الرقمي" يوماً مجرد مصطلح براق يُردد في المؤتمرات، أو مجرد عملية نقل بيانات من دفاتر ورقية قديمة إلى شاشات زجاجية صماء. إنني أرى الرقمنة فلسفة إعادة هيكلة جذريّة لطريقة حياة المواطن، وأداة حقيقية لرد الاعتبار لأغلى ما يملكه الإنسان: وقتُه وكرامتُه.
+        </p>
+
+        <p>
+          بدأتُ رحلتي في هذا المجال محركاً بشغف حقيقي لرؤية معاملاتنا اليومية تخلو من التعقيد. العمل على دعم المنظومة الرقمية في مصر يتطلب دراسة عميقة لخصائص المجتمع، فالحد من البيروقراطية لا يتحقق فقط باستيراد أنظمة جاهزة، بل بابتكار حلول برمجية وتطبيقات مرنة تُفصل خصيصاً لتناسب احتياجات الشارع المصري وتراعي كافة الفئات.
+        </p>
+
+        <div class="p-6 glass border-r-4 border-[#0EA5E9] rounded-xl bg-[#0EA5E9]/5 space-y-2 my-6">
+          <h4 class="text-xl font-black text-[#0EA5E9]">رؤيتي المستقبلية: منظومة ذكية لا تنام</h4>
+          <p class="text-slate-700 dark:text-slate-300 italic text-sm md:text-base">
+            "إن رؤيتي لمستقبل الخدمات الرقمية في مصر لا تتوقف عند حدود رقمنة المعاملات؛ بل تمتد لبناء بيئة متكاملة تعتمد على مفهوم الخدمات المسبقة والتنبؤية."
+          </p>
+        </div>
+
+        <p>
+          أطمح إلى مشاركة الجهود الوطنية للوصول إلى يوم يستطيع فيه المواطن تجديد وثائقه، استخراج تراخيصه، وإدارة معاملاته المالية والتجارية دون الحاجة لزيارة مكتب حكومي واحد أو انتظار موظف شباك.
+        </p>
+
+        <p>
+          نحن بحاجة إلى الربط الشامل بين مختلف القطاعات (الصحة، التعليم، المالية، والعدل) تحت مظلة أمن سبراني صارم يضمن سرية البيانات ويحمي خصوصية الأفراد، مع الاعتماد على تقنيات الذكاء الاصطناعي لتحليل البيانات الضخمة وتسريع اتخاذ القرار.
+        </p>
+
+        <h4 class="text-2xl font-black text-[#0EA5E9] pt-4">طموحات بلا حدود</h4>
+
+        <p>
+          إن طموحي الأكبر يكمن في المساهمة الفعالة لتكون مصر مركزاً إقليمياً وتكنولوجياً يُحتذى به في المنطقة العربية وإفريقيا. لا أريد للحلول التي أساهم فيها أن تكون مجرد أداة إنقاذ من الروتين، بل أتمناها تجربة مستخدم سلسة وممتعة تثبت أن التغيير ممكن، وأن الكفاءة والشفافية معايير قادرة على السيادة في بيئة العمل المصرية.
+        </p>
+
+        <p class="border-t border-[#0EA5E9]/20 pt-6 text-slate-500 dark:text-slate-400 italic text-sm">
+          الطريق نحو تحول رقمي شامل ليس سهلاً، فهو يتطلب جهداً متواصلاً، وتطويراً لا يهدأ للمهارات، وإيماناً راسخاً بأن كل خطوة نخطوها نحو التكنولوجيا اليوم هي استثمار مباشر في رفاهية أجيال الغد.
+        </p>
+      </div>
+
+      <div class="pt-6 border-t border-[#0EA5E9]/20 flex justify-between items-center">
+        <button onclick="document.getElementById('article-modal').classList.add('hidden')"
+          class="bg-[#0EA5E9] text-[#020617] px-8 py-3 rounded-xl font-black text-sm hover-cyan-glow transition-all">
+          إغلاق المقال
+        </button>
+        <button onclick="document.getElementById('article-modal').classList.add('hidden'); document.getElementById('contact-modal').classList.remove('hidden');"
+          class="glass border-[#0EA5E9]/30 text-[#0EA5E9] px-6 py-3 rounded-xl font-bold text-sm hover:bg-[#0EA5E9]/10 transition-all">
+          ناقش الفكرة معنا
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl" class="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>404 | الصفحة غير موجودة - CODX</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@200;400;600;900&display=swap" rel="stylesheet">
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: { extend: { fontFamily: { sans: ['Cairo', 'sans-serif'] } } }
+    }
+  </script>
+  <style>
+    body { font-family: 'Cairo', sans-serif; overflow: hidden; }
+    .glass {
+      backdrop-filter: blur(12px);
+      background: rgba(15, 23, 42, 0.6);
+      border: 1px solid rgba(255, 255, 255, 0.05);
+    }
+    .mesh-bg {
+      position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -1;
+      background: #020617;
+    }
+    .mesh-ball {
+      position: absolute; border-radius: 50%; filter: blur(80px); opacity: 0.15;
+      animation: move 20s infinite alternate ease-in-out;
+    }
+    @keyframes move {
+      0% { transform: translate(0, 0); }
+      100% { transform: translate(20vw, 20vh); }
+    }
+  </style>
+</head>
+<body class="bg-slate-950 text-white min-h-screen flex items-center justify-center p-6">
+  <div class="mesh-bg">
+    <div class="mesh-ball bg-blue-600 w-96 h-96 top-0 left-0"></div>
+    <div class="mesh-ball bg-purple-600 w-80 h-80 bottom-0 right-0"></div>
+  </div>
+
+  <div class="max-w-2xl w-full glass p-12 md:p-20 rounded-[4rem] text-center space-y-8 shadow-2xl">
+    <h1 class="text-9xl font-black italic tracking-tighter text-transparent bg-clip-text bg-gradient-to-r from-blue-500 to-purple-600">404</h1>
+    <div class="space-y-4">
+      <h2 class="text-4xl font-black" data-ar="تهت في الفضاء الرقمي؟" data-en="Lost in Digital Space?">تهت في الفضاء الرقمي؟</h2>
+      <p class="text-xl text-slate-400 font-medium" data-ar="عذراً، الصفحة التي تبحث عنها غير موجودة أو تم نقلها." data-en="Sorry, the page you're looking for doesn't exist or has been moved.">عذراً، الصفحة التي تبحث عنها غير موجودة أو تم نقلها.</p>
+    </div>
+    <div class="pt-6">
+      <a href="index.html" class="inline-flex items-center gap-3 bg-white text-black px-10 py-4 rounded-2xl font-black text-xl hover:scale-105 transition-transform">
+        <i data-lucide="home" class="w-6 h-6"></i>
+        <span data-ar="العودة للرئيسية" data-en="Back to Home">العودة للرئيسية</span>
+      </a>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
