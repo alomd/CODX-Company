@@ -15,8 +15,8 @@
 }
 
 @keyframes reveal-up {
-  from { opacity: 0; transform: translateY(30px); }
-  to { opacity: 1; transform: translateY(0); }
+  from { opacity: 0; transform: translateY(30px) scale(0.95); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
 }
 
 @keyframes float {
@@ -28,11 +28,17 @@
   animation: reveal-up 0.8s cubic-bezier(0.4, 0, 0.2, 1) forwards;
 }
 
+/* B&W Glow instead of colored glow */
 .hover-glow:hover {
-  box-shadow: 0 0 30px rgba(79, 70, 229, 0.4);
-  border-color: rgba(79, 70, 229, 0.6);
+  box-shadow: 0 0 30px rgba(0, 0, 0, 0.3);
+  border-color: rgba(0, 0, 0, 0.5);
+}
+.dark .hover-glow:hover {
+  box-shadow: 0 0 30px rgba(255, 255, 255, 0.3);
+  border-color: rgba(255, 255, 255, 0.5);
 }
 
+/* 3D Effects */
 .perspective-1000 {
   perspective: 1000px;
 }
@@ -41,9 +47,112 @@
   transform-style: preserve-3d;
 }
 
-.group:hover .tilt-image {
-  transform: rotateX(5deg) rotateY(-5deg) scale(1.05);
+/* Advanced 3D Hover (Reduced Motion Support) */
+@media (prefers-reduced-motion: no-preference) {
+  .hover-3d {
+    transition: transform 0.5s cubic-bezier(0.23, 1, 0.32, 1), box-shadow 0.5s ease;
+  }
+  .hover-3d:hover {
+    transform: rotateX(5deg) rotateY(-5deg) translateY(-10px) scale(1.02);
+    box-shadow: 15px 15px 40px rgba(0,0,0,0.8), -5px -5px 20px rgba(212, 175, 55, 0.15);
+  }
+  .dark .hover-3d:hover {
+    box-shadow: 15px 15px 40px rgba(0,0,0,0.9), -5px -5px 20px rgba(212, 175, 55, 0.15);
+  }
+
+  .group:hover .tilt-image {
+    transform: rotateX(5deg) rotateY(-5deg) scale(1.05) translateZ(20px);
+  }
 }
+
+/* Cyber Precision Color Palette Tokens */
+:root {
+  --color-primary: #0F172A;
+  --color-accent: #0EA5E9;
+  --color-secondary: #334155;
+  --color-surface: #020617;
+  --color-highlight: #10B981;
+}
+
+/* Accent Electric Cyan Utilities */
+.text-cyan, .text-gold { color: #0EA5E9; }
+.bg-cyan, .bg-gold { background-color: #0EA5E9; }
+.border-cyan, .border-gold { border-color: #0EA5E9; }
+
+/* Highlight Emerald Utilities */
+.text-emerald { color: #10B981; }
+.bg-emerald { background-color: #10B981; }
+.border-emerald { border-color: #10B981; }
+
+.cyan-gradient, .gold-gradient {
+  background: linear-gradient(135deg, #0EA5E9 0%, #0284C7 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+}
+.hover-cyan-glow, .hover-gold-glow {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.hover-cyan-glow:hover, .hover-gold-glow:hover {
+  box-shadow: 0 0 25px rgba(14, 165, 233, 0.4), 0 0 5px rgba(14, 165, 233, 0.2);
+  border-color: rgba(14, 165, 233, 0.8);
+}
+.cyan-glass, .gold-glass {
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(14, 165, 233, 0.25);
+  box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.05);
+}
+.dark .cyan-glass, .dark .gold-glass {
+  background: rgba(15, 23, 42, 0.85);
+  border: 1px solid rgba(14, 165, 233, 0.25);
+  box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.5);
+}
+.cyan-glass:hover, .gold-glass:hover {
+  border-color: rgba(14, 165, 233, 0.6);
+}
+
+/* Accordion FAQ */
+.faq-answer {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.4s cubic-bezier(0, 1, 0, 1), opacity 0.3s ease;
+  opacity: 0;
+}
+.faq-item.active .faq-answer {
+  max-height: 500px;
+  opacity: 1;
+  transition: max-height 0.5s ease-in-out, opacity 0.4s ease;
+}
+.faq-item.active .faq-icon {
+  transform: rotate(180deg);
+  color: #0EA5E9;
+}
+
+/* Estimator Selection Pills */
+.estimator-card {
+  transition: all 0.3s ease;
+  cursor: pointer;
+  border: 1px solid rgba(14, 165, 233, 0.2);
+}
+.estimator-card:hover {
+  border-color: rgba(14, 165, 233, 0.6);
+  transform: translateY(-4px);
+}
+.estimator-card.selected {
+  background: rgba(14, 165, 233, 0.15) !important;
+  border-color: #0EA5E9 !important;
+  box-shadow: 0 0 20px rgba(14, 165, 233, 0.25);
+}
+
+/* Modal Smooth Animation */
+.modal-backdrop {
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+}
+
+
 
 .stagger-reveal > * {
   opacity: 0;

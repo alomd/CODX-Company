@@ -78,6 +78,9 @@ const UIManager = {
         this.initLoader();
         this.initForm();
         this.initIdeas();
+        this.initStats();
+        this.initEstimator();
+        this.initFAQ();
         lucide.createIcons();
     },
 
@@ -157,9 +160,9 @@ const UIManager = {
 
                 if (ideas.length === 0) {
                     feed.innerHTML = `
-                        <div class="text-center py-12 glass rounded-3xl border-dashed border-2 border-slate-200 dark:border-white/10">
-                            <i data-lucide="sparkles" class="w-12 h-12 text-blue-500 mx-auto mb-4 opacity-50"></i>
-                            <p class="text-slate-500 font-bold" data-ar="كن أول من يشارك فكرة!" data-en="Be the first to share an idea!">
+                        <div class="text-center py-12 glass rounded-3xl border-dashed border-2 border-gold/20">
+                            <i data-lucide="sparkles" class="w-12 h-12 text-gold mx-auto mb-4 opacity-50"></i>
+                            <p class="text-slate-400 font-bold" data-ar="كن أول من يشارك فكرة!" data-en="Be the first to share an idea!">
                                 ${state.lang === 'ar' ? 'كن أول من يشارك فكرة!' : 'Be the first to share an idea!'}
                             </p>
                         </div>
@@ -168,38 +171,38 @@ const UIManager = {
                     feed.innerHTML = ideas.map(idea => {
                         const isAdmin = admins.includes(idea.name.toLowerCase().trim());
                         const tagColors = {
-                            'Idea': 'bg-blue-500/10 text-blue-500',
-                            'Feature': 'bg-purple-500/10 text-purple-500',
-                            'UI/UX': 'bg-emerald-500/10 text-emerald-500',
-                            'Crazy': 'bg-orange-500/10 text-orange-500'
+                            'Idea': 'bg-[#0EA5E9]/15 text-[#0EA5E9] border border-[#0EA5E9]/30',
+                            'Feature': 'bg-[#10B981]/15 text-[#10B981] border border-[#10B981]/30',
+                            'UI/UX': 'border border-[#0EA5E9]/40 text-[#0EA5E9]',
+                            'Crazy': 'bg-[#0EA5E9] text-[#020617] font-black'
                         };
 
                         return `
-                        <div class="glass p-6 rounded-3xl border-white/10 hover:border-blue-500/30 transition-all duration-300 group relative overflow-hidden">
-                            ${isAdmin ? '<div class="absolute top-0 right-0 w-24 h-24 bg-blue-600/5 blur-2xl -z-10"></div>' : ''}
+                        <div class="glass p-6 rounded-3xl border-white/10 hover:border-[#0EA5E9]/40 hover-3d transition-all duration-300 group relative overflow-hidden preserve-3d perspective-1000">
+                            ${isAdmin ? '<div class="absolute top-0 right-0 w-24 h-24 bg-[#0EA5E9]/10 blur-2xl -z-10"></div>' : ''}
                             <div class="flex justify-between items-start mb-4">
                                 <div class="flex items-center gap-3">
-                                    <div class="w-10 h-10 rounded-full ${isAdmin ? 'bg-blue-600' : 'bg-gradient-to-tr from-slate-200 to-slate-400 dark:from-slate-700 dark:to-slate-800'} flex items-center justify-center text-white font-black text-xs shadow-lg">
+                                    <div class="w-10 h-10 rounded-full ${isAdmin ? 'bg-[#0EA5E9] text-[#020617]' : 'bg-white/5 border border-white/10 text-white'} flex items-center justify-center font-black text-xs shadow-lg tilt-image">
                                         ${isAdmin ? '<i data-lucide="shield-check" class="w-5 h-5"></i>' : idea.name.charAt(0).toUpperCase()}
                                     </div>
                                     <div>
                                         <div class="flex items-center gap-2">
-                                            <h5 class="font-black text-sm">${idea.name}</h5>
-                                            ${isAdmin ? '<span class="bg-blue-600/10 text-blue-500 text-[8px] font-black px-2 py-0.5 rounded-full uppercase tracking-tighter">Developer</span>' : ''}
+                                            <h5 class="font-black text-sm text-white">${idea.name}</h5>
+                                            ${isAdmin ? '<span class="bg-[#10B981]/20 text-[#10B981] border border-[#10B981]/40 text-[8px] font-black px-2 py-0.5 rounded-full uppercase tracking-tighter">Developer</span>' : ''}
                                         </div>
-                                        <p class="text-[10px] text-slate-500 font-bold uppercase">${new Date(idea.date).toLocaleDateString()}</p>
+                                        <p class="text-[10px] text-slate-400 font-bold uppercase">${new Date(idea.date).toLocaleDateString()}</p>
                                     </div>
                                 </div>
                                 <div class="flex items-center gap-3">
                                     <span class="px-3 py-1 ${tagColors[idea.tag] || tagColors['Idea']} text-[9px] font-black rounded-full uppercase">${idea.tag || 'Idea'}</span>
                                     <button onclick="UIManager.ideaManager.toggleLike(${idea.id})" 
-                                            class="flex items-center gap-1 text-sm font-bold transition-colors ${idea.liked ? 'text-red-500' : 'text-slate-500 hover:text-red-400'}">
+                                            class="flex items-center gap-1 text-sm font-bold transition-colors ${idea.liked ? 'text-red-500' : 'text-slate-400 hover:text-red-400'}">
                                         <span class="text-xs">${idea.likes || 0}</span>
                                         <i data-lucide="heart" class="w-4 h-4 ${idea.liked ? 'fill-current' : ''}"></i>
                                     </button>
                                 </div>
                             </div>
-                            <p class="text-slate-600 dark:text-slate-400 font-medium leading-relaxed">${idea.text}</p>
+                            <p class="text-slate-300 font-medium leading-relaxed">${idea.text}</p>
                         </div>
                     `}).join('');
                 }
@@ -228,7 +231,7 @@ const UIManager = {
             const message = formData.get('message');
 
             // WhatsApp Redirection
-            const waNumber = "201144453259";
+            const waNumber = "201223347637";
             const waText = encodeURIComponent(`*طلب تواصل جديد*\n\n*الاسم:* ${name}\n*الإيميل:* ${email}\n*الرسالة:* ${message}`);
             const waUrl = `https://wa.me/${waNumber}?text=${waText}`;
 
@@ -254,13 +257,52 @@ const UIManager = {
 
     initLoader() {
         const loader = document.getElementById('page-loader');
-        if (loader) {
-            window.addEventListener('load', () => {
-                setTimeout(() => {
-                    loader.classList.add('hidden');
-                }, 800);
-            });
+        if (!loader) return;
+
+        // Terminal typing effect
+        const typingEl = document.getElementById('loader-typing-text');
+        if (typingEl) {
+            const messages = [
+                'initializing system...',
+                'loading modules...',
+                'connecting services...',
+                'compiling assets...',
+                'system ready ✓'
+            ];
+            let msgIndex = 0;
+
+            const typeMessage = () => {
+                if (msgIndex >= messages.length) return;
+                const msg = messages[msgIndex];
+                let charIndex = 0;
+                typingEl.textContent = '';
+
+                const typeChar = () => {
+                    if (charIndex < msg.length) {
+                        typingEl.textContent += msg[charIndex];
+                        charIndex++;
+                        setTimeout(typeChar, 35 + Math.random() * 25);
+                    } else {
+                        msgIndex++;
+                        if (msgIndex < messages.length) {
+                            setTimeout(typeMessage, 400);
+                        }
+                    }
+                };
+                typeChar();
+            };
+            typeMessage();
         }
+
+        // Dismiss loader after page load + minimum display time
+        window.addEventListener('load', () => {
+            setTimeout(() => {
+                loader.classList.add('loader-exit');
+                setTimeout(() => {
+                    loader.style.display = 'none';
+                }, 900);
+            }, 2500);
+        });
     },
 
     initNavbar() {
@@ -290,6 +332,128 @@ const UIManager = {
         }, { threshold: 0.15 });
 
         document.querySelectorAll('.reveal, .stagger-reveal').forEach(el => observer.observe(el));
+    },
+
+    initStats() {
+        const counters = document.querySelectorAll('.stat-counter');
+        if (!counters.length) return;
+
+        let animated = false;
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting && !animated) {
+                    animated = true;
+                    counters.forEach(counter => {
+                        const target = +counter.getAttribute('data-target');
+                        let count = 0;
+                        const step = Math.max(1, Math.floor(target / 40));
+                        const timer = setInterval(() => {
+                            count += step;
+                            if (count >= target) {
+                                counter.innerText = target;
+                                clearInterval(timer);
+                            } else {
+                                counter.innerText = count;
+                            }
+                        }, 30);
+                    });
+                }
+            });
+        }, { threshold: 0.3 });
+
+        const statsSection = document.getElementById('stats');
+        if (statsSection) observer.observe(statsSection);
+    },
+
+    initEstimator() {
+        const typeCards = document.querySelectorAll('#estimator-type-container .estimator-card');
+        const featureCards = document.querySelectorAll('#estimator-features-container .estimator-card');
+        const priceEl = document.getElementById('est-price');
+        const timeEl = document.getElementById('est-time');
+        const sendBtn = document.getElementById('send-estimate-btn');
+
+        if (!priceEl) return;
+
+        let basePrice = 1500;
+        let baseDays = 14;
+        let selectedTypeName = 'تطبيق موبايل (Mobile App)';
+
+        const calculateTotal = () => {
+            let totalCost = basePrice;
+            let totalDays = baseDays;
+
+            featureCards.forEach(card => {
+                const check = card.querySelector('.feature-check');
+                if (check && check.checked) {
+                    totalCost += parseInt(card.getAttribute('data-cost') || 0);
+                    totalDays += parseInt(card.getAttribute('data-days') || 0);
+                    card.classList.add('selected');
+                } else {
+                    card.classList.remove('selected');
+                }
+            });
+
+            priceEl.innerText = `$${totalCost.toLocaleString()}`;
+            timeEl.innerText = state.lang === 'ar' ? `~ ${totalDays} يوم عمل` : `~ ${totalDays} Working Days`;
+        };
+
+        typeCards.forEach(card => {
+            card.addEventListener('click', () => {
+                typeCards.forEach(c => c.classList.remove('selected'));
+                card.classList.add('selected');
+                basePrice = parseInt(card.getAttribute('data-base') || 1500);
+                baseDays = parseInt(card.getAttribute('data-days') || 14);
+                selectedTypeName = card.querySelector('div').innerText;
+                calculateTotal();
+            });
+        });
+
+        featureCards.forEach(card => {
+            const check = card.querySelector('.feature-check');
+            card.addEventListener('click', (e) => {
+                if (e.target !== check) {
+                    check.checked = !check.checked;
+                }
+                calculateTotal();
+            });
+        });
+
+        if (sendBtn) {
+            sendBtn.addEventListener('click', () => {
+                const selectedFeatures = [];
+                featureCards.forEach(card => {
+                    const check = card.querySelector('.feature-check');
+                    if (check && check.checked) {
+                        selectedFeatures.push(card.querySelector('span').innerText);
+                    }
+                });
+
+                const featuresText = selectedFeatures.length ? selectedFeatures.join(', ') : 'لا يوجد ميزات إضافية محدده';
+                const message = `*طلب تقدير مشروع جديد من حاسبة CODX*\n\n` +
+                                `*نوع المنصة:* ${selectedTypeName}\n` +
+                                `*الميزات المطلوبة:* ${featuresText}\n` +
+                                `*التكلفة المقدرة:* ${priceEl.innerText}\n` +
+                                `*المدة التقديرية:* ${timeEl.innerText}`;
+
+                const waUrl = `https://wa.me/201223347637?text=${encodeURIComponent(message)}`;
+                window.open(waUrl, '_blank');
+            });
+        }
+
+        calculateTotal();
+    },
+
+    initFAQ() {
+        const faqItems = document.querySelectorAll('.faq-item');
+        faqItems.forEach(item => {
+            item.addEventListener('click', () => {
+                const isActive = item.classList.contains('active');
+                faqItems.forEach(i => i.classList.remove('active'));
+                if (!isActive) {
+                    item.classList.add('active');
+                }
+            });
+        });
     },
 
     initTyping() {

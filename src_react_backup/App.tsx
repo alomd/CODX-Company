@@ -81,8 +81,8 @@ const App: React.FC = () => {
   const [currentProjectIndex, setCurrentProjectIndex] = useState(0);
 
   const CONTACT_EMAIL = "alomdaapoaref@gmail.com";
-  const CONTACT_WHATSAPP = "01144453259";
-  const WHATSAPP_URL = `https://wa.me/201144453259`;
+  const CONTACT_WHATSAPP = "01223347637";
+  const WHATSAPP_URL = `https://wa.me/201223347637`;
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 50);
