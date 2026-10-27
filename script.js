@@ -79,7 +79,6 @@ const UIManager = {
         this.initForm();
         this.initIdeas();
         this.initStats();
-        this.initEstimator();
         this.initFAQ();
         lucide.createIcons();
     },
@@ -344,18 +343,27 @@ const UIManager = {
                 if (entry.isIntersecting && !animated) {
                     animated = true;
                     counters.forEach(counter => {
-                        const target = +counter.getAttribute('data-target');
-                        let count = 0;
-                        const step = Math.max(1, Math.floor(target / 40));
-                        const timer = setInterval(() => {
-                            count += step;
-                            if (count >= target) {
-                                counter.innerText = target;
-                                clearInterval(timer);
+                        const targetStr = counter.getAttribute('data-target') || '0';
+                        const isDecimal = targetStr.includes('.');
+                        const target = parseFloat(targetStr);
+                        const duration = 1500;
+                        const startTime = performance.now();
+
+                        const updateCounter = (currentTime) => {
+                            const elapsed = currentTime - startTime;
+                            const progress = Math.min(elapsed / duration, 1);
+                            // Ease-out cubic
+                            const ease = 1 - Math.pow(1 - progress, 3);
+                            const currentVal = ease * target;
+
+                            if (progress < 1) {
+                                counter.innerText = isDecimal ? currentVal.toFixed(1) : Math.floor(currentVal);
+                                requestAnimationFrame(updateCounter);
                             } else {
-                                counter.innerText = count;
+                                counter.innerText = targetStr;
                             }
-                        }, 30);
+                        };
+                        requestAnimationFrame(updateCounter);
                     });
                 }
             });
@@ -363,84 +371,6 @@ const UIManager = {
 
         const statsSection = document.getElementById('stats');
         if (statsSection) observer.observe(statsSection);
-    },
-
-    initEstimator() {
-        const typeCards = document.querySelectorAll('#estimator-type-container .estimator-card');
-        const featureCards = document.querySelectorAll('#estimator-features-container .estimator-card');
-        const priceEl = document.getElementById('est-price');
-        const timeEl = document.getElementById('est-time');
-        const sendBtn = document.getElementById('send-estimate-btn');
-
-        if (!priceEl) return;
-
-        let basePrice = 1500;
-        let baseDays = 14;
-        let selectedTypeName = 'تطبيق موبايل (Mobile App)';
-
-        const calculateTotal = () => {
-            let totalCost = basePrice;
-            let totalDays = baseDays;
-
-            featureCards.forEach(card => {
-                const check = card.querySelector('.feature-check');
-                if (check && check.checked) {
-                    totalCost += parseInt(card.getAttribute('data-cost') || 0);
-                    totalDays += parseInt(card.getAttribute('data-days') || 0);
-                    card.classList.add('selected');
-                } else {
-                    card.classList.remove('selected');
-                }
-            });
-
-            priceEl.innerText = `$${totalCost.toLocaleString()}`;
-            timeEl.innerText = state.lang === 'ar' ? `~ ${totalDays} يوم عمل` : `~ ${totalDays} Working Days`;
-        };
-
-        typeCards.forEach(card => {
-            card.addEventListener('click', () => {
-                typeCards.forEach(c => c.classList.remove('selected'));
-                card.classList.add('selected');
-                basePrice = parseInt(card.getAttribute('data-base') || 1500);
-                baseDays = parseInt(card.getAttribute('data-days') || 14);
-                selectedTypeName = card.querySelector('div').innerText;
-                calculateTotal();
-            });
-        });
-
-        featureCards.forEach(card => {
-            const check = card.querySelector('.feature-check');
-            card.addEventListener('click', (e) => {
-                if (e.target !== check) {
-                    check.checked = !check.checked;
-                }
-                calculateTotal();
-            });
-        });
-
-        if (sendBtn) {
-            sendBtn.addEventListener('click', () => {
-                const selectedFeatures = [];
-                featureCards.forEach(card => {
-                    const check = card.querySelector('.feature-check');
-                    if (check && check.checked) {
-                        selectedFeatures.push(card.querySelector('span').innerText);
-                    }
-                });
-
-                const featuresText = selectedFeatures.length ? selectedFeatures.join(', ') : 'لا يوجد ميزات إضافية محدده';
-                const message = `*طلب تقدير مشروع جديد من حاسبة CODX*\n\n` +
-                                `*نوع المنصة:* ${selectedTypeName}\n` +
-                                `*الميزات المطلوبة:* ${featuresText}\n` +
-                                `*التكلفة المقدرة:* ${priceEl.innerText}\n` +
-                                `*المدة التقديرية:* ${timeEl.innerText}`;
-
-                const waUrl = `https://wa.me/201223347637?text=${encodeURIComponent(message)}`;
-                window.open(waUrl, '_blank');
-            });
-        }
-
-        calculateTotal();
     },
 
     initFAQ() {
